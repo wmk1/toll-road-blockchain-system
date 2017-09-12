@@ -2,7 +2,7 @@
 
 You will complete this Truffle project.
 
-* Your code has to compile, test and be served from within the preconfigured Vagrant box we have made available to your cohort. Do not run any version update on this box.
+* Your code has to compile, test and be served from within the preconfigured Vagrant box we have made available to your cohort's group on [Academy Git](https://git.academy.b9lab.com). You should also have received an email telling you about it. Do not run any version update on this box.
 * You need to upload it to your [Academy Git](https://git.academy.b9lab.com) exam repository, to which you should have received an email invitation.
 * To assist you with configuring your computer to access the repository, please follow [Gitlab's official documentation](https://docs.gitlab.com/ce/ssh/README.html).
 
