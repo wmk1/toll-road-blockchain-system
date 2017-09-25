@@ -29,9 +29,9 @@ contract PausableI {
      * - a contract named `Pausable` that:
      *     - is a `OwnedI` and a `PausableI`.
      *     - has a modifier named `whenPaused` that rolls back the transaction if the
-     * contract is in the `true` paused state.
-     *     - has a modifier named `whenNotPaused` that rolls back the transaction if the
      * contract is in the `false` paused state.
+     *     - has a modifier named `whenNotPaused` that rolls back the transaction if the
+     * contract is in the `true` paused state.
      *     - has a constructor that takes one `bool` parameter, the initial paused state.
      */
 }
