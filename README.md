@@ -278,7 +278,7 @@ You need to create one migration script `2_...js` that will:
 
 * deploy a regulator,
 * then call `createNewOperator` on it.
-* then resumes the newly created operator, which should be paused.
+* then resumes the newly created operator, which should be paused before the resume step.
 
 ## Tests
 
@@ -290,35 +290,35 @@ A quick note on wording:
 You may create as many tests as you want but we still want you to create tests for the following scenarios. 
 
 * Scenario 1:
-  * `vehicle1` enters at `booth1` and deposits required amount.
-  * `vehicle1` exits at `booth2`, which route price happens to equal the deposit amount.
+  * `vehicle1` enters at `booth1` and deposits required amount (say 10).
+  * `vehicle1` exits at `booth2`, which route price happens to equal the deposit amount (so 10).
   * `vehicle1` gets no refund.
 * Scenario 2:
-  * `vehicle1` enters at `booth1` and deposits required amount.
-  * `vehicle1` exits at `booth2`, which route price happens to be more than the deposit amount.
+  * `vehicle1` enters at `booth1` and deposits required amount (say 10).
+  * `vehicle1` exits at `booth2`, which route price happens to be more than the deposit amount (say 15).
   * `vehicle1` gets no refund.
 * Scenario 3:
-  * `vehicle1` enters at `booth1` and deposits required amount.
-  * `vehicle1` exits at `booth2`, which route price happens to be less than the deposit amount.
-  * `vehicle1` gets refunded the difference.
+  * `vehicle1` enters at `booth1` and deposits required amount (say 10).
+  * `vehicle1` exits at `booth2`, which route price happens to be less than the deposit amount (say 6).
+  * `vehicle1` gets refunded the difference (so 4).
 * Scenario 4:
-  * `vehicle1` enters at `booth1` and deposits more than the required amount.
-  * `vehicle1` exits at `booth2`, which route price happens to equal the deposit amount.
-  * `vehicle1` gets refunded the difference.
+  * `vehicle1` enters at `booth1` and deposits (say 14) more than the required amount (say 10).
+  * `vehicle1` exits at `booth2`, which route price happens to equal the deposit amount (so 10).
+  * `vehicle1` gets refunded the difference (so 4).
 * Scenario 5:
-  * `vehicle1` enters at `booth1` and deposits more than the required amount.
+  * `vehicle1` enters at `booth1` and deposits (say 14) more than the required amount (say 10).
   * `vehicle1` exits at `booth2`, which route price happens to be unknown.
-  * the operator's owner updates the route price, which happens to be less than the deposited amount.
-  * `vehicle1` gets refunded the difference.
+  * the operator's owner updates the route price, which happens to be less than the deposited amount (say 11).
+  * `vehicle1` gets refunded the difference (so 3).
 * Scenario 6:
-  * `vehicle1` enters at `booth1` and deposits more than the required amount.
+  * `vehicle1` enters at `booth1` and deposits more (say 14) than the required amount (say 10).
   * `vehicle1` exits at `booth2`, which route price happens to be unknown.
-  * `vehicle2` enters at `booth1` and deposits the exact required amount.
+  * `vehicle2` enters at `booth1` and deposits the exact required amount (so 10).
   * `vehicle2` exits at `booth2`, which route price happens to be unknown.
-  * the operator's owner updates the route price, which happens to be less than the required deposit.
-  * `vehicle1` gets refunded the difference.
+  * the operator's owner updates the route price, which happens to be less than the required deposit (so 6).
+  * `vehicle1` gets refunded the difference (so 8).
   * someone (anyone) calls to clear one pending payment.
-  * `vehicle2` gets refunded the difference.
+  * `vehicle2` gets refunded the difference (so 4).
 
 We will run your tests against our hopefully-correct implementations, for which we expect your tests to pass. We will also run your tests against our purposefully-incorrect implementations, for which we expect your tests to fail.
 

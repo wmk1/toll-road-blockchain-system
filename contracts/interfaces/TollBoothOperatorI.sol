@@ -136,7 +136,9 @@ contract TollBoothOperatorI {
         returns (bool success);
 
     /**
-     * @return The amount that has been collected so far through successful payments.
+     * @return The amount that has been collected through successful payments. This is the current
+     *   amount, it does not reflect historical fees. So this value goes back to zero after a call
+     *   to `withdrawCollectedFees`.
      */
     function getCollectedFeesAmount()
         constant
@@ -163,6 +165,26 @@ contract TollBoothOperatorI {
     function withdrawCollectedFees()
         public
         returns(bool success);
+
+    /**
+     * This function overrides the eponymous function of `RoutePriceHolderI`, to which it adds the following
+     * functionality:
+     *     - If relevant, it will release 1 pending payment for this route. As part of this payment
+     *       release, it will emit the appropriate `LogRoadExited` event.
+     *     - In the case where the next relevant pending payment is not solvable, which can happen if,
+     *       for instance the vehicle has had wrongly set values in the interim:
+     *       - It should release 0 pending payment
+     *       - It should not roll back the transaction
+     *       - It should behave as if there had been no pending payment, apart from the higher gas consumed.
+     *     - It should be possible to call it even when the contract is in the `true` paused state.
+     * Emits LogRoadExited if applicable.
+    function setRoutePrice(
+            address entryBooth,
+            address exitBooth,
+            uint priceWeis)
+        public
+        returns(bool success);
+     */
 
     /*
      * You need to create:
