@@ -9,6 +9,25 @@ You will complete this Truffle project.
 * You can make as many commits and pushes as you see fit.
 * To assist you with configuring your computer to access the repository, please follow [Gitlab's official documentation](https://docs.gitlab.com/ce/ssh/README.html).
 
+### Git help
+
+With regards to Git, what you can do is a variation on the following:
+
+```sh
+# Clone the shared repo, replace with proper values. We say upstream
+# to remind you that you are not able to push to it.
+$ git clone git@git.academy.b9lab.com:YOUR-GROUP/this-repo.git -o upstream
+
+# Go it the new folder
+$ cd this-repo
+
+# Notice now it is your-repo-code that you need to change
+$ git remote add origin git@git.academy.b9lab.com:YOUR-GROUP/your-repo-code.git
+
+# Populate your 
+$ git push -u origin master
+```
+
 ### Project intro
 
 Our project describes a road system that will be represent by 2 overarching smart contracts:
@@ -140,6 +159,7 @@ For a vehicle to be accepted on the road system and the operator to be paid at t
 * if the fee is not known at the time of exit, the pending payment is recorded, and "base route price required" event is emitted and listened to by the operator's oracle.
 * when the oracle receives a new base route price request, it submits the base fee, which also clears one pending payment.
 * if there are more than 1 pending payments, an additional function is there to progressively clear the backlog a set number of pending payments at a time in a FIFO (of the exit) manner.
+* the vehicle type and multiplier to be used are those at the time of the transaction. So an entry transaction uses values at that time, an exit transaction uses values at that time.
 
 For simplicity's sake, we have not implemented a deadline after which the deposit is returned to the vehicle. Also, the function to clear pending more than 1 payment is an ugly one, because it implies a loop and multiple transfers. We actually use it to see how many pending payments you can cram in a single transaction.
 
@@ -157,7 +177,9 @@ All interfaces are found in the `contracts/interfaces/` folder and are suffixed 
 * `RoutePriceHolderI`, which keeps track of the base route prices between entry and exit toll booths.
 * `TollBoothOperatorI`, which describes methods required of the toll booth operator for interaction with vehicles.
 
-The contracts you need to create in their individual files in the `contracts/` folder are as follows. Note that we will use your implementations against our battery of Truffle unit tests. You can see a sample of them in the test folder. So it is important that you stick to the naming and the parameters order.
+You should not modify these interface `.sol` files.
+
+The contracts you need to create in their individual files in the `contracts/` folder are as follows. Note that we will use your implementations against our battery of Truffle unit tests. You can see a sample of them in the test folder. So it is important that you stick to the naming and the parameters order. Also, if you choose to create or use additional Solidity files, like libraries, make sure they are also in `contracts/` and not in a subfolder.
 
 When we say that `One` inherits from `OneI` and `Two` inherits from both `OneI` and `TwoI`, we leave it to your best judgement as to how to use `One` when coding `Two`. Remember that inheritance is transitive.
 
@@ -321,6 +343,10 @@ You may create as many tests as you want but we still want you to create tests f
   * `vehicle2` gets refunded the difference (so 4).
 
 We will run your tests against our hopefully-correct implementations, for which we expect your tests to pass. We will also run your tests against our purposefully-incorrect implementations, for which we expect your tests to fail.
+
+Please write your 6 scenarios in a single `test/scenarios.js` file, not in a subfolder, and do not modify the pre-existing tests. You can have as many `describe`, `before` and `beforeEach` as you want, however you need to have exactly 6 `it` in this `scenarios.js` file.
+
+If you want to use `async / await`, you need to be able to make it work in the VM with only a modified `package.json`.
 
 ## GUI
 

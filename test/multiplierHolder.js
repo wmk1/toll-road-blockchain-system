@@ -17,8 +17,10 @@ const allArtifacts = {
 }
 
 const constructors = {
-    MultiplierHolder: (owner, paused) => allArtifacts.MultiplierHolder.new({ from: owner }),
-    TollBoothOperator: (owner, paused) => allArtifacts.TollBoothOperator.new(paused, 1, owner, { from: owner })
+    MultiplierHolder: (owner, paused, value) => allArtifacts.MultiplierHolder.new(
+        { from: owner, value: value || 0 }),
+    TollBoothOperator: (owner, paused, value) => allArtifacts.TollBoothOperator.new(
+        paused, 1, owner, { from: owner, value: value || 0 })
 };
 
 contract('MultiplierHolder', function(accounts) {
@@ -41,6 +43,13 @@ contract('MultiplierHolder', function(accounts) {
     });
 
     Object.keys(constructors).forEach(name => {
+
+        it("should fail to deploy a " + name + " if pass value", function() {
+            return constructors[name](owner0, false, 1)
+                .then(
+                    () => assert.throw("should not have reached here"),
+                    e => assert.isAtLeast(e.message.indexOf("non-payable constructor"), 0));
+        });
 
         describe(name, function() {
 
@@ -262,48 +271,6 @@ contract('MultiplierHolder', function(accounts) {
                             assert.strictEqual(multipliers.type0.toNumber(), multiplier0);
                             assert.strictEqual(multipliers.type1.toNumber(), multiplier1);
                         });
-                });
-
-            });
-
-            describe("stress test", function() {
-
-                const count = 500;
-                it("should be possible to set and unset " + count + " multipliers", function() {
-                    if (!isTestRPC) this.skip();
-                    this.slow(300000);
-                    const setting = [], unsetting = [];
-                    for (let i = 1; i <= count; i++) {
-                        setting.push(() => {
-                            process.stdout.write("setting " + i + "          " + '\r');
-                            return holder.setMultiplier(i, 2 * i, { from: owner0 });
-                        });
-                        unsetting.push(() => {
-                            process.stdout.write("unsetting " + i + "          " + '\r');
-                            return holder.setMultiplier(i, 0, { from: owner0 });
-                        });
-                    }
-                    return Promise.allSeq(setting)
-                        .then(txs => Promise.allSeq(txs.map((tx, i) => () => {
-                            process.stdout.write("querying after set " + i + "          " + '\r');
-                            return holder.getMultiplier(i + 1);
-                        })))
-                        .then(multipliers => {
-                            assert.strictEqual(multipliers.length, count);
-                            multipliers.forEach((multiplier, index) => 
-                                assert.strictEqual(multiplier.toNumber(), 2 * (index + 1)));
-                        })
-                        .then(() => Promise.allSeq(unsetting))
-                        .then(txs => Promise.allSeq(txs.map((tx, i) => () => {
-                            process.stdout.write("querying after unset " + i + "          " + '\r');
-                            return holder.getMultiplier(i + 1);
-                        })))
-                        .then(multipliers => {
-                            assert.strictEqual(multipliers.length, count);
-                            multipliers.forEach(multiplier => 
-                                assert.strictEqual(multiplier.toNumber(), 0));
-                        });
-
                 });
 
             });

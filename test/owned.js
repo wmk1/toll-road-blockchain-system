@@ -1,5 +1,10 @@
 const expectedExceptionPromise = require("../utils/expectedException.js");
 web3.eth.getTransactionReceiptMined = require("../utils/getTransactionReceiptMined.js");
+Promise = require("bluebird");
+
+if (typeof web3.eth.getAccountsPromise === "undefined") {
+    Promise.promisifyAll(web3.eth, { suffix: "Promise" });
+}
 
 const allArtifacts = {
     Owned: artifacts.require("./Owned.sol"),
@@ -13,14 +18,22 @@ const allArtifacts = {
 }
 
 const constructors = {
-    Owned: owner => allArtifacts.Owned.new({ from: owner }),
-    Pausable: owner => allArtifacts.Pausable.new(false, { from: owner }),
-    Regulator: owner => allArtifacts.Regulator.new(false, { from: owner }),
-    DepositHolder: owner => allArtifacts.DepositHolder.new(105, { from: owner }),
-    MultiplierHolder: owner => allArtifacts.MultiplierHolder.new({ from: owner }),
-    RoutePriceHolder: owner => allArtifacts.RoutePriceHolder.new({ from: owner }),
-    TollBoothHolder: owner => allArtifacts.TollBoothHolder.new({ from: owner }),
-    TollBoothOperator: owner => allArtifacts.TollBoothOperator.new(false, 105, owner, { from: owner })
+    Owned: (owner, value) => allArtifacts.Owned.new(
+        { from: owner, value: value || 0 }),
+    Pausable: (owner, value) => allArtifacts.Pausable.new(
+        false, { from: owner, value: value || 0 }),
+    Regulator: (owner, value) => allArtifacts.Regulator.new(
+        false, { from: owner, value: value || 0 }),
+    DepositHolder: (owner, value) => allArtifacts.DepositHolder.new(
+        105, { from: owner, value: value || 0 }),
+    MultiplierHolder: (owner, value) => allArtifacts.MultiplierHolder.new(
+        { from: owner, value: value || 0 }),
+    RoutePriceHolder: (owner, value) => allArtifacts.RoutePriceHolder.new(
+        { from: owner, value: value || 0 }),
+    TollBoothHolder: (owner, value) => allArtifacts.TollBoothHolder.new(
+        { from: owner, value: value || 0 }),
+    TollBoothOperator: (owner, value) => allArtifacts.TollBoothOperator.new(
+        false, 105, owner, { from: owner, value: value || 0 })
 };
 
 contract('Owned inheritance tree', function(accounts) {
@@ -32,10 +45,19 @@ contract('Owned inheritance tree', function(accounts) {
         assert.isAtLeast(accounts.length, 2);
         owner0 = accounts[0];
         owner1 = accounts[1];
+        return web3.eth.getBalancePromise(owner0)
+            .then(balance => assert.isAtLeast(web3.fromWei(balance).toNumber(), 10));
     });
 
     Object.keys(constructors).forEach(name => {
         
+        it("should fail to deploy a " + name + " if pass value", function() {
+            return constructors[name](owner0, 1)
+                .then(
+                    () => assert.throw("should not have reached here"),
+                    e => assert.isAtLeast(e.message.indexOf("non-payable constructor"), 0));
+        });
+
         describe(name, function() {
 
             beforeEach("should deploy a new " + name, function() {

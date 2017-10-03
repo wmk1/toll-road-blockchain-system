@@ -1,7 +1,12 @@
 const expectedExceptionPromise = require("../utils/expectedException.js");
 web3.eth.getTransactionReceiptMined = require("../utils/getTransactionReceiptMined.js");
+Promise = require("bluebird");
 Promise.allNamed = require("../utils/sequentialPromiseNamed.js");
 const isAddress = require("../utils/isAddress.js");
+
+if (typeof web3.eth.getAccountsPromise === "undefined") {
+    Promise.promisifyAll(web3.eth, { suffix: "Promise" });
+}
 
 const Regulator = artifacts.require("./Regulator.sol");
 const TollBoothOperator = artifacts.require("./TollBoothOperator.sol");
@@ -19,6 +24,8 @@ contract('Regulator, Toll Booth Operator', function(accounts) {
         owner0 = accounts[0];
         owner1 = accounts[1];
         owner2 = accounts[2];
+        return web3.eth.getBalancePromise(owner0)
+            .then(balance => assert.isAtLeast(web3.fromWei(balance).toNumber(), 10));
     });
 
     beforeEach("should deploy a new Regulator", function() {
