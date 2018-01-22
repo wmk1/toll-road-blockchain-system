@@ -27,7 +27,7 @@ module.exports = function expectedExceptionPromise(action, gasToUse) {
                 // We are in Geth
                 if (typeof receipt.status !== "undefined") {
                     // Byzantium
-                    assert.strictEqual(receipt.status, "0x0", "should have reverted");
+                    assert.strictEqual(parseInt(receipt.status), 0, "should have reverted");
                 } else {
                     // Pre Byzantium
                     assert.equal(receipt.gasUsed, gasToUse, "should have used all the gas");
