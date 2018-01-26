@@ -295,6 +295,59 @@ contract('TollBoothOperator', function(accounts) {
                     });
             });
 
+            it("should be possible to set the base route price above both deposits and reduce count by 1", function() {
+                return operator.setRoutePrice.call(booth0, booth2, extraDeposit0 + extraDeposit1, { from: owner1 })
+                    .then(success => assert.isTrue(success))
+                    .then(() => operator.setRoutePrice(booth0, booth2, extraDeposit0 + extraDeposit1, { from: owner1 }))
+                    .then(tx => {
+                        assert.strictEqual(tx.receipt.logs.length, 2);
+                        assert.strictEqual(tx.logs.length, 2);
+                        const logPriceSet = tx.logs[0];
+                        assert.strictEqual(logPriceSet.event, "LogRoutePriceSet");
+                        assert.strictEqual(logPriceSet.args.sender, owner1);
+                        assert.strictEqual(logPriceSet.args.entryBooth, booth0);
+                        assert.strictEqual(logPriceSet.args.exitBooth, booth2);
+                        assert.strictEqual(logPriceSet.args.priceWeis.toNumber(), extraDeposit0 + extraDeposit1);
+                        const logExited = tx.logs[1];
+                        assert.strictEqual(logExited.event, "LogRoadExited");
+                        assert.strictEqual(logExited.args.exitBooth, booth2);
+                        assert.strictEqual(logExited.args.exitSecretHashed, hashed1);
+                        assert.strictEqual(logExited.args.finalFee.toNumber(), extraDeposit1 * multiplier1);
+                        assert.strictEqual(logExited.args.refundWeis.toNumber(), 0);
+                        // console.log(tx.receipt.gasUsed);
+                        return Promise.allNamed({
+                            hashed0: () => operator.getVehicleEntry(hashed0),
+                            hashed1: () => operator.getVehicleEntry(hashed1),
+                            pendingCount01: () => operator.getPendingPaymentCount(booth0, booth1),
+                            pendingCount02: () => operator.getPendingPaymentCount(booth0, booth2)
+                        });
+                    })
+                    .then(info => {
+                        assert.strictEqual(info.hashed0[0], vehicle0);
+                        assert.strictEqual(info.hashed0[1], booth0);
+                        assert.strictEqual(info.hashed0[2].toNumber(), extraDeposit0 * multiplier0);
+                        assert.strictEqual(info.hashed1[0], vehicle1);
+                        assert.strictEqual(info.hashed1[1], booth0);
+                        assert.strictEqual(info.hashed1[2].toNumber(), 0);
+                        assert.strictEqual(info.pendingCount01.toNumber(), 0);
+                        assert.strictEqual(info.pendingCount02.toNumber(), 1);
+                        return Promise.allNamed({
+                            operator: () => web3.eth.getBalancePromise(operator.address),
+                            collected: () => operator.getCollectedFeesAmount(),
+                            vehicle0: () => web3.eth.getBalancePromise(vehicle0),
+                            vehicle1: () => web3.eth.getBalancePromise(vehicle1)
+                        });
+                    })
+                    .then(balances => {
+                        assert.strictEqual(
+                            balances.operator.toNumber(),
+                            extraDeposit0 * multiplier0 + extraDeposit1 * multiplier1);
+                        assert.strictEqual(balances.collected.toNumber(), extraDeposit1 * multiplier1);
+                        assert.strictEqual(balances.vehicle0.toString(10), vehicle0InitBal.toString(10));
+                        assert.strictEqual(balances.vehicle1.toString(10), vehicle1InitBal.toString(10));
+                    });
+            });
+
             describe("Clear one more pending payment", function() {
 
                 it("should be possible to set the base route price below both deposits then clear the second by hand", function() {
@@ -355,6 +408,75 @@ contract('TollBoothOperator', function(accounts) {
 
         });
 
+    });
+
+    describe("Withdraw from 2 vehicles", function() {
+
+        const gasPrice = randomIntIn(1, 1000);
+        let owner1InitBal;
+
+        beforeEach("should deploy regulator and operator, and enter 2 vehicles", function() {
+            return Regulator.new({ from: owner0 })
+                .then(instance => regulator = instance)
+                .then(() => regulator.setVehicleType(vehicle0, vehicleType0, { from: owner0 }))
+                .then(() => regulator.setVehicleType(vehicle1, vehicleType1, { from: owner0 }))
+                .then(tx => regulator.createNewOperator(owner1, deposit0, { from: owner0 }))
+                .then(tx => operator = TollBoothOperator.at(tx.logs[1].args.newOperator))
+                .then(() => operator.addTollBooth(booth0, { from: owner1 }))
+                .then(tx => operator.addTollBooth(booth1, { from: owner1 }))
+                .then(tx => operator.setMultiplier(vehicleType0, multiplier0, { from: owner1 }))
+                .then(tx => operator.setMultiplier(vehicleType1, multiplier1, { from: owner1 }))
+                .then(tx => operator.setRoutePrice(booth0, booth1, price01, { from: owner1 }))
+                .then(tx => operator.setPaused(false, { from: owner1 }))
+                .then(tx => operator.hashSecret(secret0))
+                .then(hash => hashed0 = hash)
+                .then(tx => operator.hashSecret(secret1))
+                .then(hash => hashed1 = hash)
+                .then(() => operator.enterRoad(booth0, hashed0, { from: vehicle0, value: deposit0 * multiplier0 }))
+                .then(() => operator.enterRoad(booth0, hashed1, { from: vehicle1, value: deposit0 * multiplier1 }))
+                .then(tx => web3.eth.getBalancePromise(owner1))
+                .then(balance => owner1InitBal = balance);
+        });
+
+        it("should be possible to withdraw if second vehicle has exited", function() {
+            return operator.reportExitRoad(secret1, { from: booth1 })
+                .then(tx => operator.withdrawCollectedFees({ from: owner1, gasPrice: gasPrice }))
+                .then(tx => {
+                        assert.strictEqual(tx.receipt.logs.length, 1);
+                        assert.strictEqual(tx.logs.length, 1);
+                        const logFeesCollected = tx.logs[0];
+                        assert.strictEqual(logFeesCollected.event, "LogFeesCollected");
+                        assert.strictEqual(logFeesCollected.args.owner, owner1);
+                        assert.strictEqual(logFeesCollected.args.amount.toNumber(), price01 * multiplier1);
+                        owner1InitBal = owner1InitBal.minus(tx.receipt.gasUsed * gasPrice);
+                        return Promise.allNamed({
+                            contract: () => web3.eth.getBalancePromise(operator.address),
+                            owner1: () => web3.eth.getBalancePromise(owner1)
+                        });
+                })
+                .then(balances => {
+                    assert.strictEqual(balances.contract.toNumber(), deposit0 * multiplier0);
+                    assert.strictEqual(
+                        balances.owner1.toString(10),
+                        owner1InitBal.plus(price01 * multiplier1).toString(10));
+                    return operator.getCollectedFeesAmount();
+                })
+                .then(amount => assert.strictEqual(amount.toNumber(), 0));
+        });
+
+    });
+
+    it("should have correct number of functions", function() {
+        return TollBoothOperator.new(true, deposit1, owner0, { from: owner0 })
+            .then(instance => assert.strictEqual(Object.keys(instance).length, 43));
+        // ["constructor","abi","contract","removeTollBooth","setOwner","setPaused","addTollBooth",
+        // "setMultiplier","clearSomePendingPayments","reportExitRoad","getRoutePrice","isTollBooth",
+        // "hashSecret","getVehicleEntry","getOwner","enterRoad","getCollectedFeesAmount",
+        // "getMultiplier","isPaused","getDeposit","getPendingPaymentCount","setRegulator",
+        // "withdrawCollectedFees","setRoutePrice","setDeposit","getRegulator","LogRoadEntered",
+        // "LogRoadExited","LogPendingPayment","LogFeesCollected","LogRegulatorSet","LogRoutePriceSet",
+        // "LogMultiplierSet","LogTollBoothAdded","LogTollBoothRemoved","LogDepositSet","LogPausedSet",
+        // "LogOwnerSet","sendTransaction","send","allEvents","address","transactionHash"]
     });
 
 });

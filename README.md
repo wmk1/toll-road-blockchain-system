@@ -50,9 +50,9 @@ The price will be decided by 3 variables:
 * the exit toll booth
 * the vehicle type
 
-There variables will be used thus:
+These variables will be used thus:
 
-* the `TollBoothOperator` defines a base route price from booth A to booth B. The base route price from booth B to booth A maybe non-existent, equal or different.
+* the `TollBoothOperator` defines a base route price from the entry booth to the exit booth. The base route price from the exit booth to the entry booth may be non-existent, equal or different.
 * the `TollBoothOperator` defines a multiplier for each vehicle type. This is the number by which the base route price is multiplied with to get a specific vehicles route price or deposit.
 
 ## External accounts
@@ -69,7 +69,7 @@ We only care about vehicles, not about drivers. It means it can be driven by the
 
 * This deposit must be accompanied by the address of the toll booth by which they will enter.
 * When exiting the road system, the vehicle gives, off-chain, a secret to the exit toll booth.
-* The exit toll booth sends this secret to the road operator contract, which is used to unlock the deposit, then pay the road operator the proper fee for the route taken, then refunds the difference to the vehicle.
+* The exit toll booth sends this secret to the toll booth operator contract, which is used to unlock the deposit, then pay the toll booth operator the proper fee for the route taken, then refunds the difference to the vehicle.
 
 The off-chain exchange of the secret is handled by a wave of the hand in this project. You are not asked to work on this massive "detail".
 
@@ -144,7 +144,7 @@ For simplicity's sake:
 * the entry and exit booths of a route cannot be the same address.
 * the `TollBoothOperator` has total control over the deposit, the base route prices, and the multipliers.
 * there is no congestion or pollution charges.
-* the latest route base price is the valid route base price, even if the road operator changed the price after the vehicle entered the road system.
+* the latest route base price is the valid route base price, even if the toll booth operator changed the price after the vehicle entered the road system.
 
 ## Fee mechanics
 
@@ -156,9 +156,9 @@ For a vehicle to be accepted on the road system and the operator to be paid at t
 * the exit toll booth then submits this secret to the `TollBoothOperator`, which unlocks the deposit for payment and refund of the difference, if applicable.
 * if the fee is equal to or higher than the deposit, then the whole deposit is used and no more is asked of the vehicle, now or before any future trip.
 * if the fee is smaller than the deposit, then the difference is returned to the vehicle.
-* if the fee is not known at the time of exit, the pending payment is recorded, and "base route price required" event is emitted and listened to by the operator's oracle.
+* if the fee is not known at the time of exit, i.e. if the fee is `0`, the pending payment is recorded, and "base route price required" event is emitted and listened to by the operator's oracle.
 * when the oracle receives a new base route price request, it submits the base fee, which also clears one pending payment.
-* if there are more than 1 pending payments, an additional function is there to progressively clear the backlog a set number of pending payments at a time in a FIFO (of the exit) manner.
+* if there are more than 1 pending payments, an additional function is there to progressively clear the backlog a set number of pending payments at a time in a FIFO manner. If both vehicleA and vehicleB entered at the same booths and exited at the same booths, then if vehicleA exited before vehicleB, then vehicleA should pop from the FIFO ahead of vehicleB.
 * the vehicle type and multiplier to be used are those at the time of the transaction. So an entry transaction uses values at that time, an exit transaction uses values at that time.
 
 For simplicity's sake, we have not implemented a deadline after which the deposit is returned to the vehicle. Also, the function to clear pending more than 1 payment is an ugly one, because it implies a loop and multiple transfers. We actually use it to see how many pending payments you can cram in a single transaction.
@@ -181,7 +181,7 @@ You should not modify these interface `.sol` files.
 
 The contracts you need to create in their individual files in the `contracts/` folder are as follows. Note that we will use your implementations against our battery of Truffle unit tests. You can see a sample of them in the test folder. So it is important that you stick to the naming and the parameters order. Also, if you choose to create or use additional Solidity files, like libraries, make sure they are also in `contracts/` and not in a subfolder.
 
-When we say that `One` inherits from `OneI` and `Two` inherits from both `OneI` and `TwoI`, we leave it to your best judgement as to how to use `One` when coding `Two`. Remember that inheritance is transitive.
+When we say that `One` inherits from `OneI` and `Two` inherits from both `OneI` and `TwoI`, we leave it to your best judgement as to how to use `One` when coding `Two`. Remember that inheritance is transitive. All the contracts below are not abstract; this means they need to be deployable on their own.
 
 ### `Owned`
 
@@ -309,7 +309,9 @@ A quick note on wording:
 * "a / the deposit" refers to the value that the contract requires from entering vehicles.
 * "what is deposited" means what was actually sent by the vehicle upon entering.
 
-You may create as many tests as you want but we still want you to create tests for the following scenarios. 
+You may create as many test files as you want, as long as they are not named `test/scenarios.js`, they will not be part of the grading. Also, do not modify or rename the existing tests that were in the repository at the beginning.
+
+Please create a test file named `test/scenarios.js`, not in a subfolder. In this test file, please write exactly 6 tests for the following 6 scenarios. You can have as many `describe`, `before` and `beforeEach` as you want, however you need to have exactly 6 `it` in this `test/scenarios.js` file.
 
 * Scenario 1:
   * `vehicle1` enters at `booth1` and deposits required amount (say 10).
@@ -342,9 +344,7 @@ You may create as many tests as you want but we still want you to create tests f
   * someone (anyone) calls to clear one pending payment.
   * `vehicle2` gets refunded the difference (so 4).
 
-We will run your tests against our hopefully-correct implementations, for which we expect your tests to pass. We will also run your tests against our purposefully-incorrect implementations, for which we expect your tests to fail.
-
-Please write your 6 scenarios in a single `test/scenarios.js` file, not in a subfolder, and do not modify the pre-existing tests. You can have as many `describe`, `before` and `beforeEach` as you want, however you need to have exactly 6 `it` in this `scenarios.js` file.
+We will run your tests against our hopefully-correct implementations, for which we expect your tests to pass. We will also run your tests against our purposefully-incorrect implementations, for which we expect some of your tests to fail and the others to pass.
 
 If you want to use `async / await`, you need to be able to make it work in the VM with only a modified `package.json`.
 

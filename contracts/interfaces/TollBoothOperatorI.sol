@@ -30,13 +30,15 @@ contract TollBoothOperatorI {
      * Off-chain, the entry toll booth will open its gate up successful deposit and confirmation
      * of the vehicle identity.
      *     It should roll back when the contract is in the `true` paused state.
+     *     It should roll back when the vehicle is not a registered vehicle.
+     *     It should roll back when the vehicle is not allowed on this road system.
      *     It should roll back if `entryBooth` is not a tollBooth.
      *     It should roll back if less than deposit * multiplier was sent alongside.
+     *     It should roll back if `exitSecretHashed` has previously been used to enter.
      *     It should be possible for a vehicle to enter "again" before it has exited from the 
      *       previous entry.
      * @param entryBooth The declared entry booth by which the vehicle will enter the system.
      * @param exitSecretHashed A hashed secret that when solved allows the operator to pay itself.
-     *   A previously used exitSecretHashed cannot be used ever again.
      * @return Whether the action was successful.
      * Emits LogRoadEntered.
      */
@@ -94,8 +96,11 @@ contract TollBoothOperatorI {
      * Called by the exit booth.
      *     It should roll back when the contract is in the `true` paused state.
      *     It should roll back when the sender is not a toll booth.
+     *     It should roll back when the vehicle is no longer a registered vehicle.
+     *     It should roll back when the vehicle is no longer allowed on this road system.
      *     It should roll back if the exit is same as the entry.
      *     It should roll back if the secret does not match a hashed one.
+     *     It should roll back if the secret has already been reported on exit.
      * @param exitSecretClear The secret given by the vehicle as it passed by the exit booth.
      * @return status:
      *   1: success, -> emits LogRoadExited
