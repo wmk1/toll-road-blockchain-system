@@ -21,7 +21,7 @@ const constructors = {
     TollBoothOperator: (owner, paused) => allArtifacts.TollBoothOperator.new(paused, 1, owner, { from: owner })
 };
 
-contract('MultiplierHolder', function(accounts) {
+contract('MultiplierHolder - stress', function(accounts) {
 
     let isTestRPC;
     let owner0, owner1, holder;

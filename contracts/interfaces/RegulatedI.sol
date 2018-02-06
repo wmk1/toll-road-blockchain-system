@@ -20,7 +20,9 @@ contract RegulatedI {
      *     It should roll back if the new regulator is the same as the current regulator.
      * @param newRegulator The new desired regulator of the contract.
      * @return Whether the action was successful.
-     * Emits LogRegulatorSet.
+     * Emits LogRegulatorSet with:
+     *     The sender of the action.
+     *     The new regulator.
      */
     function setRegulator(address newRegulator)
         public

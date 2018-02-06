@@ -15,7 +15,9 @@ contract OwnedI {
      *     It should roll back if the argument is a 0 address.
      * @param newOwner The new owner of the contract
      * @return Whether the action was successful.
-     * Emits LogOwnerSet.
+     * Emits LogOwnerSet with:
+     *     The sender of the action.
+     *     The new owner.
      */
     function setOwner(address newOwner) returns(bool success);
 

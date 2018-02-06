@@ -15,14 +15,17 @@ contract MultiplierHolderI {
 
     /**
      * Called by the owner of the TollBoothOperator.
-     *   Can be used to update a value.
-     *   It should roll back if the vehicle type is 0.
-     *   Setting the multiplier to 0 is equivalent to removing it and is acceptable.
-     *   It should roll back if the same multiplier is already set to the vehicle type.
+     *     Can be used to update a value.
+     *     It should roll back if the vehicle type is 0.
+     *     Setting the multiplier to 0 is equivalent to removing it and is an acceptable action.
+     *     It should roll back if the same multiplier is already set to the vehicle type.
      * @param vehicleType The type of the vehicle being set.
      * @param multiplier The multiplier to use.
      * @return Whether the action was successful.
-     * Emits LogMultiplierSet.
+     * Emits LogMultiplierSet with:
+     *     The sender of the action.
+     *     The vehicle type that was modified.
+     *     The new multiplier that was set.
      */
     function setMultiplier(
             uint vehicleType,

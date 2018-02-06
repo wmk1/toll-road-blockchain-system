@@ -14,7 +14,9 @@ contract PausableI {
      *     It should roll back if the state passed is no different from the current.
      * @param newState The new desired "paused" state of the contract.
      * @return Whether the action was successful.
-     * Emits LogPausedSet.
+     * Emits LogPausedSet with:
+     *     The sender of the action.
+     *     The new state.
      */
     function setPaused(bool newState) returns(bool success);
 
