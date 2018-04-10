@@ -1,6 +1,6 @@
 const expectedExceptionPromise = require("../utils/expectedException.js");
 web3.eth.getTransactionReceiptMined = require("../utils/getTransactionReceiptMined.js");
-Promise = require("bluebird");
+const Promise = require("bluebird");
 Promise.allNamed = require("../utils/sequentialPromiseNamed.js");
 const isAddress = require("../utils/isAddress.js");
 

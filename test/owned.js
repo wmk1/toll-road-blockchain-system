@@ -1,6 +1,6 @@
 const expectedExceptionPromise = require("../utils/expectedException.js");
 web3.eth.getTransactionReceiptMined = require("../utils/getTransactionReceiptMined.js");
-Promise = require("bluebird");
+const Promise = require("bluebird");
 
 if (typeof web3.eth.getAccountsPromise === "undefined") {
     Promise.promisifyAll(web3.eth, { suffix: "Promise" });
@@ -23,7 +23,7 @@ const constructors = {
     Pausable: (owner, value) => allArtifacts.Pausable.new(
         false, { from: owner, value: value || 0 }),
     Regulator: (owner, value) => allArtifacts.Regulator.new(
-        false, { from: owner, value: value || 0 }),
+        { from: owner, value: value || 0 }),
     DepositHolder: (owner, value) => allArtifacts.DepositHolder.new(
         105, { from: owner, value: value || 0 }),
     MultiplierHolder: (owner, value) => allArtifacts.MultiplierHolder.new(

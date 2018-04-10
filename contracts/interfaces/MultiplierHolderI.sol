@@ -14,7 +14,7 @@ contract MultiplierHolderI {
         uint multiplier);
 
     /**
-     * Called by the owner of the TollBoothOperator.
+     * Called by the owner of the MultiplierHolder.
      *     Can be used to update a value.
      *     It should roll back if the vehicle type is 0.
      *     Setting the multiplier to 0 is equivalent to removing it and is an acceptable action.
