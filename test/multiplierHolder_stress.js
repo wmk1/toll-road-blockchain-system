@@ -54,6 +54,7 @@ contract('MultiplierHolder - stress', function(accounts) {
                 const count = 500;
                 it("should be possible to set and unset " + count + " multipliers", function() {
                     if (!isTestRPC) this.skip();
+                    this.timeout(1800000);
                     this.slow(300000);
                     const setting = [], unsetting = [];
                     for (let i = 1; i <= count; i++) {
