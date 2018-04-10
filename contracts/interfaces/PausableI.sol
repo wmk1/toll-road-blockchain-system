@@ -1,4 +1,4 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.21;
 
 contract PausableI {
     /**
@@ -18,12 +18,12 @@ contract PausableI {
      *     The sender of the action.
      *     The new state.
      */
-    function setPaused(bool newState) returns(bool success);
+    function setPaused(bool newState) public returns(bool success);
 
     /**
      * @return Whether the contract is indeed paused.
      */
-    function isPaused() constant returns(bool isIndeed);
+    function isPaused() constant public returns(bool isIndeed);
 
     /*
      * You need to create:

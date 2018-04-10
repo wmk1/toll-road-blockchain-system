@@ -31,21 +31,21 @@ contract TestOwnedA {
         }
     }
 
-    function testInitialOwner() {
+    function testInitialOwner() public {
         OwnedI owned;
         for(uint index = 0; index < instanceCount; index++) {
             owned = createInstance(index);
-            Assert.equal(owned.getOwner(), this, "Owner should have been set");
+            Assert.equal(owned.getOwner(), this, "Should have set owner");
         }
     }
 
-    function testCanChangeOwner() {
+    function testCanChangeOwner() public {
         OwnedI owned;
         for(uint index = 0; index < instanceCount; index++) {
             owned = createInstance(index);
             address newOwner = 0x0123456789abcDEF0123456789abCDef01234567;
-            Assert.isTrue(owned.setOwner(newOwner), "Failed to change owner");
-            Assert.equal(owned.getOwner(), newOwner, "Owner should have been changed");
+            Assert.isTrue(owned.setOwner(newOwner), "Should have changed owner");
+            Assert.equal(owned.getOwner(), newOwner, "Should have changed owner");
         }
     }
 }

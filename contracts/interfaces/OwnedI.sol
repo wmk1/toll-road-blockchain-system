@@ -1,4 +1,4 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.21;
 
 contract OwnedI {
     /**
@@ -19,12 +19,12 @@ contract OwnedI {
      *     The sender of the action.
      *     The new owner.
      */
-    function setOwner(address newOwner) returns(bool success);
+    function setOwner(address newOwner) public returns(bool success);
 
     /**
      * @return The owner of this contract.
      */
-    function getOwner() constant returns(address owner);
+    function getOwner() constant public returns(address owner);
 
     /*
      * You need to create:
