@@ -18,7 +18,7 @@ With regards to Git, what you can do is a variation on the following:
 # to remind you that you are not able to push to it.
 $ git clone git@git.academy.b9lab.com:YOUR-GROUP/this-repo.git -o upstream
 
-# Go it the new folder
+# Go into the new folder
 $ cd this-repo
 
 # Notice now it is your-repo-code that you need to change
@@ -28,9 +28,25 @@ $ git remote add origin git@git.academy.b9lab.com:YOUR-GROUP/your-repo-code.git
 $ git push -u origin master
 ```
 
+When the upstream repository has some changes that were added after you did the above, and that you want to take in, you should run:
+
+```sh
+# Get the changes.
+$ git fetch upstream
+
+# Make sure you are on your master
+$ git checkout master
+
+# Make sure there are no changes
+$ git status
+
+# Merge the changes
+$ git merge upstream/master
+```
+
 ### Project intro
 
-Our project describes a road system that will be represent by 2 overarching smart contracts:
+Our project describes a road system that will be represented by 2 overarching smart contracts:
 
 * `Regulator`
 * `TollBoothOperator`
@@ -44,7 +60,7 @@ These other elements of the system are represented by externally owned accounts:
 
 ## Route price
 
-The price will be decided by 3 variables:
+The price of a route will be determined by 3 variables:
 
 * the entry toll booth
 * the exit toll booth
@@ -53,11 +69,11 @@ The price will be decided by 3 variables:
 These variables will be used thus:
 
 * the `TollBoothOperator` defines a base route price from the entry booth to the exit booth. The base route price from the exit booth to the entry booth may be non-existent, equal or different.
-* the `TollBoothOperator` defines a multiplier for each vehicle type. This is the number by which the base route price is multiplied with to get a specific vehicles route price or deposit.
+* the `TollBoothOperator` defines a multiplier for each vehicle type. This is the number by which the base route price is multiplied with to get the route price or deposit applicable to a specific vehicle.
 
 ## External accounts
 
-There are a certain number of off-chain actions, such as proof of identity or secret exchange, that we will address only with a wave of the hand in this project. Smart contracts should make these actions possible via public functions, though.
+There are a certain number of off-chain actions, such as proof of identity or secret exchange, that we will address only with a wave of the hand in this project. Smart contracts will make these actions possible via public functions, though.
 
 ### Vehicles
 
@@ -93,6 +109,7 @@ This account will:
 
 This account will:
 
+* update the base deposit it sees fit.
 * update the base price of routes for all toll booth pairs it sees fit.
 * update the multiplier of all vehicle types it sees fit.
 
@@ -122,6 +139,7 @@ Additionally:
 * the regulator collects no fees.
 * a type of `0` denotes an unregistered vehicle.
 * for mnemonics only, you can assign type `1` for motorbikes, `2` for cars and `3` for lorries.
+* the latest type is the valid type, even if the regulator changed the type after the vehicle entered a road system.
 
 ### `TollBoothOperator`
 
@@ -141,22 +159,24 @@ For simplicity's sake:
 
 * there is only 1 (or 0) toll booth at a given kilometre on the road. So one booth may have as many gates as there are lanes on the road.
 * a base route price of `0` denotes an absence of information.
+* a multiplier of `0` denotes an unauthorised vehicle on the road system.
 * the entry and exit booths of a route cannot be the same address.
 * the `TollBoothOperator` has total control over the deposit, the base route prices, and the multipliers.
 * there is no congestion or pollution charges.
 * the latest route base price is the valid route base price, even if the toll booth operator changed the price after the vehicle entered the road system.
+* the latest multiplier is the valid multiplier, even if the toll booth operator changed the multiplier after the vehicle entered the road system.
 
-## Fee mechanics
+## Charge mechanics
 
 For a vehicle to be accepted on the road system and the operator to be paid at the end of the route, a little dance is engineered:
 
 * before entering the system, the vehicle deposits the required amount into the `TollBoothOperator`, and passes along the address of the entry booth and a unique hashed secret of its own choice. The vehicle keeps the secret until the end of the trip.
-* when faced with the toll booth it mentioned when depositing, it proves its identity off-chain (we talk about this identity proof but you need not implement it), after which the booth opens the gate.
+* when faced with the entry toll booth it mentioned when depositing, it proves its identity off-chain (we talk about this identity proof but you need not implement it), after which the booth opens the gate.
 * when exiting the road system at a booth, the vehicle gives the exit toll booth its unhashed secret off-chain. Again, we talk about this off-chain exchange but you do not need to implement it.
 * the exit toll booth then submits this secret to the `TollBoothOperator`, which unlocks the deposit for payment and refund of the difference, if applicable.
 * if the fee is equal to or higher than the deposit, then the whole deposit is used and no more is asked of the vehicle, now or before any future trip.
 * if the fee is smaller than the deposit, then the difference is returned to the vehicle.
-* if the fee is not known at the time of exit, i.e. if the fee is `0`, the pending payment is recorded, and "base route price required" event is emitted and listened to by the operator's oracle.
+* if the fee is not known at the time of exit, i.e. if the fee is `0`, the pending payment is recorded, and one "base route price required" event is emitted, and listened to by the operator's oracle.
 * when the oracle receives a new base route price request, it submits the base fee, which also clears one pending payment.
 * if there are more than 1 pending payments, an additional function is there to progressively clear the backlog a set number of pending payments at a time in a FIFO manner. If both vehicleA and vehicleB entered at the same booths and exited at the same booths, then if vehicleA exited before vehicleB, then vehicleA should pop from the FIFO ahead of vehicleB.
 * the vehicle type and multiplier to be used are those at the time of the transaction. So an entry transaction uses values at that time, an exit transaction uses values at that time.
@@ -198,7 +218,7 @@ and has:
 
 It extends:
 
-* `OwnedI`
+* `OwnedI`, remember what we said about transitivity of inheritance
 * `PausableI`
 
 and has:
@@ -311,7 +331,7 @@ A quick note on wording:
 
 You may create as many test files as you want, as long as they are not named `test/scenarios.js`, they will not be part of the grading. Also, do not modify or rename the existing tests that were in the repository at the beginning.
 
-Please create a test file named `test/scenarios.js`, not in a subfolder. In this test file, please write exactly 6 tests for the following 6 scenarios. You can have as many `describe`, `before` and `beforeEach` as you want, however you need to have exactly 6 `it` in this `test/scenarios.js` file.
+Please create a test file named `test/scenarios.js`, not in a subfolder. In this test file, please write exactly 6 tests, one for each of the following 6 scenarios. You can have as many `describe`, `before` and `beforeEach` as you want, however you need to have exactly 6 `it` in this `test/scenarios.js` file.
 
 * Scenario 1:
   * `vehicle1` enters at `booth1` and deposits required amount (say 10).
@@ -350,7 +370,7 @@ If you want to use `async / await`, you need to be able to make it work in the V
 
 ## GUI
 
-We want you to create a simple UI with 4 pages. You do not need to make it look fancy. But it has to be functional. It is ok if it requires copy / paste of addresses and secrets from the human user.
+We want you to create a simple UI with 4 pages, or 1 page with 4 tabs if you prefer. You do not need to make it look fancy or add pagination. But it has to be functional. It is ok if it requires copy / paste of addresses and secrets from the human user.
 
 You can use the framework of your choice, and it is good manner to add some instructions on how to make it run within the VM. If there is any NodeJs package that you would like to use make sure they appear in `package.json` and you committed it too.
 

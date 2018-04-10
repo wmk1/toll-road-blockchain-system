@@ -197,8 +197,9 @@ contract TollBoothOperatorI {
      * functionality:
      *     - If relevant, it will release 1 pending payment for this route. As part of this payment
      *       release, it will emit the appropriate `LogRoadExited` event.
-     *     - In the case where the next relevant pending payment is not solvable, which can happen if,
-     *       for instance the vehicle has had wrongly set values in the interim:
+     *     - In the case where the next relevant pending payment, i.e. at the top of the FIFO, is not solvable,
+     *       which can happen if, for instance the vehicle has had wrongly set values (such as type or multiplier)
+     *       in the interim:
      *       - It should release 0 pending payment
      *       - It should not roll back the transaction
      *       - It should behave as if there had been no pending payment, apart from the higher gas consumed.
