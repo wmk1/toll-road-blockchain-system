@@ -19,9 +19,9 @@ contract TestOwnedB {
         }
     }
 
-    function testInitialOwner() {
+    function testInitialOwner() public {
         OwnedI owned;
-        for(uint index = 0; index < instanceCount; index++) public {
+        for(uint index = 0; index < instanceCount; index++) {
             owned = createInstance(index);
             Assert.equal(owned.getOwner(), this, "Should have set owner");
         }
