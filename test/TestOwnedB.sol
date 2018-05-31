@@ -2,8 +2,8 @@ pragma solidity ^0.4.2;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/mock/RoutePriceHolderMock.sol";
-import "../contracts/TollBoothOperator.sol";
+import "../contracts/MultiplierHolder.sol";
+import "../contracts/TollBoothHolder.sol";
 
 contract TestOwnedB {
 
@@ -11,9 +11,9 @@ contract TestOwnedB {
 
     function createInstance(uint index) private returns(OwnedI) {
         if (index == 0) {
-            return new RoutePriceHolderMock();
+            return new MultiplierHolder();
         } else if (index == 1) {
-            return new TollBoothOperator(true, 1, this);
+            return new TollBoothHolder();
         } else {
             revert();
         }
