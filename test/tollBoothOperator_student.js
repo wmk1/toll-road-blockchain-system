@@ -12,6 +12,8 @@ if (typeof web3.eth.getAccountsPromise === "undefined") {
 const Regulator = artifacts.require("./Regulator.sol");
 const TollBoothOperator = artifacts.require("./TollBoothOperator.sol");
 
+const maxGas = 5000000;
+
 contract('TollBoothOperator', function(accounts) {
 
     let owner0, owner1,
@@ -47,8 +49,8 @@ contract('TollBoothOperator', function(accounts) {
 
         it("should not be possible to deploy a TollBoothOperator with deposit 0 - 1", function() {
             return expectedExceptionPromise(
-                () => TollBoothOperator.new(false, 0, owner0, { from: owner1, gas: 3000000 }),
-                3000000);
+                () => TollBoothOperator.new(false, 0, owner0, { from: owner1, gas: maxGas }),
+                maxGas);
         });
 
         it("should be possible to deploy a TollBoothOperator with parameters - 1", function() {
@@ -91,8 +93,8 @@ contract('TollBoothOperator', function(accounts) {
                     .then(tx => expectedExceptionPromise(
                         () => operator.enterRoad(
                             booth0, hashed0,
-                            { from: vehicle0, value: deposit0 * multiplier0, gas: 3000000 }),
-                        3000000));
+                            { from: vehicle0, value: deposit0 * multiplier0, gas: maxGas }),
+                        maxGas));
             });
 
             it("should be possible to enter road with more than required deposit", function() {

@@ -17,6 +17,8 @@ const allArtifacts = {
     TollBoothOperator: artifacts.require("./TollBoothOperator.sol")
 }
 
+const maxGas = 5000000;
+
 const constructors = {
     Owned: (owner, value) => allArtifacts.Owned.new(
         { from: owner, value: value || 0 }),
@@ -98,20 +100,20 @@ contract('Owned inheritance tree', function(accounts) {
 
                 it("should not be possible to set owner if asking from wrong owner", function() {
                     return expectedExceptionPromise(
-                        () => owned.setOwner(owner1, { from: owner1, gas: 3000000 }),
-                        3000000);
+                        () => owned.setOwner(owner1, { from: owner1, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should not be possible to set owner if to 0", function() {
                     return expectedExceptionPromise(
-                        () => owned.setOwner(addressZero, { from: owner0, gas: 3000000 }),
-                        3000000);
+                        () => owned.setOwner(addressZero, { from: owner0, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should not be possible to set owner if no change", function() {
                     return expectedExceptionPromise(
-                        () => owned.setOwner(owner0, { from: owner0, gas: 3000000 }),
-                        3000000);
+                        () => owned.setOwner(owner0, { from: owner0, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should not be possible to set owner if pass value", function() {
@@ -148,8 +150,8 @@ contract('Owned inheritance tree', function(accounts) {
 
                 it("should not be possible to set owner if asking from wrong one", function() {
                     return expectedExceptionPromise(
-                        () => owned.setOwner(owner0, { from: owner0, gas: 3000000 }),
-                        3000000);
+                        () => owned.setOwner(owner0, { from: owner0, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should be possible to set owner again", function() {

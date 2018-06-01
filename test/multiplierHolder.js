@@ -16,6 +16,8 @@ const allArtifacts = {
     TollBoothOperator: artifacts.require("./TollBoothOperator.sol")
 }
 
+const maxGas = 5000000;
+
 const constructors = {
     MultiplierHolder: (owner, paused, value) => allArtifacts.MultiplierHolder.new(
         { from: owner, value: value || 0 }),
@@ -97,21 +99,21 @@ contract('MultiplierHolder', function(accounts) {
 
                 it("should not be possible to set multiplier if asking from wrong owner", function() {
                     return expectedExceptionPromise(
-                        () => holder.setMultiplier(type0, multiplier0, { from: owner1, gas: 3000000 }),
-                        3000000);
+                        () => holder.setMultiplier(type0, multiplier0, { from: owner1, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should not be possible to set multiplier if type is 0", function() {
                     return expectedExceptionPromise(
-                        () => holder.setMultiplier(0, multiplier0, { from: owner0, gas: 3000000 }),
-                        3000000);
+                        () => holder.setMultiplier(0, multiplier0, { from: owner0, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should not be possible to set multiplier if no change", function() {
                     return holder.setMultiplier(type0, multiplier0, { from: owner0 })
                         .then(tx => expectedExceptionPromise(
-                            () => holder.setMultiplier(type0, multiplier0, { from: owner0, gas: 3000000 }),
-                            3000000));
+                            () => holder.setMultiplier(type0, multiplier0, { from: owner0, gas: maxGas }),
+                            maxGas));
                 });
 
                 it("should not be possible to set multiplier if pass value", function() {
@@ -240,14 +242,14 @@ contract('MultiplierHolder', function(accounts) {
 
                 it("should not be possible to set another multiplier if old owner", function() {
                     return expectedExceptionPromise(
-                        () => holder.setMultiplier(type1, multiplier1, { from: owner0, gas: 3000000 }),
-                        3000000);
+                        () => holder.setMultiplier(type1, multiplier1, { from: owner0, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should not be possible to set multiplier if same", function() {
                     return expectedExceptionPromise(
-                        () => holder.setMultiplier(type0, multiplier0, { from: owner1, gas: 3000000 }),
-                        3000000);
+                        () => holder.setMultiplier(type0, multiplier0, { from: owner1, gas: maxGas }),
+                        maxGas);
                 });
 
                 it("should be possible to set another multiplier", function() {
