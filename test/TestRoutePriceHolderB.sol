@@ -2,17 +2,14 @@ pragma solidity ^0.4.2;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/mock/RoutePriceHolderMock.sol";
 import "../contracts/TollBoothOperator.sol";
 
-contract TestRoutePriceHolder {
+contract TestRoutePriceHolderB {
 
-    uint instanceCount = 2;
+    uint instanceCount = 1;
 
     function createInstance(uint index) private returns(RoutePriceHolderI) {
         if (index == 0) {
-            return new RoutePriceHolderMock();
-        } else if (index == 1) {
             return new TollBoothOperator(false, 1, this);
         } else {
             revert();
@@ -78,24 +75,8 @@ contract TestRoutePriceHolder {
         }
     }
 
-    function testCanAddAndRemoveManyRoutePrices_RoutePriceHolderMock() public {
-        RoutePriceHolderI holder = createInstance(0);
-
-        uint count = 60;
-
-        for (uint i = 1; i <= count + 1; i++) {
-            Assert.isTrue(TollBoothHolderI(holder).addTollBooth(address(i)), "Should have been able to add toll booth");
-        }
-        for (i = 1; i <= count; i++) {
-            Assert.isTrue(holder.setRoutePrice(address(i), address(i + 1), i), "Should have been able to set price");
-        }
-        for (i = 1; i <= count; i++) {
-            Assert.equal(holder.getRoutePrice(address(i), address(i + 1)), i, "Should now have a price");
-        }
-    }
-
     function testCanAddAndRemoveManyRoutePrices_TollBoothOperator() public {
-        RoutePriceHolderI holder = createInstance(1);
+        RoutePriceHolderI holder = createInstance(0);
 
         uint count = 50;
 
