@@ -83,6 +83,8 @@ We only care about vehicles, not about drivers. It means it can be driven by the
 * Before entering the road system, registered vehicles must make a deposit of at least the amount required by the operator for their vehicle type.
 * Upon exit, the exit toll booth will trigger the payment off the deposit and refund the difference to the vehicle.
 
+Additionally,
+
 * This deposit must be accompanied by the address of the toll booth by which they will enter.
 * When exiting the road system, the vehicle gives, off-chain, a secret to the exit toll booth.
 * The exit toll booth sends this secret to the toll booth operator contract, which is used to unlock the deposit, then pay the toll booth operator the proper fee for the route taken, then refunds the difference to the vehicle.

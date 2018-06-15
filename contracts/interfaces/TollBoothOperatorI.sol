@@ -7,7 +7,7 @@ contract TollBoothOperatorI {
      * It will be called:
      *     - by the vehicle prior to sending a deposit.
      *     - by the contract itself when submitted a clear password by a toll booth.
-     * @param secret The secret to be hashed.
+     * @param secret The secret to be hashed. Passing a `0` secret is a valid input.
      * @return the hashed secret.
      */
     function hashSecret(bytes32 secret)
@@ -62,7 +62,8 @@ contract TollBoothOperatorI {
      *     vehicle: the address of the vehicle that entered the system.
      *     entryBooth: the address of the booth the vehicle entered at.
      *     depositedWeis: how much the vehicle deposited when entering.
-     * After the vehicle has exited, `depositedWeis` should be returned as `0`.
+     * After the vehicle has exited, and the operator has been paid, `depositedWeis` should be returned as `0`.
+     *     The `depositedWeis` should remain unchanged while there is a corresponding pending exit.
      * If no vehicles had ever entered with this hash, all values should be returned as `0`.
      */
     function getVehicleEntry(bytes32 exitSecretHashed)
@@ -108,7 +109,7 @@ contract TollBoothOperatorI {
      *     It should roll back if the exit is same as the entry.
      *     It should roll back if hashing the secret does not match a hashed one.
      *     It should roll back if the secret has already been reported on exit.
-     * @param exitSecretClear The secret given by the vehicle as it passed by the exit booth.
+     * @param exitSecretClear The secret given by the vehicle as it passed by the exit booth. Passing a `0` secret is a valid input.
      * @return status:
      *   1: success, -> emits LogRoadExited with:
      *       The sender of the action.
