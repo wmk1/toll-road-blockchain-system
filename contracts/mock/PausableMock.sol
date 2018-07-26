@@ -6,7 +6,7 @@ contract PausableMock is Pausable {
 
     mapping(bool => uint) public counters;
 
-    function PausableMock(bool paused) Pausable(paused) public {
+    constructor(bool paused) Pausable(paused) public {
     }
 
     function countUpWhenPaused()

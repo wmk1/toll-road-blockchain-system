@@ -2,6 +2,7 @@ pragma solidity ^0.4.2;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
+import "../contracts/interfaces/OwnedI.sol";
 import "../contracts/MultiplierHolder.sol";
 import "../contracts/TollBoothHolder.sol";
 

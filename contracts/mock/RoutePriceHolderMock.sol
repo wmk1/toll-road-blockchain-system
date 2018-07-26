@@ -6,6 +6,6 @@ import "../RoutePriceHolder.sol";
 
 contract RoutePriceHolderMock is TollBoothHolder, RoutePriceHolder {
 
-    function RoutePriceHolderMock() public {
+    constructor() public {
     }
 }
