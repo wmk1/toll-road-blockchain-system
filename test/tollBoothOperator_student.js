@@ -12,7 +12,7 @@ if (typeof web3.eth.getAccountsPromise === "undefined") {
 const Regulator = artifacts.require("./Regulator.sol");
 const TollBoothOperator = artifacts.require("./TollBoothOperator.sol");
 
-const maxGas = 5000000;
+const maxGas = 15000000;
 
 contract('TollBoothOperator', function(accounts) {
 

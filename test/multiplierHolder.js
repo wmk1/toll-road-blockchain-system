@@ -16,7 +16,7 @@ const allArtifacts = {
     TollBoothOperator: artifacts.require("./TollBoothOperator.sol")
 }
 
-const maxGas = 5000000;
+const maxGas = 15000000;
 
 const constructors = {
     MultiplierHolder: (owner, paused, value) => allArtifacts.MultiplierHolder.new(
