@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 contract MultiplierHolderI {
 
@@ -41,7 +41,7 @@ contract MultiplierHolderI {
      *     A 0 value indicates a non-existent multiplier.
      */
     function getMultiplier(uint vehicleType)
-        constant
+        view
         public
         returns(uint multiplier);
 

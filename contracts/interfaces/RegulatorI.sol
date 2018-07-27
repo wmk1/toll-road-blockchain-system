@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "./TollBoothOperatorI.sol";
 
@@ -50,7 +50,7 @@ contract RegulatorI {
      *   a registered vehicle.
      */
     function getVehicleType(address vehicle)
-        constant
+        view
         public
         returns(uint vehicleType);
 
@@ -116,7 +116,7 @@ contract RegulatorI {
      * @return Whether the TollBoothOperator is indeed approved.
      */
     function isOperator(address operator)
-        constant
+        view
         public
         returns(bool indeed);
 

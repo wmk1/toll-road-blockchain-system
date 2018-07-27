@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 contract TollBoothOperatorI {
 
@@ -11,7 +11,7 @@ contract TollBoothOperatorI {
      * @return the hashed secret.
      */
     function hashSecret(bytes32 secret)
-        constant
+        view
         public
         returns(bytes32 hashed);
 
@@ -67,7 +67,7 @@ contract TollBoothOperatorI {
      * If no vehicles had ever entered with this hash, all values should be returned as `0`.
      */
     function getVehicleEntry(bytes32 exitSecretHashed)
-        constant
+        view
         public
         returns(
             address vehicle,
@@ -132,7 +132,7 @@ contract TollBoothOperatorI {
      * entry-exit pair was unknown.
      */
     function getPendingPaymentCount(address entryBooth, address exitBooth)
-        constant
+        view
         public
         returns (uint count);
 
@@ -165,7 +165,7 @@ contract TollBoothOperatorI {
      *   to `withdrawCollectedFees`.
      */
     function getCollectedFeesAmount()
-        constant
+        view
         public
         returns(uint amount);
 

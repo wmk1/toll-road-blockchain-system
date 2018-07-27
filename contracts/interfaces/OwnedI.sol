@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 contract OwnedI {
     /**
@@ -24,7 +24,7 @@ contract OwnedI {
     /**
      * @return The owner of this contract.
      */
-    function getOwner() constant public returns(address owner);
+    function getOwner() view public returns(address owner);
 
     /*
      * You need to create:

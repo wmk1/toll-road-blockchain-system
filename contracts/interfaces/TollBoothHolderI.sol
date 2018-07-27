@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 contract TollBoothHolderI {
 
@@ -33,7 +33,7 @@ contract TollBoothHolderI {
      * @return Whether the toll booth is indeed known to the holder.
      */
     function isTollBooth(address tollBooth)
-        constant
+        view
         public
         returns(bool isIndeed);
 

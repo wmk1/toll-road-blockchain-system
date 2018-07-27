@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 contract PausableI {
     /**
@@ -23,7 +23,7 @@ contract PausableI {
     /**
      * @return Whether the contract is indeed paused.
      */
-    function isPaused() constant public returns(bool isIndeed);
+    function isPaused() view public returns(bool isIndeed);
 
     /*
      * You need to create:

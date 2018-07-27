@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "./RegulatorI.sol";
 
@@ -33,7 +33,7 @@ contract RegulatedI {
      * @return The current regulator.
      */
     function getRegulator()
-        constant
+        view
         public
         returns(RegulatorI regulator);
 

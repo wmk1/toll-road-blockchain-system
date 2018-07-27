@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 contract DepositHolderI {
 
@@ -29,7 +29,7 @@ contract DepositHolderI {
      * needs to deposit to enter the road system.
      */
     function getDeposit()
-        constant
+        view
         public
         returns(uint weis);
 
