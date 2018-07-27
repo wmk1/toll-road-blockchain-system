@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "./TollBoothOperatorI.sol";
+import { TollBoothOperatorI } from "./TollBoothOperatorI.sol";
 
 contract RegulatorI {
 

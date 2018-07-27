@@ -2,7 +2,9 @@ pragma solidity ^0.4.24;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/mock/RoutePriceHolderMock.sol";
+import { TollBoothHolderI } from  "../contracts/interfaces/TollBoothHolderI.sol";
+import { RoutePriceHolderI } from  "../contracts/interfaces/RoutePriceHolderI.sol";
+import { RoutePriceHolderMock } from "../contracts/mock/RoutePriceHolderMock.sol";
 
 contract TestRoutePriceHolderA {
 

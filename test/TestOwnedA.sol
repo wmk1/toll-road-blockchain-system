@@ -2,11 +2,11 @@ pragma solidity ^0.4.24;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/interfaces/OwnedI.sol";
-import "../contracts/Owned.sol";
-import "../contracts/Pausable.sol";
-import "../contracts/Regulator.sol";
-import "../contracts/DepositHolder.sol";
+import { OwnedI } from "../contracts/interfaces/OwnedI.sol";
+import { Owned } from "../contracts/Owned.sol";
+import { Pausable } from "../contracts/Pausable.sol";
+import { Regulator } from "../contracts/Regulator.sol";
+import { DepositHolder } from "../contracts/DepositHolder.sol";
 
 contract TestOwnedA {
 

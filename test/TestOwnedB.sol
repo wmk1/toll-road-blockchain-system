@@ -2,9 +2,9 @@ pragma solidity ^0.4.24;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/interfaces/OwnedI.sol";
-import "../contracts/MultiplierHolder.sol";
-import "../contracts/TollBoothHolder.sol";
+import { OwnedI } from "../contracts/interfaces/OwnedI.sol";
+import { MultiplierHolder } from "../contracts/MultiplierHolder.sol";
+import { TollBoothHolder } from "../contracts/TollBoothHolder.sol";
 
 contract TestOwnedB {
 

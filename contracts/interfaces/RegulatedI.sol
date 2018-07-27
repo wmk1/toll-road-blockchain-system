@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "./RegulatorI.sol";
+import { RegulatorI } from "./RegulatorI.sol";
 
 contract RegulatedI {
     /**
