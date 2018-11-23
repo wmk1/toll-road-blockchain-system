@@ -24,7 +24,7 @@ contract Owned is OwnedI {
         return true;
     }
 
-    function getOwner() view public returns(address owner){
+    function getOwner() public view returns(address){
         return owner;
     }
 }

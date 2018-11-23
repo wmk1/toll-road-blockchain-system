@@ -31,11 +31,7 @@ contract Pausable is OwnedI, PausableI {
         return true;
     }
 
-
-    /**
-     * @return Whether the contract is indeed paused.
-     */
-    function isPaused() view public returns(bool isIndeed){
+    function isPaused() public view returns(bool isIndeed){
         return paused;
     }
 }

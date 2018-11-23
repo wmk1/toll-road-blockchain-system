@@ -38,7 +38,7 @@ contract TollBoothHolder is OwnedI, TollBoothHolderI {
 
     function removeTollBooth(address tollBooth) public onlyIfNotZeroAddress(_tollBooth) returns (bool success) {
         for (uint i = 0; i < tollBoothHolders.length; i++) {
-            if (tollBoothHolders) {
+            if (isTollBooth(tollBoothHolders[i])) {
                 delete tollBoothHolders[tollBooth];
                 emit LogTollBoothRemoved(msg.sender, tollBooth);
                 return true;

@@ -24,9 +24,11 @@ contract Regulator is OwnedI, RegulatorI, TollBoothOperatorI {
     event LogTollBoothOperatorRemoved(address indexed sender, address indexed operator);
     event LogTollBoothOperatorCreated(address indexed sender, address indexed newOperator, address indexed owner, uint depositWeis);
 
-    function setVehicleType(address vehicle, uint vehicleType) public returns(bool success) {
+    function setVehicleType(address _vehicle, uint _vehicleType) public returns(bool success) {
+        require(sender == msg.sender, "Caller must be owner");
+        require(_vehicle != 0x0, "Vehicle address cannot be 0");
         vehicleType = vehicles[vehicle];
-        emit LogVehicleTypeSet(msg.sender, _vehicleType);
+        emit LogVehicleTypeSet(msg.sender, _vehicle, _vehicleType);
         return true;
     }
 
@@ -53,9 +55,6 @@ contract Regulator is OwnedI, RegulatorI, TollBoothOperatorI {
      * @return Whether the TollBoothOperator is indeed approved.
      */
     function isOperator(address _operator) view public returns(bool indeed) {
-        if (_operator == 0x0) {
-            return false;
-        }
-        return true;
+        return (_operator == 0x0);
     }
 }

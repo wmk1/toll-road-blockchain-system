@@ -10,11 +10,12 @@ import "./interfaces/RoutePriceHolderI.sol";
 import "./interfaces/RegulatedI.sol";
 
 contract TollBoothOperator is OwnedI, TollBoothOperatorI, PausableI, DepositHolderI, 
-MultiplierHolderI, RoutePriceHolderI, MultiplierHolder, ToolBoothHolder, RegulatedI {
+MultiplierHolderI, RoutePriceHolderI, TollBoothHolderI, RegulatedI {
 
     bool statePaused;
     uint depositWeis;
     address regulator;
+    mapping(bytes32 => Vehi )
 
     event LogRoadEntered(address indexed vehicle, address indexed entryBooth, bytes32 indexed exitSecretHashed, uint depositedWeis);
     event LogRoadExited(address indexed exitBooth, bytes32 indexed exitSecretHashed, uint finalFee, uint refundWeis);
@@ -34,9 +35,15 @@ MultiplierHolderI, RoutePriceHolderI, MultiplierHolder, ToolBoothHolder, Regulat
 
     function getRegulator() constant public returns(RegulatorI regulator) {
         return RegulatorI(regulatorVar);
+        
     }
 
-    function enterRoad(address entryBooth, bytes32 exitSecretHashed)  public payable returns(bool success) {
+    function enterRoad(address entryBooth, bytes32 exitSecretHashed) public payable returns(bool success) {
+        require(!statePaused, "State cannot be paused");
+        require(regulator != 0x0, "Vehicle must be registered");
+        require(entryBooth != this, "Entry booth must be toll booth");
+        require(msg.value >= depositWeis * multiplier, "Deposit must be bigger or equal!");
+
         emit LogRoadEntered(vehicle, entryBooth, exitSecretHashed, depositWeis);
         return true;
     }
@@ -45,7 +52,7 @@ MultiplierHolderI, RoutePriceHolderI, MultiplierHolder, ToolBoothHolder, Regulat
 
     }
 
-    function reporitExitRoad(bytes32 exitSecretClear) public returns(uint status) {
+    function reportExitRoad(bytes32 exitSecretClear) public returns(uint status) {
 
     }
 
@@ -53,8 +60,8 @@ MultiplierHolderI, RoutePriceHolderI, MultiplierHolder, ToolBoothHolder, Regulat
         return 1;
     }
 
-    function clearSomePendingPayments(entryBooth, exitBooth, count) public returns(bool success) {
-
+    function clearSomePendingPayments(address entryBooth, address exitBooth, uint count) public returns(bool success) {
+        
     }
 
     function getCollectedFeesAmount() view public returns(uint amount) {
@@ -67,10 +74,10 @@ MultiplierHolderI, RoutePriceHolderI, MultiplierHolder, ToolBoothHolder, Regulat
     }
 
     function hash() public returns(bytes32 _hash) {
-        return abi.encodPacked(keccak(_hash));
+        return abi.encodePacked(keccak256());
     }
 
     function () public {
-
+        
     }
 }
