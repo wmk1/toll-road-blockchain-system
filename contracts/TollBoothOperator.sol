@@ -12,39 +12,46 @@ import "./interfaces/RegulatedI.sol";
 contract TollBoothOperator is OwnedI, TollBoothOperatorI, PausableI, DepositHolderI, 
 MultiplierHolderI, RoutePriceHolderI, TollBoothHolderI, RegulatedI {
 
-    bool statePaused;
     uint depositWeis;
     address regulator;
-    mapping(bytes32 => Vehi )
+
+    struct VehicleEntry {
+        address vehicle;
+        uint multiplier;
+        address entryBooth;
+        uint depositedWeis;
+    }
+
+    mapping(bytes32 => uint) someMapping;
 
     event LogRoadEntered(address indexed vehicle, address indexed entryBooth, bytes32 indexed exitSecretHashed, uint depositedWeis);
     event LogRoadExited(address indexed exitBooth, bytes32 indexed exitSecretHashed, uint finalFee, uint refundWeis);
     event LogPendingPayment(bytes32 indexed exitSecretHashed, address indexed entryBooth, address indexed exitBooth);
     event LogFeesCollected(address indexed owner,  uint amount);
 
-    constructor(bool _state, uint _depositWeis, address _regulator) public {
+    constructor(bool _state, uint _depositWeis, address _regulator)
+    public {
         require(_depositWeis > 0, "Deposit weis cannot be 0!");
         require(_regulator != 0, "Initial regulator cannot be 0!");
         regulator = _regulator;
     }
 
     function setRegulator(address _regulator) public returns(bool success) {
-        regulatorVar = newRegulator;
+        regulator = _regulator;
         return true;
     }
 
-    function getRegulator() constant public returns(RegulatorI regulator) {
-        return RegulatorI(regulatorVar);
-        
+    function getRegulator() constant public returns(RegulatorI _regulator) {
+        return RegulatorI(_regulator);
     }
 
-    function enterRoad(address entryBooth, bytes32 exitSecretHashed) public payable returns(bool success) {
-        require(!statePaused, "State cannot be paused");
+    function enterRoad(address _entryBooth, bytes32 exitSecretHashed) public payable returns(bool success) {
+        require(!isPaused(), "State cannot be paused");
         require(regulator != 0x0, "Vehicle must be registered");
-        require(entryBooth != this, "Entry booth must be toll booth");
-        require(msg.value >= depositWeis * multiplier, "Deposit must be bigger or equal!");
+        require(isTollBooth(_entryBooth), "Entry booth must be toll booth");
+        require(msg.value >= depositWeis * 3, "Deposit must be bigger or equal!");
 
-        emit LogRoadEntered(vehicle, entryBooth, exitSecretHashed, depositWeis);
+        emit LogRoadEntered(msg.sender, _entryBooth, exitSecretHashed, depositWeis);
         return true;
     }
 
@@ -53,7 +60,8 @@ MultiplierHolderI, RoutePriceHolderI, TollBoothHolderI, RegulatedI {
     }
 
     function reportExitRoad(bytes32 exitSecretClear) public returns(uint status) {
-
+        require(isTollBooth(msg.sender));
+        return someMapping[exitSecretClear];
     }
 
     function getPendingPaymentCount(address entryBooth, address exitBooth) view public returns (uint count) {
@@ -74,7 +82,7 @@ MultiplierHolderI, RoutePriceHolderI, TollBoothHolderI, RegulatedI {
     }
 
     function hash() public returns(bytes32 _hash) {
-        return abi.encodePacked(keccak256());
+        return keccak256(abi.encodePacked("aass"));
     }
 
     function () public {

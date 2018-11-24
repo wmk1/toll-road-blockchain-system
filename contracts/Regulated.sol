@@ -4,7 +4,7 @@ import "./interfaces/RegulatedI.sol";
 
 contract Regulated is RegulatedI {
 
-    address regulator;
+    address internal regulator;
 
     event LogRegulatorSet(address indexed previousRegulator, address indexed newRegulator);
 
@@ -13,23 +13,24 @@ contract Regulated is RegulatedI {
         _;
     }
 
-    modifier onlyIfNewRegulator (address _newRegulator) {
+    modifier onlyIfNewRegulator (RegulatorI _newRegulator) {
         require(_newRegulator != regulator, "New regulator cannot be the same");
         _;
     }
 
     constructor(address _regulator) {
+        require(_regulator != 0x0, "New regulator address cannot be 0!");
         regulator = _regulator;
     }
 
-    function setRegulator(address _newRegulator) onlyIfNotZeroAddress public returns(bool success) {
+    function setRegulator(address _newRegulator) public onlyIfNotZeroAddress returns(bool success) {
         require(_newRegulator != regulator, "New regulator cannot be the same");
         regulator = _newRegulator;
         emit LogRegulatorSet(msg.sender, _newRegulator);
         return true;
     }
 
-    function getRegulator() view public returns(RegulatorI) {
-        return regulator;
+    function getRegulator() public view returns(RegulatorI) {
+        return RegulatorI(regulator);
     }
 }

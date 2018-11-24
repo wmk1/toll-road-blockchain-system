@@ -1,13 +1,14 @@
 pragma solidity ^0.4.24;
 
 import "./interfaces/RegulatorI.sol";
-import "./interfaces/OwnedI.sol";
 import "./interfaces/TollBoothOperatorI.sol";
+import "./TollBoothOperator.sol";
+import "./Owned.sol";
 
-contract Regulator is OwnedI, RegulatorI, TollBoothOperatorI {
+contract Regulator is OwnedI, RegulatorI, TollBoothOperatorI, Owned {
 
     uint vehicleType;
-    address vehicle;
+    address regulator;
     mapping(address => uint) vehicles;
     mapping(address => TollBoothOperator) operators;
 
@@ -25,22 +26,20 @@ contract Regulator is OwnedI, RegulatorI, TollBoothOperatorI {
     event LogTollBoothOperatorCreated(address indexed sender, address indexed newOperator, address indexed owner, uint depositWeis);
 
     function setVehicleType(address _vehicle, uint _vehicleType) public returns(bool success) {
-        require(sender == msg.sender, "Caller must be owner");
-        require(_vehicle != 0x0, "Vehicle address cannot be 0");
-        vehicleType = vehicles[vehicle];
+        require(_vehicle != 0, "Vehicle address cannot be 0");
+        vehicleType = vehicles[_vehicle];
         emit LogVehicleTypeSet(msg.sender, _vehicle, _vehicleType);
         return true;
     }
 
-    function getVehicleType(address vehicle) view public returns(uint vehicleType) {
+    function getVehicleType(address vehicle) public view returns(uint _vehicleType) {
         return vehicles[vehicle];
     }
 
-    function createNewOperator(address owner, uint _deposit) public returns(TollBoothOperatorI newOperator){
-        TollBoothOperator operator = new TollBoothOperator(true, this, deposit);
-        operator.setOwner(owner);
-        operators[owner] = owner;
-        emit LogTollBoothOperatorCreated(msg.sender, operator, owner, deposit);
+    function createNewOperator(address _owner, uint _deposit) public returns(TollBoothOperatorI newOperator){
+        require(msg.sender != owner, "New operator cannot be an owner of contract");
+        TollBoothOperator operator = new TollBoothOperator(true, _deposit, msg.sender);
+        emit LogTollBoothOperatorCreated(msg.sender, newOperator, _owner, _deposit);
         return operator;
     }  
 
@@ -54,7 +53,7 @@ contract Regulator is OwnedI, RegulatorI, TollBoothOperatorI {
      * @param operator The address of the TollBoothOperator to test. It should accept a 0 address.
      * @return Whether the TollBoothOperator is indeed approved.
      */
-    function isOperator(address _operator) view public returns(bool indeed) {
+    function isOperator(address _operator) public view returns(bool indeed) {
         return (_operator == 0x0);
     }
 }

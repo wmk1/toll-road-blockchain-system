@@ -4,7 +4,7 @@ import "./interfaces/OwnedI.sol";
 
 contract Owned is OwnedI {
   
-    address owner;
+    address public owner;
 
     modifier fromOwner {
         if (msg.sender != owner) revert();
