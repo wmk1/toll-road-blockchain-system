@@ -20,7 +20,7 @@ contract Pausable is OwnedI, PausableI {
         _;
     }
 
-    constructor (bool newState) public whenNotPaused {
+    constructor (bool newState) public whenPaused() {
         paused = newState;
     }
 

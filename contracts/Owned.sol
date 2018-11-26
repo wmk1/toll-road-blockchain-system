@@ -4,10 +4,10 @@ import "./interfaces/OwnedI.sol";
 
 contract Owned is OwnedI {
   
-    address public owner;
+    address internal owner;
 
     modifier fromOwner {
-        if (msg.sender != owner) revert();
+        require(msg.sender != owner, "Sender cannot be the same as owner");
         _;
     }
 

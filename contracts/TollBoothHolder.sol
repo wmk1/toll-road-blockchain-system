@@ -19,14 +19,14 @@ contract TollBoothHolder is OwnedI, TollBoothHolderI {
         
     }
 
-    function addTollBooth(address _tollBooth) public onlyIfNotZeroAddress(_tollBooth) returns (bool success) {
-        require(!isTollBooth(_tollBooth), "Address is already a toll booth.");
+    function addTollBooth(address tollBooth) public onlyIfNotZeroAddress(tollBooth) returns (bool success) {
+        require(!isTollBooth(tollBooth), "Address is already a toll booth.");
         for (uint i = 0; i < tollBoothHolders.length; i++) {
-            isTollBooth(_tollBooth);
+            isTollBooth(tollBooth);
             return false;
         }
-        tollBoothHolders.push(_tollBooth);
-        emit LogTollBoothAdded(msg.sender, _tollBooth);
+        tollBoothHolders.push(tollBooth);
+        emit LogTollBoothAdded(msg.sender, tollBooth);
         return true;
     }
 

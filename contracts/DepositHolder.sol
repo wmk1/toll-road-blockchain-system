@@ -1,11 +1,13 @@
 pragma solidity ^0.4.24;
 
+
 import "./interfaces/DepositHolderI.sol";
 import "./interfaces/OwnedI.sol";
 
+
 contract DepositHolder is DepositHolderI, OwnedI {
 
-    uint private deposit;
+    uint public deposit;
 
     event LogDepositSet(address indexed sender, uint amount);
 
