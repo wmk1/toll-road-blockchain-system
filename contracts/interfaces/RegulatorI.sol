@@ -1,6 +1,7 @@
 pragma solidity ^0.4.24;
 
 import { TollBoothOperatorI } from "./TollBoothOperatorI.sol";
+import "../Regulator.sol";
 
 contract RegulatorI {
 
@@ -85,7 +86,7 @@ contract RegulatorI {
             address owner,
             uint deposit)
         public
-        returns(TollBoothOperatorI newOperator);
+        returns(TollBoothOperator newOperator);
 
     /**
      * Event emitted when a TollBoothOperator has been removed from the list of approved operators.

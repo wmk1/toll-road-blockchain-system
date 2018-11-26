@@ -6,10 +6,9 @@ import "./Owned.sol";
 import "./TollBoothOperator.sol";
 
 contract Regulator is OwnedI, RegulatorI {
-
-    address regulator;
+    
     mapping(address => uint) public vehicles;
-    mapping(address => TollBoothOperator) operators;
+    mapping(address => bool) operators;
 
     event LogVehicleTypeSet( address indexed sender, address indexed vehicle, uint indexed vehicleType);
     event LogTollBoothOperatorRemoved(address indexed sender, address indexed operator);
@@ -35,6 +34,7 @@ contract Regulator is OwnedI, RegulatorI {
         TollBoothOperator operator = new TollBoothOperator(true, _deposit, this);
         operator.setOwner(_owner);
         emit LogTollBoothOperatorCreated(msg.sender, newOperator, _owner, _deposit);
+        operators[operator] = true;
         return operator;
     }  
 
