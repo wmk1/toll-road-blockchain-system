@@ -5,10 +5,11 @@ import "./Regulated.sol";
 import "./MultiplierHolder.sol";
 import "./DepositHolder.sol";
 import "./RoutePriceHolder.sol";
-import "./Regulator.sol";
 import "./interfaces/TollBoothOperatorI.sol";
+import "./Regulator.sol";
 
-contract TollBoothOperator is Pausable, MultiplierHolder, DepositHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
+contract TollBoothOperator is Pausable, Regulated, MultiplierHolder, DepositHolder, RoutePriceHolder, TollBoothOperatorI {
+
     struct Entry {
         address vehicle;
         uint multiplier;
@@ -21,14 +22,6 @@ contract TollBoothOperator is Pausable, MultiplierHolder, DepositHolder, RoutePr
         address exitBooth;
         bytes32 secretHashed;
     }
-
-    struct RouteMetadata {
-        uint pendingPaymentCount;
-        uint clearedPaymentCount;
-        mapping(uint => bytes32) pendingPayments;
-    }
-
-    mapping (bytes32 => RouteMetadata) metadatas;
 
     mapping(bytes32 => uint) routePrices;
 
@@ -52,6 +45,15 @@ contract TollBoothOperator is Pausable, MultiplierHolder, DepositHolder, RoutePr
         regulator = _regulator;
     }
 
+    function setRegulator(address _regulator) public returns(bool success) {
+        regulator = _regulator;
+        return true;
+    }
+
+    function getRegulator() public view returns(RegulatorI _regulator) {
+        return RegulatorI(_regulator);
+    }
+
     function enterRoad(address _entryBooth, bytes32 exitSecretHashed) public payable returns(bool success) {
         require(!isPaused(), "State cannot be paused");
         require(isTollBooth(_entryBooth), "Entry booth must be toll booth");
@@ -70,30 +72,8 @@ contract TollBoothOperator is Pausable, MultiplierHolder, DepositHolder, RoutePr
     }
 
     function reportExitRoad(bytes32 exitSecretClear) public returns(uint status) {
-        require(!isPaused(), "State cannot be paused");
         require(isTollBooth(msg.sender), "It has to not be toll booth");
-        bytes32 exitRoadHashed = hashSecret(exitSecretClear);
-        require(entries[exitRoadHashed].vehicle != 0, "Vehicle has to be registered");
-        require(entries[exitRoadHashed].depositedWeis != 0, "Vehicle needs to have deposited weis");
-        Entry storage newEntry = entries[exitRoadHashed];
-        require(Regulator(getRegulator()).vehicles(newEntry.vehicle) > 0, "Vehicle needs to be registered!");
-        address entryBooth = newEntry.entryBooth;
-        require(entryBooth != msg.sender, "Sender cannot be an entry booth");
-        uint routePrice = routePrices[keccak256(abi.encodePacked(entryBooth, msg.sender))];
-        if(routePrice > 0) {
-            uint refund;
-            uint finalFee;
-            (refund, finalFee) = processPayment(exitRoadHashed, routePrice);
-            emit LogRoadExited(msg.sender, exitRoadHashed, finalFee, refund);
-            return 1;
-        } else {
-            RouteMetadata storage routeMetadata = metadatas[keccak256(abi.encodePacked(entryBooth, msg.sender))];
-            uint index = routeMetadata.pendingPaymentCount + routeMetadata.clearedPaymentCount;
-            routeMetadata.pendingPayments[index] = exitRoadHashed;
-            routeMetadata.pendingPaymentCount++;
-            emit LogPendingPayment(exitRoadHashed, entryBooth, msg.sender);
-            return 2;
-        }
+        return routePrices[exitSecretClear];
     }
 
     function getPendingPaymentCount(address entryBooth, address exitBooth) public view returns (uint count) {
@@ -141,22 +121,7 @@ contract TollBoothOperator is Pausable, MultiplierHolder, DepositHolder, RoutePr
         return keccak256(abi.encodePacked(secret));
     }
 
-    function () public {        
-    }
-
-    function processPayment(bytes32 exitSecretHashed, uint routePrice) private returns(uint refund, uint finalFee) {
-        Entry storage newEntry = entries[exitSecretHashed];
-        uint vehiclePrice = routePrice * newEntry.multiplier;
-        uint depositedWeis = newEntry.depositedWeis;
-        if(vehiclePrice > depositedWeis) {
-            refund = 0;
-        } else {
-            refund = depositedWeis - vehiclePrice;
-        }
-        finalFee = depositedWeis - refund;
-        collectedFees += finalFee;
-        newEntry.depositedWeis = 0;
-        newEntry.vehicle.transfer(refund);
-        return(refund, finalFee);
+    function () public {
+        
     }
 }
