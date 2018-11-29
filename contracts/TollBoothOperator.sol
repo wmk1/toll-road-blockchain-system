@@ -1,5 +1,6 @@
 pragma solidity ^0.4.24;
 
+import "./Owned.sol";
 import "./Pausable.sol";
 import "./Regulated.sol";
 import "./MultiplierHolder.sol";
@@ -7,8 +8,10 @@ import "./DepositHolder.sol";
 import "./RoutePriceHolder.sol";
 import "./interfaces/TollBoothOperatorI.sol";
 import "./Regulator.sol";
+import "./TollBoothHolder.sol";
 
-contract TollBoothOperator is Pausable, Regulated, MultiplierHolder, DepositHolder, RoutePriceHolder, TollBoothOperatorI {
+contract TollBoothOperator is Owned, Pausable, DepositHolder, TollBoothHolder, 
+MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
 
     struct Entry {
         address vehicle;
@@ -105,7 +108,7 @@ contract TollBoothOperator is Pausable, Regulated, MultiplierHolder, DepositHold
     }
 
     function getCollectedFeesAmount() public view returns(uint amount) {
-        emit LogFeesCollected(msg.sender, amount);
+      
         return amount;
     }
 

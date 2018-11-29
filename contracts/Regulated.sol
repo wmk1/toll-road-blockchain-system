@@ -4,7 +4,7 @@ import "./interfaces/RegulatedI.sol";
 
 contract Regulated is RegulatedI {
     
-    address internal regulator;
+    address public regulator;
     
     constructor(address _regulator) public {
         require(_regulator != 0);

@@ -5,11 +5,10 @@ import "./interfaces/TollBoothOperatorI.sol";
 import "./Owned.sol";
 import "./TollBoothOperator.sol";
 
-contract Regulator is OwnedI, RegulatorI {
+contract Regulator is Owned, RegulatorI {
 
-    address regulator;
     mapping(address => uint) public vehicles;
-    mapping(address => TollBoothOperator) operators;
+    mapping(address => TollBoothOperatorI) operators;
 
     event LogVehicleTypeSet( address indexed sender, address indexed vehicle, uint indexed vehicleType);
     event LogTollBoothOperatorRemoved(address indexed sender, address indexed operator);
@@ -32,10 +31,10 @@ contract Regulator is OwnedI, RegulatorI {
 
     function createNewOperator(address _owner, uint _deposit) public returns(TollBoothOperatorI newOperator){
         require(msg.sender != _owner, "New operator cannot be an owner of contract");
-        TollBoothOperator operator = new TollBoothOperator(true, _deposit, this);
-        operator.setOwner(_owner);
+        newOperator = new TollBoothOperator(true, _deposit, this);
+        operators[_owner] = newOperator;
         emit LogTollBoothOperatorCreated(msg.sender, newOperator, _owner, _deposit);
-        return operator;
+        return newOperator;
     }  
 
     function removeOperator(address _operator) public returns(bool success) {

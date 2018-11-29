@@ -21,4 +21,8 @@ contract DepositHolder is DepositHolderI, OwnedI {
         emit LogDepositSet(msg.sender, _depositWeis);
         return true;
     }
+
+    function getDeposit() public view returns(uint depositedWeis) {
+        return deposit;
+    }
 }
