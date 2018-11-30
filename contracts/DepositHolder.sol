@@ -2,10 +2,10 @@ pragma solidity ^0.4.24;
 
 
 import "./interfaces/DepositHolderI.sol";
-import "./interfaces/OwnedI.sol";
+import "./Owned.sol";
 
 
-contract DepositHolder is DepositHolderI, OwnedI {
+contract DepositHolder is DepositHolderI, Owned {
 
     uint public deposit;
 
@@ -17,6 +17,9 @@ contract DepositHolder is DepositHolderI, OwnedI {
     }
 
     function setDeposit(uint _depositWeis) public returns (bool success) {
+        require(owner == msg.sender, "Caller is not the owner of the contract");
+        require(_depositWeis > 0, "Deposited weis must be bigger than 0");
+        require(_depositWeis != deposit, "New deposit is no different than current one.");
         deposit = _depositWeis;
         emit LogDepositSet(msg.sender, _depositWeis);
         return true;

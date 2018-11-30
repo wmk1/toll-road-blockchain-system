@@ -1,10 +1,10 @@
 pragma solidity ^0.4.24;
 
-import "./interfaces/OwnedI.sol";
+import "./Owned.sol";
 import "./interfaces/TollBoothHolderI.sol";
 import "./interfaces/RoutePriceHolderI.sol";
 
-contract RoutePriceHolder is OwnedI, TollBoothHolderI, RoutePriceHolderI {
+contract RoutePriceHolder is Owned, TollBoothHolderI, RoutePriceHolderI {
 
     mapping (bytes32 => uint) priceHolders;
     

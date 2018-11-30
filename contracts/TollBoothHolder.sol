@@ -1,9 +1,9 @@
 pragma solidity ^0.4.24;
 
-import "./interfaces/OwnedI.sol";
+import "./Owned.sol";
 import "./interfaces/TollBoothHolderI.sol";
 
-contract TollBoothHolder is OwnedI, TollBoothHolderI {
+contract TollBoothHolder is Owned, TollBoothHolderI {
 
     address[] private tollBoothHolders;
 

@@ -7,14 +7,15 @@ contract Regulated is RegulatedI {
     address public regulator;
     
     constructor(address _regulator) public {
-        require(_regulator != 0);
+        require(_regulator != 0, "New address cannot be 0.");
         regulator = _regulator;
     }
     
     event LogRegulatorSet(address indexed previousRegulator, address indexed newRegulator);
     function setRegulator(address newRegulator) public onlyRegulator returns(bool success) {
-        require(newRegulator > 0);
-        require(newRegulator != regulator);
+        require(msg.sender == regulator, "Only regulator may call this function");
+        require(newRegulator != regulator, "New regulator cannot be the same regulator.");
+        require(newRegulator != 0, "New address cannot be 0.");
         emit LogRegulatorSet(regulator, newRegulator);
         regulator = newRegulator;
         return true;

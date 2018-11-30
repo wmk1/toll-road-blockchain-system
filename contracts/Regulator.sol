@@ -18,7 +18,8 @@ contract Regulator is Owned, RegulatorI {
         
     }
 
-    function setVehicleType(address _vehicle, uint _vehicleType) public returns(bool success) {
+    function setVehicleType(address _vehicle, uint _vehicleType) public fromOwner returns(bool success) {
+        
         require(_vehicle != 0, "Vehicle address cannot be 0");
         vehicles[_vehicle] = _vehicleType;
         emit LogVehicleTypeSet(msg.sender, _vehicle, _vehicleType);
