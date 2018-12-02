@@ -26,7 +26,6 @@ contract Pausable is Owned, PausableI {
 
     function setPaused(bool _state) public returns(bool success){
         require(_state != paused, "New state must be different than current one.");
-        require(msg.sender != owner, "Caller is not the current owner.");
         paused = _state;
         emit LogPausedSet(msg.sender, _state);
         return true;

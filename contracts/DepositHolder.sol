@@ -16,8 +16,7 @@ contract DepositHolder is DepositHolderI, Owned {
         deposit = _deposit;
     }
 
-    function setDeposit(uint _depositWeis) public returns (bool success) {
-        require(owner == msg.sender, "Caller is not the owner of the contract");
+    function setDeposit(uint _depositWeis) public fromOwner returns (bool success) {
         require(_depositWeis > 0, "Deposited weis must be bigger than 0");
         require(_depositWeis != deposit, "New deposit is no different than current one.");
         deposit = _depositWeis;

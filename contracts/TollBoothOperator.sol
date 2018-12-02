@@ -26,11 +26,26 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         bytes32 secretHashed;
     }
 
+      /*
+     A RouteMetadata is a store of data about a route
+     - pendingPaymentCount: number of current pending payments
+     - clearedPaymentCount: number of payments that were once pending, but are now settled
+     - pendingPayments: mapping of index -> exit secret hash, where indices represent an ordered history of pending payments
+     A RouteMetadata is accessible in the mapping routesMetadata, keyed on the hash of (entryBooth, exitBooth) for a given route
+    */
+    struct RouteMetadata {
+        uint pendingPaymentCount;
+        uint clearedPaymentCount;
+        mapping(uint => bytes32) pendingPayments;
+    }
+
     mapping(bytes32 => uint) routePrices;
 
     mapping(bytes32 => Entry) entries;
 
     mapping(bytes32 => Payment[]) collectedPayments;
+
+    mapping(bytes32 => RouteMetadata) routesMetadata;
 
     uint collectedFees;
 
@@ -108,8 +123,17 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     }
 
     function getCollectedFeesAmount() public view returns(uint amount) {
-      
         return amount;
+    }
+
+    function setRoutePrice(address _entryBooth, address _exitBooth, uint _priceWeis) public fromOwner returns(bool succes) {
+        super.setRoutePrice(_entryBooth, _exitBooth, _priceWeis);
+        bytes32 hashed = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
+        uint pendingPaymentCount = routesMetadata[hashed].pendingPaymentCount;
+        if (pendingPaymentCount > 0) {
+            clearSomePendingPayments(_entryBooth, _exitBooth, pendingPaymentCount);
+        }
+        return true;
     }
 
     function withdrawCollectedFees() public returns(bool success) {

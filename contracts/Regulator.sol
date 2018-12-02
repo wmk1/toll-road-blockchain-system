@@ -19,8 +19,8 @@ contract Regulator is Owned, RegulatorI {
     }
 
     function setVehicleType(address _vehicle, uint _vehicleType) public fromOwner returns(bool success) {
-        
-        require(_vehicle != 0, "Vehicle address cannot be 0");
+        require(_vehicle > 0, "Vehicle address cannot be 0");
+        require(vehicles[_vehicle] != _vehicleType, "Choosen vehicle type cannot be the same");
         vehicles[_vehicle] = _vehicleType;
         emit LogVehicleTypeSet(msg.sender, _vehicle, _vehicleType);
         return true;
@@ -30,8 +30,8 @@ contract Regulator is Owned, RegulatorI {
         return vehicles[vehicle];
     }
 
-    function createNewOperator(address _owner, uint _deposit) public returns(TollBoothOperatorI newOperator){
-        require(msg.sender != _owner, "New operator cannot be an owner of contract");
+    function createNewOperator(address _owner, uint _deposit) public returns(TollBoothOperatorI newOperator) {
+        require(owner != _owner, "New operator cannot be an owner of contract");
         newOperator = new TollBoothOperator(true, _deposit, this);
         operators[_owner] = newOperator;
         emit LogTollBoothOperatorCreated(msg.sender, newOperator, _owner, _deposit);
@@ -45,6 +45,6 @@ contract Regulator is Owned, RegulatorI {
     }
 
     function isOperator(address _operator) public view returns(bool indeed) {
-        return (_operator == 0x0);
+        return (_operator == 0);
     }
 }

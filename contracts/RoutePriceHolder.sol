@@ -1,10 +1,10 @@
 pragma solidity ^0.4.24;
 
-import "./Owned.sol";
+import "./interfaces/OwnedI.sol";
 import "./interfaces/TollBoothHolderI.sol";
 import "./interfaces/RoutePriceHolderI.sol";
 
-contract RoutePriceHolder is Owned, TollBoothHolderI, RoutePriceHolderI {
+contract RoutePriceHolder is OwnedI, TollBoothHolderI, RoutePriceHolderI {
 
     mapping (bytes32 => uint) priceHolders;
     
@@ -15,6 +15,7 @@ contract RoutePriceHolder is Owned, TollBoothHolderI, RoutePriceHolderI {
 
     function setRoutePrice(address _entryBooth, address _exitBooth, uint _priceWeis) public returns(bool success) {
         require(_entryBooth != _exitBooth, "An entry booth and exit booth cannot be the same!");
+        require(_entryBooth != 0 && _exitBooth != 0, "Either boots is a 0x address.");
         require(isTollBooth(_entryBooth) && isTollBooth(_exitBooth), "Entry booth and exit booth must be toll!");
         bytes32 addressesHashed = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
         require(priceHolders[addressesHashed] != _priceWeis, "There must a change in price");
