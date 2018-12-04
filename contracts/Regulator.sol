@@ -8,15 +8,13 @@ import "./TollBoothOperator.sol";
 contract Regulator is Owned, RegulatorI {
 
     mapping(address => uint) public vehicles;
-    mapping(address => TollBoothOperatorI) operators;
+    mapping(address => bool) public operators;
 
     event LogVehicleTypeSet( address indexed sender, address indexed vehicle, uint indexed vehicleType);
     event LogTollBoothOperatorRemoved(address indexed sender, address indexed operator);
     event LogTollBoothOperatorCreated(address indexed sender, address indexed newOperator, address indexed owner, uint depositWeis);
 
-    constructor() public {
-        
-    }
+    constructor() public {}
 
     function setVehicleType(address _vehicle, uint _vehicleType) public fromOwner returns(bool success) {
         require(_vehicle > 0, "Vehicle address cannot be 0");
@@ -30,21 +28,22 @@ contract Regulator is Owned, RegulatorI {
         return vehicles[vehicle];
     }
 
-    function createNewOperator(address _owner, uint _deposit) public returns(TollBoothOperatorI newOperator) {
+    function createNewOperator(address _owner, uint _deposit) public fromOwner returns(TollBoothOperatorI _newOperator) {
         require(owner != _owner, "New operator cannot be an owner of contract");
-        newOperator = new TollBoothOperator(true, _deposit, this);
-        operators[_owner] = newOperator;
+        TollBoothOperator newOperator = new TollBoothOperator(true, _deposit, this);
+        newOperator.setOwner(_owner);
+        operators[_owner] = true;
         emit LogTollBoothOperatorCreated(msg.sender, newOperator, _owner, _deposit);
         return newOperator;
     }  
 
-    function removeOperator(address _operator) public returns(bool success) {
-        delete operators[_operator];
+    function removeOperator(address _operator) public fromOwner returns(bool success) {
+        operators[_operator] = false;
         emit LogTollBoothOperatorRemoved(msg.sender, _operator);
         return true;
     }
 
     function isOperator(address _operator) public view returns(bool indeed) {
-        return (_operator == 0);
+        return operators[_operator];
     }
 }

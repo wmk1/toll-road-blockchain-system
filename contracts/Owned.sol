@@ -17,11 +17,11 @@ contract Owned is OwnedI {
         owner = msg.sender;
     }
 
-    function setOwner(address newOwner) public returns(bool success) {
-        require(newOwner != msg.sender, "New owner cannot be current owner");
-        require(newOwner != 0, "New owner cannot be 0 address");
-        owner = newOwner;
-        emit LogOwnerSet(newOwner, owner);
+    function setOwner(address _newOwner) public fromOwner returns(bool success) {
+        require(_newOwner != 0, "New owner cannot be 0 address");
+        require(_newOwner != msg.sender, "New owner must be different");
+        owner = _newOwner;
+        emit LogOwnerSet(msg.sender, owner);
         return true;
     }
 

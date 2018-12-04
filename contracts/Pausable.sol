@@ -6,17 +6,17 @@ import "./interfaces/PausableI.sol";
 
 contract Pausable is Owned, PausableI {
     
-    bool paused;
+    bool internal paused;
     
     event LogPausedSet(address indexed _sender, bool indexed _newPausedState);
 
     modifier whenNotPaused {
-        require(paused, "Must be paused.");
+        require(!paused, "Must not be paused.");
         _;
     }
 
     modifier whenPaused {
-        require(!paused, "Must not be paused.");
+        require(paused, "Must be paused.");
         _;
     }
 
@@ -24,7 +24,7 @@ contract Pausable is Owned, PausableI {
         paused = newState;
     }
 
-    function setPaused(bool _state) public returns(bool success){
+    function setPaused(bool _state) public fromOwner returns(bool success){
         require(_state != paused, "New state must be different than current one.");
         paused = _state;
         emit LogPausedSet(msg.sender, _state);

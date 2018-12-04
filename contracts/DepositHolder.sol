@@ -7,7 +7,7 @@ import "./Owned.sol";
 
 contract DepositHolder is DepositHolderI, Owned {
 
-    uint public deposit;
+    uint internal deposit;
 
     event LogDepositSet(address indexed sender, uint amount);
 
