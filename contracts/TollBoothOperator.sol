@@ -53,8 +53,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     Pausable(_state) 
     DepositHolder(_deposit)
     Regulated(_regulator) public {  
-  //      require(_deposit > 0, "Deposit cannot be 0");
-    //    require(_regulator != 0, "Address regulator cannot be 0.");
+        require(_deposit > 0, "Deposit cannot be 0");
         paused = _state;
         deposit = _deposit;
         regulator = _regulator;
@@ -81,10 +80,9 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
 
     //Fixed
     function reportExitRoad(bytes32 _exitSecretClear) public whenNotPaused returns(uint status) {
-        require(isTollBooth(msg.sender), "It has to not be toll booth");
+        require(isTollBooth(msg.sender), "Sender has to be toll booth");
         bytes32 exitSecretHashed = hashSecret(_exitSecretClear);
-        require(entries[exitSecretHashed].vehicle != 0, "Vehicle type cannot be 0.");
-        require(entries[exitSecretHashed].depositedWeis != 0, "Any entered vehicle must have some deposit!");
+        require(entries[exitSecretHashed].vehicle != 0 && entries[exitSecretHashed].depositedWeis != 0, "Vehicle type cannot be 0.");
         Entry storage _entry = entries[exitSecretHashed];
         require(Regulator(getRegulator()).vehicles(_entry.vehicle) > 0, "Vehicle type cannot be 0.");
         require(_entry.entryBooth != msg.sender, "Entry booth cannot be a sender of contract");
@@ -142,7 +140,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         bytes32 hashed = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
         uint pendingPaymentCount = routesMetadata[hashed].pendingPaymentCount;
         if (pendingPaymentCount > 0) {
-            clearSomePendingPayments(_entryBooth, _exitBooth, pendingPaymentCount);
+            clearSomePendingPayments(_entryBooth, _exitBooth, 1);
         }
         return true;
     }
