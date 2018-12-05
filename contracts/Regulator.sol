@@ -31,10 +31,10 @@ contract Regulator is Owned, RegulatorI {
         require(msg.sender != _owner, "New operator cannot be an owner of contract");
         TollBoothOperator newOperator = new TollBoothOperator(true, _deposit, this);
         newOperator.setOwner(_owner);
-        operators[_owner] = true;
         emit LogTollBoothOperatorCreated(msg.sender, newOperator, _owner, _deposit);
+        operators[newOperator] = true;
         return newOperator;
-    }  
+    }
 
     function removeOperator(address _operator) public fromOwner returns(bool success) {
         operators[_operator] = false;
