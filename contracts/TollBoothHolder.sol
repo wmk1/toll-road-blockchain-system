@@ -6,7 +6,7 @@ import "./interfaces/TollBoothHolderI.sol";
 
 contract TollBoothHolder is Owned, TollBoothHolderI {
 
-    mapping(address=> bool) internal tollBoothHolders;
+    mapping(address => bool) internal tollBoothHolders;
 
     event LogTollBoothAdded(address indexed sender, address indexed tollBooth);
     event LogTollBoothRemoved(address indexed sender, address indexed tollBooth);
@@ -19,7 +19,7 @@ contract TollBoothHolder is Owned, TollBoothHolderI {
     constructor() public {
     }
 
-    function addTollBooth(address _tollBooth) public  fromOwner returns (bool success) {
+    function addTollBooth(address _tollBooth) public fromOwner returns (bool success) {
         require(_tollBooth > 0, "Toll booth cannot be 0");
         require(!isTollBooth(_tollBooth), "Address is already a toll booth.");
         tollBoothHolders[_tollBooth] = true;

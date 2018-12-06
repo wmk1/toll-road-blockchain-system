@@ -27,8 +27,6 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         mapping(uint => bytes32) pendingPayments;
     }
 
-    mapping(bytes32 => uint) internal routePrices;
-
     mapping(bytes32 => Entry) internal entries;
 
     mapping(bytes32 => RouteMetadata) internal routesMetadata;
@@ -44,11 +42,14 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     public 
     Pausable(_state) 
     DepositHolder(_deposit)
-    Regulated(_regulator) {  
-        require(_deposit > 0, "Deposit cannot be 0");
+    Regulated(_regulator) { 
         paused = _state;
         deposit = _deposit;
         regulator = _regulator;
+    }
+
+    function () public payable {
+        revert();
     }
 
     function enterRoad(address _entryBooth, bytes32 _exitSecretHashed) public payable whenNotPaused returns (bool success) {
@@ -75,7 +76,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         Entry storage entry = entries[exitSecretHashed];
         require(Regulator(getRegulator()).vehicles(entry.vehicle) > 0, "Vehicle type cannot be 0.");
         require(entry.entryBooth != msg.sender, "Entry booth cannot be a sender of contract");
-        uint price = routePrices[keccak256(abi.encodePacked(entry.entryBooth, msg.sender))];
+        uint price = priceHolders[keccak256(abi.encodePacked(entry.entryBooth, msg.sender))];
         if (price > 0) {
             uint refund;
             uint finalFee;
@@ -91,15 +92,13 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
             return 2;
         }
     }
-
     function getPendingPaymentCount(address entryBooth, address exitBooth) public view returns (uint count) {
         return routesMetadata[keccak256(abi.encodePacked(entryBooth, exitBooth))].pendingPaymentCount;
     }
-
     function clearSomePendingPayments(address _entryBooth, address _exitBooth, uint _count) public whenNotPaused returns (bool success) {
         require(_count > 0, "Count must be bigger than 0!");
         bytes32 _hash = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
-        uint routePrice = routePrices[_hash];
+        uint routePrice = priceHolders[_hash];
         if (routePrice > 0) {
             RouteMetadata storage routeMetadata = routesMetadata[_hash];
             require(routeMetadata.pendingPaymentCount >= _count, "Pending payment must be bigger than given count");
@@ -129,7 +128,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     }
 
     function getCollectedFeesAmount() public view returns(uint amount) {
-        return amount;
+        return collectedFees;
     }
 
     function withdrawCollectedFees() public returns(bool success) {
