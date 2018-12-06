@@ -10,6 +10,7 @@ import "./interfaces/TollBoothOperatorI.sol";
 import "./Regulator.sol";
 import "./TollBoothHolder.sol";
 
+
 contract TollBoothOperator is Owned, Pausable, DepositHolder, TollBoothHolder, 
 MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
 
@@ -20,39 +21,30 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         uint depositedWeis;
     }
 
-    struct Payment {
-        address entryBooth;
-        address exitBooth;
-        bytes32 secretHashed;
-    }
-
     struct RouteMetadata {
         uint pendingPaymentCount;
         uint clearedPaymentCount;
         mapping(uint => bytes32) pendingPayments;
     }
 
-    mapping(bytes32 => uint) routePrices;
+    mapping(bytes32 => uint) internal routePrices;
 
     mapping(bytes32 => Entry) internal entries;
 
-    mapping(bytes32 => Payment[]) collectedPayments;
-
-    mapping(bytes32 => RouteMetadata)  routesMetadata;
+    mapping(bytes32 => RouteMetadata) internal routesMetadata;
 
     uint internal collectedFees;
 
     event LogRoadEntered(address indexed vehicle, address indexed entryBooth, bytes32 indexed exitSecretHashed, uint depositedWeis);
     event LogRoadExited(address indexed exitBooth, bytes32 indexed exitSecretHashed, uint finalFee, uint refundWeis);
     event LogPendingPayment(bytes32 indexed exitSecretHashed, address indexed entryBooth, address indexed exitBooth);
-    event LogFeesCollected(address indexed owner,  uint amount);
-
-
+    event LogFeesCollected(address indexed owner, uint amount);
     
-    constructor(bool _state, uint _deposit, address _regulator) 
+    constructor(bool _state, uint _deposit, address _regulator)
+    public 
     Pausable(_state) 
     DepositHolder(_deposit)
-    Regulated(_regulator) public {  
+    Regulated(_regulator) {  
         require(_deposit > 0, "Deposit cannot be 0");
         paused = _state;
         deposit = _deposit;
@@ -71,22 +63,19 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         return true;
     }
 
-
-    //GIT
     function getVehicleEntry(bytes32 _exitSecretHashed) public view returns(address vehicle, address entryBooth, uint depositedWeis) {
         Entry storage entry = entries[_exitSecretHashed];
         return (entry.vehicle, entry.entryBooth, entry.depositedWeis);
     }
 
-    //Fixed
     function reportExitRoad(bytes32 _exitSecretClear) public whenNotPaused returns(uint status) {
         require(isTollBooth(msg.sender), "Sender has to be toll booth");
         bytes32 exitSecretHashed = hashSecret(_exitSecretClear);
         require(entries[exitSecretHashed].vehicle != 0 && entries[exitSecretHashed].depositedWeis != 0, "Vehicle type cannot be 0.");
-        Entry storage _entry = entries[exitSecretHashed];
-        require(Regulator(getRegulator()).vehicles(_entry.vehicle) > 0, "Vehicle type cannot be 0.");
-        require(_entry.entryBooth != msg.sender, "Entry booth cannot be a sender of contract");
-        uint price = routePrices[keccak256(abi.encodePacked(_entry.entryBooth, msg.sender))];
+        Entry storage entry = entries[exitSecretHashed];
+        require(Regulator(getRegulator()).vehicles(entry.vehicle) > 0, "Vehicle type cannot be 0.");
+        require(entry.entryBooth != msg.sender, "Entry booth cannot be a sender of contract");
+        uint price = routePrices[keccak256(abi.encodePacked(entry.entryBooth, msg.sender))];
         if (price > 0) {
             uint refund;
             uint finalFee;
@@ -94,55 +83,53 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
             emit LogRoadExited(msg.sender, exitSecretHashed, finalFee, refund);
             return 1;
         } else {
-            RouteMetadata storage metadata = routesMetadata[keccak256(abi.encodePacked(_entry.entryBooth, msg.sender))];
+            RouteMetadata storage metadata = routesMetadata[keccak256(abi.encodePacked(entry.entryBooth, msg.sender))];
             uint index = metadata.pendingPaymentCount + metadata.clearedPaymentCount;
             metadata.pendingPayments[index] = exitSecretHashed;
             metadata.pendingPaymentCount++;
-            emit LogPendingPayment(exitSecretHashed, _entry.entryBooth, msg.sender);
+            emit LogPendingPayment(exitSecretHashed, entry.entryBooth, msg.sender);
             return 2;
         }
     }
 
     function getPendingPaymentCount(address entryBooth, address exitBooth) public view returns (uint count) {
-        return collectedPayments[keccak256(abi.encodePacked(entryBooth, exitBooth))].length;
+        return routesMetadata[keccak256(abi.encodePacked(entryBooth, exitBooth))].pendingPaymentCount;
     }
 
-    function clearSomePendingPayments(address entryBooth, address exitBooth, uint count) public whenNotPaused returns (bool success) {
-        require(!paused, "Must be paused");
-        require(count > 0, "Count must be bigger than 0");
-        bytes32 _hash = keccak256(abi.encodePacked(entryBooth, exitBooth));
-        uint price = routePrices[_hash];
-        if (price > 0) {
-            Payment[] storage payments = collectedPayments[_hash];
-            require(payments.length >= count, "Payments length must be bigger than payments count");
-            collectedFees += price * count;
-            for(uint i = 0; i < count; i++) {
-                Payment storage payment = payments[i];
-                Entry storage _entry = entries[payment.secretHashed];
-                uint refund = _entry.depositedWeis - price;
-                address _vehicle = _entry.vehicle;
-                require(refund < _entry.depositedWeis, "Refund cannot be bigger than deposited weis of vehicle entry");
-                delete payments[i];
-                entries[payment.secretHashed] = Entry(0, 0, 0, 0);
-                emit LogRoadExited(msg.sender, payment.secretHashed, price, refund);
-                _vehicle.transfer(refund);
+    function clearSomePendingPayments(address _entryBooth, address _exitBooth, uint _count) public whenNotPaused returns (bool success) {
+        require(_count > 0, "Count must be bigger than 0!");
+        bytes32 _hash = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
+        uint routePrice = routePrices[_hash];
+        if (routePrice > 0) {
+            RouteMetadata storage routeMetadata = routesMetadata[_hash];
+            require(routeMetadata.pendingPaymentCount >= _count, "Pending payment must be bigger than given count");
+            for (uint i = 0; i < _count; i++) {
+                uint paymentIndex = routeMetadata.clearedPaymentCount;
+                bytes32 exitSecretHashed = routeMetadata.pendingPayments[paymentIndex];
+                uint refund;
+                uint finalFee;
+                (refund, finalFee) = processPayment(exitSecretHashed, routePrice);
+                routeMetadata.pendingPayments[paymentIndex] = bytes32(0);
+                routeMetadata.pendingPaymentCount--;
+                routeMetadata.clearedPaymentCount++;
+                emit LogRoadExited(_exitBooth, exitSecretHashed, finalFee, refund);
             }
+        }
+        return true;
+    }
+
+    function setRoutePrice(address _entryBooth, address _exitBooth, uint _priceWeis) public fromOwner returns(bool success) {
+        super.setRoutePrice(_entryBooth, _exitBooth, _priceWeis);
+        bytes32 bootsHashed = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
+        uint pendingPaymentCount = routesMetadata[bootsHashed].pendingPaymentCount;
+        if (pendingPaymentCount > 0) {
+            clearSomePendingPayments(_entryBooth, _exitBooth, 1);
         }
         return true;
     }
 
     function getCollectedFeesAmount() public view returns(uint amount) {
         return amount;
-    }
-
-    function setRoutePrice(address _entryBooth, address _exitBooth, uint _priceWeis) public fromOwner returns(bool succes) {
-        super.setRoutePrice(_entryBooth, _exitBooth, _priceWeis);
-        bytes32 hashed = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
-        uint pendingPaymentCount = routesMetadata[hashed].pendingPaymentCount;
-        if (pendingPaymentCount > 0) {
-            clearSomePendingPayments(_entryBooth, _exitBooth, 1);
-        }
-        return true;
     }
 
     function withdrawCollectedFees() public returns(bool success) {
@@ -157,23 +144,19 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         return keccak256(abi.encodePacked(_secret));
     }
 
-    function () public {
-        revert();
-    }
-
-    function processPayment(bytes32 exitSecretHashed, uint routePrice) private returns(uint refund, uint finalFee) {
-        Entry storage _entry = entries[exitSecretHashed];
-        uint vehiclePrice = routePrice * _entry.multiplier;
-        uint depositedWeis = _entry.depositedWeis;
-        if(vehiclePrice > depositedWeis) {
+    function processPayment(bytes32 _exitSecretHashed, uint _routePrice) private returns(uint refund, uint finalFee) {
+        Entry storage entry = entries[_exitSecretHashed];
+        uint vehiclePrice = _routePrice * entry.multiplier;
+        uint depositedWeis = entry.depositedWeis;
+        if (vehiclePrice > depositedWeis) {
             refund = 0;
         } else {
             refund = depositedWeis - vehiclePrice;
         }
         finalFee = depositedWeis - refund;
         collectedFees += finalFee;
-        _entry.depositedWeis = 0;
-        _entry.vehicle.transfer(refund);
+        entry.depositedWeis = 0;
+        entry.vehicle.transfer(refund);
         return(refund, finalFee);
     }
 }

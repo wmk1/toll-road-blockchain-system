@@ -3,6 +3,7 @@ pragma solidity ^0.4.24;
 import "./Owned.sol";
 import "./interfaces/TollBoothHolderI.sol";
 
+
 contract TollBoothHolder is Owned, TollBoothHolderI {
 
     mapping(address=> bool) internal tollBoothHolders;

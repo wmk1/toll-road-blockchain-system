@@ -3,6 +3,7 @@ pragma solidity ^0.4.24;
 import "./interfaces/MultiplierHolderI.sol";
 import "./Owned.sol";
 
+
 contract MultiplierHolder is Owned, MultiplierHolderI {
 
     mapping(uint => uint) internal multipliers;

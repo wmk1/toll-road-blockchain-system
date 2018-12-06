@@ -2,6 +2,7 @@ pragma solidity ^0.4.24;
 
 import "./interfaces/OwnedI.sol";
 
+
 contract Owned is OwnedI {
   
     address internal owner;
@@ -25,7 +26,7 @@ contract Owned is OwnedI {
         return true;
     }
 
-    function getOwner() public view returns(address){
+    function getOwner() public view returns(address) {
         return owner;
     }
 }

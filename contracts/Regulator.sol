@@ -4,6 +4,7 @@ import "./interfaces/RegulatorI.sol";
 import "./Owned.sol";
 import "./TollBoothOperator.sol";
 
+
 contract Regulator is Owned, RegulatorI {
 
     mapping(address => uint) public vehicles;
@@ -27,7 +28,7 @@ contract Regulator is Owned, RegulatorI {
         return vehicles[_vehicle];
     }
 
-    function createNewOperator(address _owner, uint _deposit) public fromOwner returns(TollBoothOperatorI _newOperator) {
+    function createNewOperator(address _owner, uint _deposit) public fromOwner returns(TollBoothOperatorI) {
         require(msg.sender != _owner, "New operator cannot be an owner of contract");
         TollBoothOperator newOperator = new TollBoothOperator(true, _deposit, this);
         newOperator.setOwner(_owner);
