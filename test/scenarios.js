@@ -1,114 +1,139 @@
-const Promise = require('bluebird')
-Promise.promisifyAll(web3, { suffix: 'Promise' })
 const assert = require('assert')
 
 const toBytes32 = require('../utils/toBytes32.js')
-
-if (typeof web3.eth.getAccountsPromise === 'undefined') {
-  Promise.promisifyAll(web3.eth, { suffix: 'Promise' })
-}
 
 const Regulator = artifacts.require('./Regulator.sol')
 const TollBoothOperator = artifacts.require('./TollBoothOperator.sol')
 
 contract('Scenarios', accounts => {
-  let owner, owner1
-    let vehicle, vehicle1
-    let booth, booth1
-    let deposit
-    let regulator
-    let vehicleType, vehicleType1
-    let price
-    let multiplier, multiplier1
-    let secret = toBytes32(1)
-    let secret1 = toBytes32(2)
-    let hashed, hashed1
-    let tollBoothOperator
+  let regulator = {}
+  let tollBoothOperator = {}
+  let owner = accounts[0]
+  let owner1 = accounts[1]
+  let vehicle = accounts[2]
+  let vehicle1 = accounts[3]
+  let booth = accounts[4]
+  let booth1 = accounts[5]
+  let deposit = 10
+  let vehicleType = 1
+  let vehicleType1 = 2
+  let price = 1
+  let multiplier = 32
+  let multiplier1 = 21
+  let secret = toBytes32(100)
+  let secret1 = toBytes32(200)
 
-    before('Should set variables with values', () => {
-      assert.isAtLeast(accounts.length, 6)
-        owner = accounts[0]
-        owner1 = accounts[1]
-        vehicle = accounts[2]
-        vehicle1 = accounts[3]
-        booth = accounts[4]
-        booth1 = accounts[5]
-        deposit = 10
-        vehicleType = 1
-        vehicleType1 = 2
-        price = 1
-        multiplier = 32
-        multiplier1 = 21
-        return web3.eth.getBalancePromise(owner).then(balance => {
-          assert.isAtLeast(web3.fromWei(balance).toNumber(), 10)
-        })
-    })
+  let hashed, hashed1
 
-    beforeEach('Should deploy the necessary contracts', () => {
-      return regulator = Regulator.new({ from: owner })
-            .then(instance => regulator = instance)
-            .then(() => regulator.setVehicleType(vehicle, vehicleType, { from: owner }))
-            .then(tx => regulator.setVehicleType(vehicle1, vehicleType1, { from: owner }))
-            .then(tx => regulator.createNewOperator(owner1, deposit, { from: owner }))
-            .then(tx => tollBoothOperator = TollBoothOperator.at(tx.logs[1].args.newOperator))
-            .then(() => tollBoothOperator.addTollBooth(booth, { from: owner1 }))
-            .then(tx => tollBoothOperator.addTollBooth(booth1, { from: owner1 }))
-            .then(tx => tollBoothOperator.setMultiplier(vehicleType, multiplier, { from: owner1 }))
-            .then(tx => tollBoothOperator.setMultiplier(vehicleType1, multiplier1, { from: owner1 }))
-            .then(tx => tollBoothOperator.setRoutePrice(booth, booth1, price, { from: owner1 }))
-            .then(tx => tollBoothOperator.setPaused(false, { from: owner1 }))
-            .then(tx => tollBoothOperator.hashSecret(secret))
-            .then(hash => hashed = hash)
-            .then(tx => tollBoothOperator.hashSecret(secret1))
-            .then(hash => hashed1 = hash)
-    })
+  let regulatorInstance
+  let tollBoothOperatorInstance
+ 
+  beforeEach('Should deploy the necessary contracts', async () => {
+    regulator.instance = await Regulator.new({ from: owner })
+    regulatorInstance = regulator.instance
+    await regulatorInstance.setVehicleType(vehicle, vehicleType, { from: owner })
+    await regulatorInstance.setVehicleType(vehicle1, vehicleType1, { from: owner })
+    let tx = await regulatorInstance.createNewOperator(owner1, deposit, { from: owner })
+    tollBoothOperator.instance = await TollBoothOperator.at(tx.logs[1].args.newOperator)
+    tollBoothOperatorInstance = tollBoothOperator.instance
+    await tollBoothOperatorInstance.addTollBooth(booth, { from: owner1 })
+    await tollBoothOperatorInstance.addTollBooth(booth1, { from: owner1 })
+    await tollBoothOperatorInstance.setMultiplier(vehicleType, multiplier, { from: owner1 })
+    await tollBoothOperatorInstance.setMultiplier(vehicleType1, multiplier1, { from: owner1 })
+    await tollBoothOperatorInstance.setRoutePrice(booth, booth1, price, { from: owner1 })
+    hashed = tollBoothOperatorInstance.hashSecret(secret)
+    hashed1 = tollBoothOperatorInstance.hashSecret(secret1)
+  })
 
-    it('Given routeprice when is equal to deposit then no refund', () => {
-        //given
+  it('Given routeprice when is equal to deposit then no refund', () => {
+    //given
 
-        //when
+    // when
+    const transaction = tollBoothOperatorInstance
+    .enterRoad
+    .call(booth, hashed, { from: vehicle, value: (deposit * multiplier) })
+    const events = transaction.logs
+    console.log(transaction)
 
-        //then
-
-
-    })
-    it('given routeprice when is greater than deposit then no refund', () => {
-        //given
-
-        //when
-
-        //then
-    })
+    // then
+    assert.equal(events.length, 1, 'Wrong number of events')
     
-    it('given routeprice when is less than deposit then refund is issued', () => {
-        //given
+  })
 
-        //when
+  it('Given routeprice when is less than deposit then no refund', async () => {
+    //given
 
-        //then
-    })
+
+
+    // when
+    const transaction = await tollBoothOperatorInstance
+    .enterRoad(booth, hashed, { from: vehicle, value: (deposit * multiplier) })
+    const events = transaction.logs
+
+    // then
+    assert.equal(events.length, 1, 'Wrong number of events')
     
-    it('given amount deposited when is greater than deposit and routeprice equals deposit then refund is issued', () => {
-        //given
+  })
 
-        //when
+  it('Given routeprice when is bigger than deposit then refund is issued', () => {
+    //given
 
-        //then
-    })
+
+
+    // when
+    const transaction = tollBoothOperatorInstance
+    .enterRoad
+    .call(booth, hashed, { from: vehicle, value: (deposit * multiplier) })
+    const events = transaction.logs
+
+    // then
+    assert.equal(events.length, 1, 'Wrong number of events')
     
-    it('given amount deposited when is greater than deposit and routeprice is greater than deposit then refund is issued', () => {
-        //given
+  })
 
-        //when
+  it('Given amount deposited when is greater than deposit and routeprice is equal to deposit then refund is issued', () => {
+    //given
 
-        //then
-    })
+    // when
+    const transaction = tollBoothOperatorInstance
+    .enterRoad
+    .call(booth, hashed, { from: vehicle, value: (deposit * multiplier) })
+    const events = transaction.logs
+
+    // then
+    assert.equal(events.length, 1, 'Wrong number of events')
     
-    it('scenario 6 - FIFO queue test case', () => {
-        //given
+  })
 
-        //when
+  it('Given amount deposited when is greater than deposit and routeprice is greater than deposit then refund is issued', () => {
+    //given
 
-        //then
-    })
+
+
+    // when
+    const transaction = tollBoothOperatorInstance
+    .enterRoad
+    .call(booth, hashed, { from: vehicle, value: (deposit * multiplier) })
+    const events = transaction.logs
+
+    // then
+    assert.equal(events.length, 1, 'Wrong number of events')
+    
+  })
+
+  it('Given two vehicles when enter road then fifo queue case goes successfully', () => {
+    //given
+
+
+
+    // when
+    const transaction = tollBoothOperatorInstance
+    .enterRoad
+    .call(booth, hashed, { from: vehicle, value: (deposit * multiplier) })
+    const events = transaction.logs
+
+    // then
+    assert.equal(events.length, 1, 'Wrong number of events')
+    
+  })
 })
