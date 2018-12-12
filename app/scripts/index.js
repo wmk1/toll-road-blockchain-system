@@ -1,12 +1,14 @@
 // Import the page's CSS. Webpack will know what to do with it.
-import "../stylesheets/app.css";
+import '../stylesheets/app.css'
 
 // Import libraries we need.
-import { default as Web3} from 'web3';
+import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
 
 // Import our contract artifacts and turn them into usable abstractions.
 import metacoin_artifacts from '../../build/contracts/MetaCoin.json'
+import regulatorArtifacts from '../../build/contracts/Regulator.json'
+import tollBoothOperator_artifacts from '../../build/contracts/TollBoothOperator.json'
 
 // MetaCoin is our usable abstraction, which we'll use through the code below.
 var MetaCoin = contract(metacoin_artifacts);
@@ -86,6 +88,12 @@ window.App = {
   }
 };
 
+reportExitRoad: () => {
+
+};
+
+
+
 window.addEventListener('load', function() {
   // Checking if Web3 has been injected by the browser (Mist/MetaMask)
   if (typeof web3 !== 'undefined') {
@@ -100,3 +108,24 @@ window.addEventListener('load', function() {
 
   App.start();
 });
+
+function openTab(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}

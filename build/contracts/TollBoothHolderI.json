@@ -1,0 +1,965 @@
+{
+  "contractName": "TollBoothHolderI",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "tollBooth",
+          "type": "address"
+        }
+      ],
+      "name": "LogTollBoothAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "tollBooth",
+          "type": "address"
+        }
+      ],
+      "name": "LogTollBoothRemoved",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tollBooth",
+          "type": "address"
+        }
+      ],
+      "name": "addTollBooth",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "tollBooth",
+          "type": "address"
+        }
+      ],
+      "name": "isTollBooth",
+      "outputs": [
+        {
+          "name": "isIndeed",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tollBooth",
+          "type": "address"
+        }
+      ],
+      "name": "removeTollBooth",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.24;\n\ncontract TollBoothHolderI {\n\n    /**\n     * Event emitted when a toll booth has been added to the TollBoothHolder.\n     * @param sender The account that ran the action.\n     * @param tollBooth The toll booth just added.\n     */\n    event LogTollBoothAdded(\n        address indexed sender,\n        address indexed tollBooth);\n\n    /**\n     * Called by the owner of the TollBoothHolder.\n     *     It should roll back if the caller is not the owner of the contract.\n     *     It should roll back if the argument is already a toll booth.\n     *     It should roll back if the argument is a 0x address.\n     *     When part of TollBoothOperatorI, it should be possible to add toll booths even when\n     *       the contract is paused.\n     * @param tollBooth The address of the toll booth being added.\n     * @return Whether the action was successful.\n     * Emits LogTollBoothAdded with:\n     *     The sender of the action.\n     *     The address of the toll booth just added.\n     */\n    function addTollBooth(address tollBooth)\n        public\n        returns(bool success);\n\n    /**\n     * @param tollBooth The address of the toll booth we enquire about. It should accept a 0 address.\n     * @return Whether the toll booth is indeed known to the holder.\n     */\n    function isTollBooth(address tollBooth)\n        view\n        public\n        returns(bool isIndeed);\n\n    /**\n     * Event emitted when a toll booth has been removed from the TollBoothOperator.\n     * @param sender The account that ran the action.\n     * @param tollBooth The toll booth just removed.\n     */\n    event LogTollBoothRemoved(\n        address indexed sender,\n        address indexed tollBooth);\n\n    /**\n     * Called by the owner of the TollBoothHolder.\n     *     It should roll back if the caller is not the owner of the contract.\n     *     It should roll back if the argument has already been removed.\n     *     It should roll back if the argument is a 0x address.\n     *     When part of TollBoothOperatorI, it should be possible to remove toll booth even when\n     *       the contract is paused.\n     * @param tollBooth The toll booth to remove.\n     * @return Whether the action was successful.\n     * Emits LogTollBoothRemoved with:\n     *     The sender of the action.\n     *     The address of the toll booth just removed.\n     */\n    function removeTollBooth(address tollBooth)\n        public\n        returns(bool success);\n\n    /*\n     * You need to create:\n     *\n     * - a contract named `TollBoothHolder` that:\n     *     - is `OwnedI`, `TollBoothHolderI`.\n     *     - has a constructor that takes no parameter.\n     */        \n}",
+  "sourcePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/TollBoothHolderI.sol",
+  "ast": {
+    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/TollBoothHolderI.sol",
+    "exportedSymbols": {
+      "TollBoothHolderI": [
+        1817
+      ]
+    },
+    "id": 1818,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1783,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:16"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1817,
+        "linearizedBaseContracts": [
+          1817
+        ],
+        "name": "TollBoothHolderI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "Event emitted when a toll booth has been added to the TollBoothHolder.\n@param sender The account that ran the action.\n@param tollBooth The toll booth just added.",
+            "id": 1789,
+            "name": "LogTollBoothAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1788,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1785,
+                  "indexed": true,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1789,
+                  "src": "291:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1784,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "291:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1787,
+                  "indexed": true,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1789,
+                  "src": "323:25:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1786,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "323:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "281:68:16"
+            },
+            "src": "258:92:16"
+          },
+          {
+            "body": null,
+            "documentation": "Called by the owner of the TollBoothHolder.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the argument is already a toll booth.\n    It should roll back if the argument is a 0x address.\n    When part of TollBoothOperatorI, it should be possible to add toll booths even when\n      the contract is paused.\n@param tollBooth The address of the toll booth being added.\n@return Whether the action was successful.\nEmits LogTollBoothAdded with:\n    The sender of the action.\n    The address of the toll booth just added.",
+            "id": 1796,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "addTollBooth",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1792,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1791,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1796,
+                  "src": "1036:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1790,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1036:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1035:19:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1795,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1794,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1796,
+                  "src": "1086:12:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1793,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1086:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1085:14:16"
+            },
+            "scope": 1817,
+            "src": "1014:86:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@param tollBooth The address of the toll booth we enquire about. It should accept a 0 address.\n@return Whether the toll booth is indeed known to the holder.",
+            "id": 1803,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isTollBooth",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1799,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1798,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1803,
+                  "src": "1314:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1797,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1314:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1313:19:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1802,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1801,
+                  "name": "isIndeed",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1803,
+                  "src": "1377:13:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1800,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1377:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1376:15:16"
+            },
+            "scope": 1817,
+            "src": "1293:99:16",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": "Event emitted when a toll booth has been removed from the TollBoothOperator.\n@param sender The account that ran the action.\n@param tollBooth The toll booth just removed.",
+            "id": 1809,
+            "name": "LogTollBoothRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1805,
+                  "indexed": true,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1809,
+                  "src": "1640:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1804,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1640:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1807,
+                  "indexed": true,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1809,
+                  "src": "1672:25:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1806,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1672:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1630:68:16"
+            },
+            "src": "1605:94:16"
+          },
+          {
+            "body": null,
+            "documentation": "Called by the owner of the TollBoothHolder.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the argument has already been removed.\n    It should roll back if the argument is a 0x address.\n    When part of TollBoothOperatorI, it should be possible to remove toll booth even when\n      the contract is paused.\n@param tollBooth The toll booth to remove.\n@return Whether the action was successful.\nEmits LogTollBoothRemoved with:\n    The sender of the action.\n    The address of the toll booth just removed.",
+            "id": 1816,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "removeTollBooth",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1812,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1811,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1816,
+                  "src": "2378:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1810,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2378:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2377:19:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1815,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1814,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1816,
+                  "src": "2428:12:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1813,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2428:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2427:14:16"
+            },
+            "scope": 1817,
+            "src": "2353:89:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1818,
+        "src": "26:2628:16"
+      }
+    ],
+    "src": "0:2654:16"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/TollBoothHolderI.sol",
+    "exportedSymbols": {
+      "TollBoothHolderI": [
+        1817
+      ]
+    },
+    "id": 1818,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1783,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:16"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1817,
+        "linearizedBaseContracts": [
+          1817
+        ],
+        "name": "TollBoothHolderI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "Event emitted when a toll booth has been added to the TollBoothHolder.\n@param sender The account that ran the action.\n@param tollBooth The toll booth just added.",
+            "id": 1789,
+            "name": "LogTollBoothAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1788,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1785,
+                  "indexed": true,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1789,
+                  "src": "291:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1784,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "291:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1787,
+                  "indexed": true,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1789,
+                  "src": "323:25:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1786,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "323:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "281:68:16"
+            },
+            "src": "258:92:16"
+          },
+          {
+            "body": null,
+            "documentation": "Called by the owner of the TollBoothHolder.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the argument is already a toll booth.\n    It should roll back if the argument is a 0x address.\n    When part of TollBoothOperatorI, it should be possible to add toll booths even when\n      the contract is paused.\n@param tollBooth The address of the toll booth being added.\n@return Whether the action was successful.\nEmits LogTollBoothAdded with:\n    The sender of the action.\n    The address of the toll booth just added.",
+            "id": 1796,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "addTollBooth",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1792,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1791,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1796,
+                  "src": "1036:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1790,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1036:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1035:19:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1795,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1794,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1796,
+                  "src": "1086:12:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1793,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1086:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1085:14:16"
+            },
+            "scope": 1817,
+            "src": "1014:86:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@param tollBooth The address of the toll booth we enquire about. It should accept a 0 address.\n@return Whether the toll booth is indeed known to the holder.",
+            "id": 1803,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isTollBooth",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1799,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1798,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1803,
+                  "src": "1314:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1797,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1314:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1313:19:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1802,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1801,
+                  "name": "isIndeed",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1803,
+                  "src": "1377:13:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1800,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1377:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1376:15:16"
+            },
+            "scope": 1817,
+            "src": "1293:99:16",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": "Event emitted when a toll booth has been removed from the TollBoothOperator.\n@param sender The account that ran the action.\n@param tollBooth The toll booth just removed.",
+            "id": 1809,
+            "name": "LogTollBoothRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1805,
+                  "indexed": true,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1809,
+                  "src": "1640:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1804,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1640:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1807,
+                  "indexed": true,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1809,
+                  "src": "1672:25:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1806,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1672:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1630:68:16"
+            },
+            "src": "1605:94:16"
+          },
+          {
+            "body": null,
+            "documentation": "Called by the owner of the TollBoothHolder.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the argument has already been removed.\n    It should roll back if the argument is a 0x address.\n    When part of TollBoothOperatorI, it should be possible to remove toll booth even when\n      the contract is paused.\n@param tollBooth The toll booth to remove.\n@return Whether the action was successful.\nEmits LogTollBoothRemoved with:\n    The sender of the action.\n    The address of the toll booth just removed.",
+            "id": 1816,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "removeTollBooth",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1812,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1811,
+                  "name": "tollBooth",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1816,
+                  "src": "2378:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1810,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2378:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2377:19:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1815,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1814,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1816,
+                  "src": "2428:12:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1813,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2428:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2427:14:16"
+            },
+            "scope": 1817,
+            "src": "2353:89:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1818,
+        "src": "26:2628:16"
+      }
+    ],
+    "src": "0:2654:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-12-06T12:29:53.351Z"
+}

@@ -1,5 +1,5 @@
 const Regulator = artifacts.require('./Regulator.sol')
 
-module.export = (deployer) => {
-  deployer.deploy(Regulator)
+module.exports = (deployer) => {
+  deployer.deploy(Regulator);
 }

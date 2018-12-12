@@ -168,7 +168,7 @@ contract('Scenarios', accounts => {
     // then
     assert.equal(transactionLogs.length, 1, 'Wrong number of events')
     assert.equal(transactionLogs[0].event, 'LogRoadExited', 'Event name mismatched')
-    assert.equal(transactionLogs[0].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis not correct')
+    assert.equal(transactionLogs[0].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis mismatched')
   })
 
   it('Given two vehicles when enter road then fifo queue case goes successfully', async () => {
@@ -191,9 +191,10 @@ contract('Scenarios', accounts => {
     const exitRoadTransactionTwo = await tollBoothOperatorInstance.setRoutePrice(booth1, booth, deposit + 1, {
       from: owner1
     })
-    const logs = exitRoadTransactionTwo.logs
+    const transactionLogs = exitRoadTransactionTwo.logs
     await tollBoothOperatorInstance.clearSomePendingPayments(booth1, booth, 1)
     // then
-    assert.equal(logs.length, 2, 'Event count mismatched')
+    assert.equal(transactionLogs.length, 2, 'Event count mismatched')
+    assert.equal(transactionLogs[0].args.refundWeis.toNumber(), 3 * multiplier, 'Refund weis mismatched')
   })
 })
