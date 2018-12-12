@@ -155,7 +155,7 @@
         "id": 80,
         "nodeType": "ImportDirective",
         "scope": 158,
-        "sourceUnit": 1616,
+        "sourceUnit": 1619,
         "src": "26:44:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -198,10 +198,10 @@
               "id": 84,
               "name": "MultiplierHolderI",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1615,
+              "referencedDeclaration": 1618,
               "src": "131:17:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MultiplierHolderI_$1615",
+                "typeIdentifier": "t_contract$_MultiplierHolderI_$1618",
                 "typeString": "contract MultiplierHolderI"
               }
             },
@@ -212,8 +212,8 @@
         ],
         "contractDependencies": [
           237,
-          1615,
-          1636
+          1618,
+          1639
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -221,9 +221,9 @@
         "id": 157,
         "linearizedBaseContracts": [
           157,
-          1615,
+          1618,
           237,
-          1636
+          1639
         ],
         "name": "MultiplierHolder",
         "nodeType": "ContractDefinition",
@@ -497,10 +497,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1936,
-                        1937
+                        2067,
+                        2068
                       ],
-                      "referencedDeclaration": 1937,
+                      "referencedDeclaration": 2068,
                       "src": "442:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -635,10 +635,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1936,
-                        1937
+                        2067,
+                        2068
                       ],
-                      "referencedDeclaration": 1937,
+                      "referencedDeclaration": 2068,
                       "src": "505:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -748,7 +748,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1933,
+                          "referencedDeclaration": 2064,
                           "src": "695:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -992,7 +992,7 @@
             "scope": 157,
             "src": "330:434:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1607,
+            "superFunction": 1610,
             "visibility": "public"
           },
           {
@@ -1127,7 +1127,7 @@
             "scope": 157,
             "src": "770:129:1",
             "stateMutability": "view",
-            "superFunction": 1614,
+            "superFunction": 1617,
             "visibility": "public"
           }
         ],
@@ -1164,7 +1164,7 @@
         "id": 80,
         "nodeType": "ImportDirective",
         "scope": 158,
-        "sourceUnit": 1616,
+        "sourceUnit": 1619,
         "src": "26:44:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1207,10 +1207,10 @@
               "id": 84,
               "name": "MultiplierHolderI",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1615,
+              "referencedDeclaration": 1618,
               "src": "131:17:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MultiplierHolderI_$1615",
+                "typeIdentifier": "t_contract$_MultiplierHolderI_$1618",
                 "typeString": "contract MultiplierHolderI"
               }
             },
@@ -1221,8 +1221,8 @@
         ],
         "contractDependencies": [
           237,
-          1615,
-          1636
+          1618,
+          1639
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1230,9 +1230,9 @@
         "id": 157,
         "linearizedBaseContracts": [
           157,
-          1615,
+          1618,
           237,
-          1636
+          1639
         ],
         "name": "MultiplierHolder",
         "nodeType": "ContractDefinition",
@@ -1506,10 +1506,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1936,
-                        1937
+                        2067,
+                        2068
                       ],
-                      "referencedDeclaration": 1937,
+                      "referencedDeclaration": 2068,
                       "src": "442:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1644,10 +1644,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1936,
-                        1937
+                        2067,
+                        2068
                       ],
-                      "referencedDeclaration": 1937,
+                      "referencedDeclaration": 2068,
                       "src": "505:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1757,7 +1757,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1933,
+                          "referencedDeclaration": 2064,
                           "src": "695:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2001,7 +2001,7 @@
             "scope": 157,
             "src": "330:434:1",
             "stateMutability": "nonpayable",
-            "superFunction": 1607,
+            "superFunction": 1610,
             "visibility": "public"
           },
           {
@@ -2136,7 +2136,7 @@
             "scope": 157,
             "src": "770:129:1",
             "stateMutability": "view",
-            "superFunction": 1614,
+            "superFunction": 1617,
             "visibility": "public"
           }
         ],
@@ -2152,5 +2152,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-06T12:29:53.344Z"
+  "updatedAt": "2018-12-12T14:46:07.404Z"
 }

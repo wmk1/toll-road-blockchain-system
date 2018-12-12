@@ -10,6 +10,7 @@ import "./interfaces/TollBoothOperatorI.sol";
 import "./Regulator.sol";
 import "./TollBoothHolder.sol";
 
+import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract TollBoothOperator is Owned, Pausable, DepositHolder, TollBoothHolder, 
 MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
@@ -145,7 +146,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
 
     function processPayment(bytes32 _exitSecretHashed, uint _routePrice) private returns(uint refund, uint finalFee) {
         Entry storage entry = entries[_exitSecretHashed];
-        uint vehiclePrice = _routePrice * entry.multiplier;
+        uint vehiclePrice = SafeMath.mul(_routePrice, entry.multiplier);
         uint depositedWeis = entry.depositedWeis;
         if (vehiclePrice > depositedWeis) {
             refund = 0;
