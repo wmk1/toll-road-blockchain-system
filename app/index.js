@@ -11,7 +11,9 @@ import regulatorArtifacts from '../../build/contracts/Regulator.json'
 import tollBoothOperator_artifacts from '../../build/contracts/TollBoothOperator.json'
 
 // MetaCoin is our usable abstraction, which we'll use through the code below.
-var MetaCoin = contract(metacoin_artifacts);
+var MetaCoin = contract(metacoin_artifacts)
+var Regulator = contract(regulatorArtifacts)
+var TollBoothOperator = contract(tollBoothOperator_artifacts)
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
@@ -88,11 +90,119 @@ window.App = {
   }
 };
 
-reportExitRoad: () => {
+  setVehicleType: () => {
+    var self = this
 
-};
+    let amount = parseInt(document.getElementById("amount").value)
+    let recipient = document.getElementById("recipient").value
 
+    let regulatorInstance
+    Regulator.deployed().then((instance) => {
+      regulatorInstance = instance
+      return regulatorInstance.setVehicleType(recipient, amount, { from: account })
+    }).then(() => {
+      self.setStatus("Vehicle type set")
+      self.refreshBalance()
+    }).catch((e) => {
+      console.log(e)
+      self.setStatus("An error occured while setting vehicle type")
+    })
+  }
 
+  createNewOperator: () => {
+    var self = this
+
+    let amount = parseInt(document.getElementById("amount").value)
+    let recipient = document.getElementById("recipient").value
+
+    let regulatorInstance
+    Regulator.deployed().then((instance) => {
+      regulatorInstance = instance
+      return regulatorInstance.createNewOperator(recipient, amount, { from: account })
+    }).then(() => {
+      self.setStatus("Vehicle type set")
+      self.refreshBalance()
+    }).catch((e) => {
+      console.log(e)
+      self.setStatus("An error occured while setting vehicle type")
+    })
+  }
+
+  addTollBooth: () => {
+    var self = this
+
+    let amount = parseInt(document.getElementById("amount").value)
+    let recipient = document.getElementById("recipient").value
+
+    let regulatorInstance
+    Regulator.deployed().then((instance) => {
+      regulatorInstance = instance
+      return regulatorInstance.setVehicleType(recipient, amount, { from: account })
+    }).then(() => {
+      self.setStatus("Vehicle type set")
+      self.refreshBalance()
+    }).catch((e) => {
+      console.log(e)
+      self.setStatus("An error occured while setting vehicle type")
+    })
+  }
+
+  setRoutePrice: () => {
+    var self = this
+
+    let amount = parseInt(document.getElementById("amount").value)
+    let recipient = document.getElementById("recipient").value
+
+    let regulatorInstance
+    Regulator.deployed().then((instance) => {
+      regulatorInstance = instance
+      return regulatorInstance.setVehicleType(recipient, amount, { from: account })
+    }).then(() => {
+      self.setStatus("Vehicle type set")
+      self.refreshBalance()
+    }).catch((e) => {
+      console.log(e)
+      self.setStatus("An error occured while setting vehicle type")
+    })
+  }
+
+  setMultiplier: () => {
+    var self = this
+
+    let amount = parseInt(document.getElementById("amount").value)
+    let recipient = document.getElementById("recipient").value
+
+    let regulatorInstance
+    Regulator.deployed().then((instance) => {
+      regulatorInstance = instance
+      return regulatorInstance.setVehicleType(recipient, amount, { from: account })
+    }).then(() => {
+      self.setStatus("Vehicle type set")
+      self.refreshBalance()
+    }).catch((e) => {
+      console.log(e)
+      self.setStatus("An error occured while setting vehicle type")
+    })
+  }
+
+  reportExitRoad: () => {
+    var self = this
+
+    let amount = parseInt(document.getElementById("amount").value)
+    let recipient = document.getElementById("recipient").value
+
+    let regulatorInstance
+    Regulator.deployed().then((instance) => {
+      regulatorInstance = instance
+      return regulatorInstance.setVehicleType(recipient, amount, { from: account })
+    }).then(() => {
+      self.setStatus("Vehicle type set")
+      self.refreshBalance()
+    }).catch((e) => {
+      console.log(e)
+      self.setStatus("An error occured while setting vehicle type")
+    })
+  }
 
 window.addEventListener('load', function() {
   // Checking if Web3 has been injected by the browser (Mist/MetaMask)

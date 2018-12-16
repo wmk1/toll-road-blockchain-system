@@ -1,36 +1,28 @@
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path')
 
 module.exports = {
-  entry: ['babel-polyfill', './app/scripts/index.js'],
-  mode: 'production',
+  entry: {
+    app: './app/index.js'
+  },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'app.js'
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
-  plugins: [
-    // Copy our app's index.html to the build folder.
-    new CopyWebpackPlugin([
-      { from: './app/index.html', to: 'index.html' }
-    ])
-  ],
-  devtool: 'source-map',
+
   module: {
-    rules: [
-      { test: /\.s?css$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ] },
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['env'],
-          plugins: ['transform-react-jsx', 'transform-object-rest-spread', 'transform-runtime']
+    rules: [{
+      test: /\.js$/, // include .js files
+      enforce: 'pre', // preload the jshint loader
+      exclude: /node_modules/, // exclude any and all files in the node_modules folder
+      use: [{
+        loader: 'jshint-loader',
+        // more options in the optional jshint object
+        options: { // ⬅ formally jshint property
+          camelcase: true,
+          emitErrors: false,
+          failOnHint: false
         }
-      }
-    ]
-  },
-  devServer: {
-    host: '0.0.0.0',
-    port: 8000
+      }]
+    }]
   }
 }

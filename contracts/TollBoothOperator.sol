@@ -15,6 +15,8 @@ import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 contract TollBoothOperator is Owned, Pausable, DepositHolder, TollBoothHolder, 
 MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
 
+    using SafeMath for uint;
+
     struct Entry {
         address vehicle;
         uint multiplier;
@@ -59,7 +61,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         Regulator roadRegulator = Regulator(getRegulator());
         uint vehicleMultiplier = multipliers[roadRegulator.vehicles(msg.sender)];
         require(vehicleMultiplier > 0, "Vehicle multiplier must be bigger than 0");
-        require(msg.value >= deposit * vehicleMultiplier, "Deposit must be bigger or equal!");
+        require(msg.value >= deposit.mul(vehicleMultiplier), "Deposit must be bigger or equal!");
         entries[_exitSecretHashed] = Entry(msg.sender, vehicleMultiplier, _entryBooth, msg.value);
         emit LogRoadEntered(msg.sender, _entryBooth, _exitSecretHashed, msg.value);
         return true;
@@ -146,7 +148,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
 
     function processPayment(bytes32 _exitSecretHashed, uint _routePrice) private returns(uint refund, uint finalFee) {
         Entry storage entry = entries[_exitSecretHashed];
-        uint vehiclePrice = SafeMath.mul(_routePrice, entry.multiplier);
+        uint vehiclePrice = _routePrice.mul(entry.multiplier);
         uint depositedWeis = entry.depositedWeis;
         if (vehiclePrice > depositedWeis) {
             refund = 0;
