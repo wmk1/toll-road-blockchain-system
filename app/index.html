@@ -3,39 +3,57 @@
 <head>
   <title>Toll booth operator app</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <script src="./scripts/index.js"></script>
+  <script src='./scripts/index.js'></script>
 </head>
 <body>
   <h1>ETH-26 - Toll booth operator project</h1>
-  <h3>You have <span class="black"><span id="balance"></span> META</span></h3>
+  <h3>Important information:</span></h3>
+  <h3>Vehicle types:</h3>
+  <h4>0 - not a vehicle</h4>
+  <h4>1 - motorbike</h4>
+  <h4>2 - car</h4>
+  <h4>3 - truck</h4>
 
-  <br>
+  <!--<br>
   <h1>Send MetaCoin</h1>
   <br><label for="amount">Amount:</label><input type="text" id="amount" placeholder="e.g., 95"></input>
   <br><label for="receiver">To Address:</label><input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
   <br><br><button id="send" onclick="App.sendCoin()">Send MetaCoin</button>
   <br><br>
   <span id="status"></span>
-  <br>
+  <br> -->
 
-  <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'London')">Regulator</button>
-    <button class="tablinks" onclick="openCity(event, 'Paris')">Toll booth operator</button>
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Check individual vehicles</button>
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Check individual toll booth operators</button>
-  </div>
   
-  <!-- Tab content -->
   <div id="regulator" class="tabcontent">
     <h3>Regulator</h3>
-    <p>Regulator contract</p>
+    <p>Set vehicle type</p>
+    <br><label for="vehicleType">Vehicle type: </label><input type="text" id="vehicleType" placeholder="1, 2, 3"></input>
+    <br>
+    <br><label for="address">To address: </label><input type="text" id="address" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
     <button class="tablinks" onclick=App.setVehicleType()>Set vehicle type</button>
-    <button
+    <p>Create new operator</p>
+    <br><label for="newOperatorAddresss">Operator address: </label><input type="text" id="newOperatorAddresss" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br><label for="deposit">Deposit: </label><input type="text" id="deposit" placeholder="Default deposited weis"></input>
+    <br>
+    <button class="tablinks" onclick=App.createNewOperator()>Create new operator</button>
+
   </div>
   
   <div id="tollBoothOperator" class="tabcontent">
     <h3>Toll booth operator</h3>
-    <p>Work on toll booth operator contract</p> 
+    <p>Add toll booth</p>
+    <br><label for="createdTollBooth">Toll booth address: </label><input type="text" id="createdTollBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <button class="tablinks" onclick="App.addTollBooth">Add toll booth</button>
+    <br>
+    <p>Change route price</p>
+    <br>
+    <br><label for="entryBooth">Entry booth: </label><input type="text" id="entryBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <br><label for="exitBooth">Exit booth: </label><input type="text" id="exitBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br>
+    <button class="tablinks" onclick=App.setRoutePrice()>Set route price</button>
   </div>
   
   <div id="individualVehicles" class="tabcontent">
@@ -45,7 +63,8 @@
 
   <div id="individualTollBooths" class="tabcontent">
     <h3>Individual toll booth operators</h3>
-    <p>Content about individual toll booth operators</p>
+    <p>Report exit road</p>
+
   </div>
   <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
 </body>
