@@ -171,7 +171,7 @@ contract('Scenarios', accounts => {
     assert.equal(transactionLogs[0].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis mismatched')
   })
 
-  it('Given two vehicles when enter road then fifo queue case goes successfully', async () => {
+  it('Given two vehicles when enter road then first in first out  queue case scenario goes successfully', async () => {
     //given
     await tollBoothOperatorInstance.enterRoad(booth1, hashed, {
       from: vehicle,

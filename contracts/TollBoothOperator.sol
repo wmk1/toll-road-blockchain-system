@@ -75,7 +75,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     function reportExitRoad(bytes32 _exitSecretClear) public whenNotPaused returns(uint status) {
         require(isTollBooth(msg.sender), "Sender has to be toll booth");
         bytes32 exitSecretHashed = hashSecret(_exitSecretClear);
-        require(entries[exitSecretHashed].vehicle != 0x0 && entries[exitSecretHashed].depositedWeis != 0x0, "Vehicle type cannot be 0.");
+        require(entries[exitSecretHashed].vehicle != 0x0 && entries[exitSecretHashed].depositedWeis != 0, "Neither vehicle cannot be 0 and deposited weis cannot be 0");
         Entry storage entry = entries[exitSecretHashed];
         require(Regulator(getRegulator()).vehicles(entry.vehicle) > 0, "Vehicle type cannot be 0.");
         require(entry.entryBooth != msg.sender, "Entry booth cannot be a sender of contract");

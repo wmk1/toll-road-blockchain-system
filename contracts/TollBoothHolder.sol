@@ -12,7 +12,7 @@ contract TollBoothHolder is Owned, TollBoothHolderI {
     event LogTollBoothRemoved(address indexed sender, address indexed tollBooth);
 
     modifier onlyIfNotZeroAddress(address _address) {
-        require(_address > 0, "An address cannot be 0");
+        require(_address != 0, "An address cannot be 0");
         _;
     }
 
@@ -20,7 +20,7 @@ contract TollBoothHolder is Owned, TollBoothHolderI {
     }
 
     function addTollBooth(address _tollBooth) public fromOwner returns (bool success) {
-        require(_tollBooth > 0x0, "New toll booth address cannot be 0");
+        require(_tollBooth != 0x0, "New toll booth address cannot be 0");
         require(!isTollBooth(_tollBooth), "Address is already a toll booth.");
         tollBoothHolders[_tollBooth] = true;
         emit LogTollBoothAdded(msg.sender, _tollBooth);
