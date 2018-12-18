@@ -1,0 +1,25 @@
+
+
+I. Contracts
+
+I tried my best and made an effort to suit all contracts to a good practices regarding writing smart contracts. In some contracts that included math operations I've used OpenZeppelin-solidity library in order to provide safe calculation. 
+
+II. Tests
+
+I have decided to use async/await in scenarios.js and not to touch any remaining test and keep them in non async/await way.
+
+If you have issues with tests in terms of VM/out of gas, the best way to solve it is to use:
+
+ganache-cli -l 150000 --allowUnlimitedContractSize
+
+It makes that in 168 tests 2 are not running: TestOwnedA and TestRoutePriceHolderB. 
+
+If 
+
+III. GUI
+
+Unfortunately, due to many webpack and package issues I ran out of time with implementing proper GUI and working in way I wished. The reason behind that is the errors that occured during launching project from the scratch, and webpack acted very strange
+with not-so-new modules in package.json 
+
+I am not sure if my ready implementations would work if I had no problem with webpack and web3, but you will be the judge ;) 
+

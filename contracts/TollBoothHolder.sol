@@ -11,11 +11,6 @@ contract TollBoothHolder is Owned, TollBoothHolderI {
     event LogTollBoothAdded(address indexed sender, address indexed tollBooth);
     event LogTollBoothRemoved(address indexed sender, address indexed tollBooth);
 
-    modifier onlyIfNotZeroAddress(address _address) {
-        require(_address != 0, "An address cannot be 0");
-        _;
-    }
-
     constructor() public {
     }
 

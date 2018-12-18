@@ -62,14 +62,14 @@
     "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RegulatedI.sol",
     "exportedSymbols": {
       "RegulatedI": [
-        1681
+        1667
       ]
     },
-    "id": 1682,
+    "id": 1668,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1660,
+        "id": 1646,
         "literals": [
           "solidity",
           "^",
@@ -82,14 +82,14 @@
       {
         "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RegulatorI.sol",
         "file": "./RegulatorI.sol",
-        "id": 1662,
+        "id": 1648,
         "nodeType": "ImportDirective",
-        "scope": 1682,
-        "sourceUnit": 1750,
+        "scope": 1668,
+        "sourceUnit": 1736,
         "src": "26:46:13",
         "symbolAliases": [
           {
-            "foreign": 1661,
+            "foreign": 1647,
             "local": null
           }
         ],
@@ -101,9 +101,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1681,
+        "id": 1667,
         "linearizedBaseContracts": [
-          1681
+          1667
         ],
         "name": "RegulatedI",
         "nodeType": "ContractDefinition",
@@ -111,20 +111,20 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new regulator has been set.\n@param previousRegulator The previous regulator of the contract.\n@param newRegulator The new, and current, regulator of the contract.",
-            "id": 1668,
+            "id": 1654,
             "name": "LogRegulatorSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1667,
+              "id": 1653,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1664,
+                  "id": 1650,
                   "indexed": true,
                   "name": "previousRegulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1668,
+                  "scope": 1654,
                   "src": "351:33:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -133,7 +133,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1663,
+                    "id": 1649,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "351:7:13",
@@ -147,11 +147,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1666,
+                  "id": 1652,
                   "indexed": true,
                   "name": "newRegulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1668,
+                  "scope": 1654,
                   "src": "394:28:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -160,7 +160,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1665,
+                    "id": 1651,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "394:7:13",
@@ -180,7 +180,7 @@
           {
             "body": null,
             "documentation": "Sets the new regulator for this contract.\n    It should roll back if any address other than the current regulator of this contract\n      calls this function.\n    It should roll back if the new regulator address is 0.\n    It should roll back if the new regulator is the same as the current regulator.\n@param newRegulator The new desired regulator of the contract. It is assumed, that this is the\n    address of a `RegulatorI` contract. It is not necessary to prove it is a `RegulatorI`.\n@return Whether the action was successful.\nEmits LogRegulatorSet with:\n    The sender of the action.\n    The new regulator.",
-            "id": 1675,
+            "id": 1661,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -188,15 +188,15 @@
             "name": "setRegulator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1671,
+              "id": 1657,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1670,
+                  "id": 1656,
                   "name": "newRegulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1675,
+                  "scope": 1661,
                   "src": "1155:20:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -205,7 +205,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1669,
+                    "id": 1655,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1155:7:13",
@@ -222,15 +222,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1674,
+              "id": 1660,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1673,
+                  "id": 1659,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1675,
+                  "scope": 1661,
                   "src": "1208:12:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -239,7 +239,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1672,
+                    "id": 1658,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1208:4:13",
@@ -254,7 +254,7 @@
               ],
               "src": "1207:14:13"
             },
-            "scope": 1681,
+            "scope": 1667,
             "src": "1133:89:13",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -263,7 +263,7 @@
           {
             "body": null,
             "documentation": "@return The current regulator.",
-            "id": 1680,
+            "id": 1666,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -271,38 +271,38 @@
             "name": "getRegulator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1676,
+              "id": 1662,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1303:2:13"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1679,
+              "id": 1665,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1678,
+                  "id": 1664,
                   "name": "regulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1680,
+                  "scope": 1666,
                   "src": "1350:20:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RegulatorI_$1749",
+                    "typeIdentifier": "t_contract$_RegulatorI_$1735",
                     "typeString": "contract RegulatorI"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1677,
+                    "id": 1663,
                     "name": "RegulatorI",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1749,
+                    "referencedDeclaration": 1735,
                     "src": "1350:10:13",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RegulatorI_$1749",
+                      "typeIdentifier": "t_contract$_RegulatorI_$1735",
                       "typeString": "contract RegulatorI"
                     }
                   },
@@ -312,14 +312,14 @@
               ],
               "src": "1349:22:13"
             },
-            "scope": 1681,
+            "scope": 1667,
             "src": "1282:90:13",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1682,
+        "scope": 1668,
         "src": "74:1641:13"
       }
     ],
@@ -329,14 +329,14 @@
     "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RegulatedI.sol",
     "exportedSymbols": {
       "RegulatedI": [
-        1681
+        1667
       ]
     },
-    "id": 1682,
+    "id": 1668,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1660,
+        "id": 1646,
         "literals": [
           "solidity",
           "^",
@@ -349,14 +349,14 @@
       {
         "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RegulatorI.sol",
         "file": "./RegulatorI.sol",
-        "id": 1662,
+        "id": 1648,
         "nodeType": "ImportDirective",
-        "scope": 1682,
-        "sourceUnit": 1750,
+        "scope": 1668,
+        "sourceUnit": 1736,
         "src": "26:46:13",
         "symbolAliases": [
           {
-            "foreign": 1661,
+            "foreign": 1647,
             "local": null
           }
         ],
@@ -368,9 +368,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1681,
+        "id": 1667,
         "linearizedBaseContracts": [
-          1681
+          1667
         ],
         "name": "RegulatedI",
         "nodeType": "ContractDefinition",
@@ -378,20 +378,20 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new regulator has been set.\n@param previousRegulator The previous regulator of the contract.\n@param newRegulator The new, and current, regulator of the contract.",
-            "id": 1668,
+            "id": 1654,
             "name": "LogRegulatorSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1667,
+              "id": 1653,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1664,
+                  "id": 1650,
                   "indexed": true,
                   "name": "previousRegulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1668,
+                  "scope": 1654,
                   "src": "351:33:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -400,7 +400,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1663,
+                    "id": 1649,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "351:7:13",
@@ -414,11 +414,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1666,
+                  "id": 1652,
                   "indexed": true,
                   "name": "newRegulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1668,
+                  "scope": 1654,
                   "src": "394:28:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -427,7 +427,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1665,
+                    "id": 1651,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "394:7:13",
@@ -447,7 +447,7 @@
           {
             "body": null,
             "documentation": "Sets the new regulator for this contract.\n    It should roll back if any address other than the current regulator of this contract\n      calls this function.\n    It should roll back if the new regulator address is 0.\n    It should roll back if the new regulator is the same as the current regulator.\n@param newRegulator The new desired regulator of the contract. It is assumed, that this is the\n    address of a `RegulatorI` contract. It is not necessary to prove it is a `RegulatorI`.\n@return Whether the action was successful.\nEmits LogRegulatorSet with:\n    The sender of the action.\n    The new regulator.",
-            "id": 1675,
+            "id": 1661,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -455,15 +455,15 @@
             "name": "setRegulator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1671,
+              "id": 1657,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1670,
+                  "id": 1656,
                   "name": "newRegulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1675,
+                  "scope": 1661,
                   "src": "1155:20:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -472,7 +472,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1669,
+                    "id": 1655,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1155:7:13",
@@ -489,15 +489,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1674,
+              "id": 1660,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1673,
+                  "id": 1659,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1675,
+                  "scope": 1661,
                   "src": "1208:12:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -506,7 +506,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1672,
+                    "id": 1658,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1208:4:13",
@@ -521,7 +521,7 @@
               ],
               "src": "1207:14:13"
             },
-            "scope": 1681,
+            "scope": 1667,
             "src": "1133:89:13",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -530,7 +530,7 @@
           {
             "body": null,
             "documentation": "@return The current regulator.",
-            "id": 1680,
+            "id": 1666,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -538,38 +538,38 @@
             "name": "getRegulator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1676,
+              "id": 1662,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1303:2:13"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1679,
+              "id": 1665,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1678,
+                  "id": 1664,
                   "name": "regulator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1680,
+                  "scope": 1666,
                   "src": "1350:20:13",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RegulatorI_$1749",
+                    "typeIdentifier": "t_contract$_RegulatorI_$1735",
                     "typeString": "contract RegulatorI"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1677,
+                    "id": 1663,
                     "name": "RegulatorI",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1749,
+                    "referencedDeclaration": 1735,
                     "src": "1350:10:13",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RegulatorI_$1749",
+                      "typeIdentifier": "t_contract$_RegulatorI_$1735",
                       "typeString": "contract RegulatorI"
                     }
                   },
@@ -579,14 +579,14 @@
               ],
               "src": "1349:22:13"
             },
-            "scope": 1681,
+            "scope": 1667,
             "src": "1282:90:13",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1682,
+        "scope": 1668,
         "src": "74:1641:13"
       }
     ],
@@ -598,5 +598,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-18T13:04:59.520Z"
+  "updatedAt": "2018-12-18T21:22:10.436Z"
 }

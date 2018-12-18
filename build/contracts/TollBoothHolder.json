@@ -149,20 +149,20 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610b03806100606000396000f30060806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630bbbcbb21461007257806313af4035146100cd5780632c333eab1461012857806350bb553a14610183578063893d20e8146101de575b600080fd5b34801561007e57600080fd5b506100b3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610235565b604051808215151515815260200191505060405180910390f35b3480156100d957600080fd5b5061010e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610476565b604051808215151515815260200191505060405180910390f35b34801561013457600080fd5b50610169600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061077f565b604051808215151515815260200191505060405180910390f35b34801561018f57600080fd5b506101c4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a58565b604051808215151515815260200191505060405180910390f35b3480156101ea57600080fd5b506101f3610aae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610321576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61032a82610a58565b15156103c4576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260218152602001807f476976656e2061646472657373206973206e6f74206120746f6c6c20626f6f7481526020017f680000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81549060ff02191690558173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe8967860405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610562576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff16141515156105f1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f4e6577206f776e65722063616e6e6f742062652030206164647265737300000081525060200191505060405180910390fd5b3373ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16141515156106bb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260278152602001807f4e6577206f776e6572206d75737420626520646966666572656e74207468616e81526020017f2073656e6465720000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb60405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561086b576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff1614151515610920576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4e657720746f6c6c20626f6f746820616464726573732063616e6e6f7420626581526020017f203000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61092982610a58565b15151561099e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4164647265737320697320616c7265616479206120746f6c6c20626f6f74682e81525060200191505060405180910390fd5b60018060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055508173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d60405160405180910390a360019050919050565b6000600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a723058207715eff67c9d4fe8cb369877e6f2bce61ef7222b53ef5ef90727bc4bee3b19510029",
-  "deployedBytecode": "0x60806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630bbbcbb21461007257806313af4035146100cd5780632c333eab1461012857806350bb553a14610183578063893d20e8146101de575b600080fd5b34801561007e57600080fd5b506100b3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610235565b604051808215151515815260200191505060405180910390f35b3480156100d957600080fd5b5061010e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610476565b604051808215151515815260200191505060405180910390f35b34801561013457600080fd5b50610169600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061077f565b604051808215151515815260200191505060405180910390f35b34801561018f57600080fd5b506101c4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a58565b604051808215151515815260200191505060405180910390f35b3480156101ea57600080fd5b506101f3610aae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610321576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61032a82610a58565b15156103c4576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260218152602001807f476976656e2061646472657373206973206e6f74206120746f6c6c20626f6f7481526020017f680000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81549060ff02191690558173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe8967860405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610562576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff16141515156105f1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f4e6577206f776e65722063616e6e6f742062652030206164647265737300000081525060200191505060405180910390fd5b3373ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16141515156106bb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260278152602001807f4e6577206f776e6572206d75737420626520646966666572656e74207468616e81526020017f2073656e6465720000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb60405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561086b576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff1614151515610920576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4e657720746f6c6c20626f6f746820616464726573732063616e6e6f7420626581526020017f203000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61092982610a58565b15151561099e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4164647265737320697320616c7265616479206120746f6c6c20626f6f74682e81525060200191505060405180910390fd5b60018060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055508173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d60405160405180910390a360019050919050565b6000600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a723058207715eff67c9d4fe8cb369877e6f2bce61ef7222b53ef5ef90727bc4bee3b19510029",
-  "sourceMap": "94:1254:7:-;;;503:28;8:9:-1;5:2;;;30:1;27;20:12;5:2;503:28:7;364:10:2;356:5;;:18;;;;;;;;;;;;;;;;;;94:1254:7;;;;;;",
-  "deployedSourceMap": "94:1254:7:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1039:307;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1039:307:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;387:319:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;387:319:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;537:364:7;;8:9:-1;5:2;;;30:1;27;20:12;5:2;537:364:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;907:126;;8:9:-1;5:2;;;30:1;27;20:12;5:2;907:126:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;712:78:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;712:78:2;;;;;;;;;;;;;;;;;;;;;;;;;;;1039:307:7;1110:12;176:5:2;;;;;;;;;;;162:19;;:10;:19;;;154:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1142:23:7;1154:10;1142:11;:23::i;:::-;1134:69;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1232:16;:28;1249:10;1232:28;;;;;;;;;;;;;;;;1225:35;;;;;;;;;;;1307:10;1275:43;;1295:10;1275:43;;;;;;;;;;;;1335:4;1328:11;;1039:307;;;:::o;387:319:2:-;449:4;176:5;;;;;;;;;;;162:19;;:10;:19;;;154:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;486:1;473:9;:14;;;;465:56;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;552:10;539:23;;:9;:23;;;;531:75;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;624:9;616:5;;:17;;;;;;;;;;;;;;;;;;672:5;;;;;;;;;;;648:30;;660:10;648:30;;;;;;;;;;;;695:4;688:11;;387:319;;;:::o;537:364:7:-;605:12;176:5:2;;;;;;;;;;;162:19;;:10;:19;;;154:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;651:3:7;637:10;:17;;;;629:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;712:23;724:10;712:11;:23::i;:::-;711:24;703:69;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;813:4;782:16;:28;799:10;782:28;;;;;;;;;;;;;;;;:35;;;;;;;;;;;;;;;;;;862:10;832:41;;850:10;832:41;;;;;;;;;;;;890:4;883:11;;537:364;;;:::o;907:126::-;968:11;998:16;:28;1015:10;998:28;;;;;;;;;;;;;;;;;;;;;;;;;991:35;;907:126;;;:::o;712:78:2:-;752:7;778:5;;;;;;;;;;;771:12;;712:78;:::o",
-  "source": "pragma solidity ^0.4.24;\n\nimport \"./Owned.sol\";\nimport \"./interfaces/TollBoothHolderI.sol\";\n\n\ncontract TollBoothHolder is Owned, TollBoothHolderI {\n\n    mapping(address => bool) internal tollBoothHolders;\n\n    event LogTollBoothAdded(address indexed sender, address indexed tollBooth);\n    event LogTollBoothRemoved(address indexed sender, address indexed tollBooth);\n\n    modifier onlyIfNotZeroAddress(address _address) {\n        require(_address != 0, \"An address cannot be 0\");\n        _;\n    }\n\n    constructor() public {\n    }\n\n    function addTollBooth(address _tollBooth) public fromOwner returns (bool success) {\n        require(_tollBooth != 0x0, \"New toll booth address cannot be 0\");\n        require(!isTollBooth(_tollBooth), \"Address is already a toll booth.\");\n        tollBoothHolders[_tollBooth] = true;\n        emit LogTollBoothAdded(msg.sender, _tollBooth);\n        return true;\n    }\n\n    function isTollBooth(address _tollBooth) public view returns(bool indeed) {\n        return tollBoothHolders[_tollBooth];\n    }\n\n    function removeTollBooth(address _tollBooth) public fromOwner returns (bool success) {\n        require(isTollBooth(_tollBooth), \"Given address is not a toll booth\");            \n        delete tollBoothHolders[_tollBooth];\n        emit LogTollBoothRemoved(msg.sender, _tollBooth);\n        return true;\n    }\n}",
+  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610b03806100606000396000f30060806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630bbbcbb21461007257806313af4035146100cd5780632c333eab1461012857806350bb553a14610183578063893d20e8146101de575b600080fd5b34801561007e57600080fd5b506100b3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610235565b604051808215151515815260200191505060405180910390f35b3480156100d957600080fd5b5061010e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610476565b604051808215151515815260200191505060405180910390f35b34801561013457600080fd5b50610169600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061077f565b604051808215151515815260200191505060405180910390f35b34801561018f57600080fd5b506101c4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a58565b604051808215151515815260200191505060405180910390f35b3480156101ea57600080fd5b506101f3610aae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610321576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61032a82610a58565b15156103c4576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260218152602001807f476976656e2061646472657373206973206e6f74206120746f6c6c20626f6f7481526020017f680000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81549060ff02191690558173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe8967860405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610562576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff16141515156105f1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f4e6577206f776e65722063616e6e6f742062652030206164647265737300000081525060200191505060405180910390fd5b3373ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16141515156106bb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260278152602001807f4e6577206f776e6572206d75737420626520646966666572656e74207468616e81526020017f2073656e6465720000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb60405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561086b576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff1614151515610920576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4e657720746f6c6c20626f6f746820616464726573732063616e6e6f7420626581526020017f203000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61092982610a58565b15151561099e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4164647265737320697320616c7265616479206120746f6c6c20626f6f74682e81525060200191505060405180910390fd5b60018060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055508173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d60405160405180910390a360019050919050565b6000600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a723058207dc009c3012f6749a977ec69e8686b4f46b32a248a921999a52fbbc8965646dd0029",
+  "deployedBytecode": "0x60806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630bbbcbb21461007257806313af4035146100cd5780632c333eab1461012857806350bb553a14610183578063893d20e8146101de575b600080fd5b34801561007e57600080fd5b506100b3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610235565b604051808215151515815260200191505060405180910390f35b3480156100d957600080fd5b5061010e600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610476565b604051808215151515815260200191505060405180910390f35b34801561013457600080fd5b50610169600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061077f565b604051808215151515815260200191505060405180910390f35b34801561018f57600080fd5b506101c4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a58565b604051808215151515815260200191505060405180910390f35b3480156101ea57600080fd5b506101f3610aae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610321576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61032a82610a58565b15156103c4576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260218152602001807f476976656e2061646472657373206973206e6f74206120746f6c6c20626f6f7481526020017f680000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81549060ff02191690558173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f5b34220b1e6888774f5c1badf295633d5d8d4ae02d5e3019e422b3debfe8967860405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610562576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff16141515156105f1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f4e6577206f776e65722063616e6e6f742062652030206164647265737300000081525060200191505060405180910390fd5b3373ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16141515156106bb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260278152602001807f4e6577206f776e6572206d75737420626520646966666572656e74207468616e81526020017f2073656e6465720000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb60405160405180910390a360019050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561086b576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4f6e6c79206f776e65722063616e20706572666f726d2074686973206163746981526020017f6f6e00000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b60008273ffffffffffffffffffffffffffffffffffffffff1614151515610920576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001807f4e657720746f6c6c20626f6f746820616464726573732063616e6e6f7420626581526020017f203000000000000000000000000000000000000000000000000000000000000081525060400191505060405180910390fd5b61092982610a58565b15151561099e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4164647265737320697320616c7265616479206120746f6c6c20626f6f74682e81525060200191505060405180910390fd5b60018060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055508173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fe8f587f6ae5ef5f7560b94b9369dd242c9de0588c328add1a785044abf837c6d60405160405180910390a360019050919050565b6000600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050905600a165627a7a723058207dc009c3012f6749a977ec69e8686b4f46b32a248a921999a52fbbc8965646dd0029",
+  "sourceMap": "94:1124:7:-;;;373:28;8:9:-1;5:2;;;30:1;27;20:12;5:2;373:28:7;364:10:2;356:5;;:18;;;;;;;;;;;;;;;;;;94:1124:7;;;;;;",
+  "deployedSourceMap": "94:1124:7:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;909:307;;8:9:-1;5:2;;;30:1;27;20:12;5:2;909:307:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;387:321:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;387:321:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;407:364:7;;8:9:-1;5:2;;;30:1;27;20:12;5:2;407:364:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;777:126;;8:9:-1;5:2;;;30:1;27;20:12;5:2;777:126:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;714:78:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;714:78:2;;;;;;;;;;;;;;;;;;;;;;;;;;;909:307:7;980:12;176:5:2;;;;;;;;;;;162:19;;:10;:19;;;154:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1012:23:7;1024:10;1012:11;:23::i;:::-;1004:69;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1102:16;:28;1119:10;1102:28;;;;;;;;;;;;;;;;1095:35;;;;;;;;;;;1177:10;1145:43;;1165:10;1145:43;;;;;;;;;;;;1205:4;1198:11;;909:307;;;:::o;387:321:2:-;449:4;176:5;;;;;;;;;;;162:19;;:10;:19;;;154:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;486:3;473:9;:16;;;;465:58;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;554:10;541:23;;:9;:23;;;;533:75;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;626:9;618:5;;:17;;;;;;;;;;;;;;;;;;674:5;;;;;;;;;;;650:30;;662:10;650:30;;;;;;;;;;;;697:4;690:11;;387:321;;;:::o;407:364:7:-;475:12;176:5:2;;;;;;;;;;;162:19;;:10;:19;;;154:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;521:3:7;507:10;:17;;;;499:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;582:23;594:10;582:11;:23::i;:::-;581:24;573:69;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;683:4;652:16;:28;669:10;652:28;;;;;;;;;;;;;;;;:35;;;;;;;;;;;;;;;;;;732:10;702:41;;720:10;702:41;;;;;;;;;;;;760:4;753:11;;407:364;;;:::o;777:126::-;838:11;868:16;:28;885:10;868:28;;;;;;;;;;;;;;;;;;;;;;;;;861:35;;777:126;;;:::o;714:78:2:-;754:7;780:5;;;;;;;;;;;773:12;;714:78;:::o",
+  "source": "pragma solidity ^0.4.24;\n\nimport \"./Owned.sol\";\nimport \"./interfaces/TollBoothHolderI.sol\";\n\n\ncontract TollBoothHolder is Owned, TollBoothHolderI {\n\n    mapping(address => bool) internal tollBoothHolders;\n\n    event LogTollBoothAdded(address indexed sender, address indexed tollBooth);\n    event LogTollBoothRemoved(address indexed sender, address indexed tollBooth);\n\n    constructor() public {\n    }\n\n    function addTollBooth(address _tollBooth) public fromOwner returns (bool success) {\n        require(_tollBooth != 0x0, \"New toll booth address cannot be 0\");\n        require(!isTollBooth(_tollBooth), \"Address is already a toll booth.\");\n        tollBoothHolders[_tollBooth] = true;\n        emit LogTollBoothAdded(msg.sender, _tollBooth);\n        return true;\n    }\n\n    function isTollBooth(address _tollBooth) public view returns(bool indeed) {\n        return tollBoothHolders[_tollBooth];\n    }\n\n    function removeTollBooth(address _tollBooth) public fromOwner returns (bool success) {\n        require(isTollBooth(_tollBooth), \"Given address is not a toll booth\");            \n        delete tollBoothHolders[_tollBooth];\n        emit LogTollBoothRemoved(msg.sender, _tollBooth);\n        return true;\n    }\n}",
   "sourcePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/TollBoothHolder.sol",
   "ast": {
     "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/TollBoothHolder.sol",
     "exportedSymbols": {
       "TollBoothHolder": [
-        839
+        826
       ]
     },
-    "id": 840,
+    "id": 827,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -181,7 +181,7 @@
         "file": "./Owned.sol",
         "id": 719,
         "nodeType": "ImportDirective",
-        "scope": 840,
+        "scope": 827,
         "sourceUnit": 238,
         "src": "26:21:7",
         "symbolAliases": [],
@@ -192,8 +192,8 @@
         "file": "./interfaces/TollBoothHolderI.sol",
         "id": 720,
         "nodeType": "ImportDirective",
-        "scope": 840,
-        "sourceUnit": 1819,
+        "scope": 827,
+        "sourceUnit": 1805,
         "src": "48:43:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -225,10 +225,10 @@
               "id": 723,
               "name": "TollBoothHolderI",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1818,
+              "referencedDeclaration": 1804,
               "src": "129:16:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TollBoothHolderI_$1818",
+                "typeIdentifier": "t_contract$_TollBoothHolderI_$1804",
                 "typeString": "contract TollBoothHolderI"
               }
             },
@@ -239,18 +239,18 @@
         ],
         "contractDependencies": [
           237,
-          1637,
-          1818
+          1623,
+          1804
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 839,
+        "id": 826,
         "linearizedBaseContracts": [
-          839,
-          1818,
+          826,
+          1804,
           237,
-          1637
+          1623
         ],
         "name": "TollBoothHolder",
         "nodeType": "ContractDefinition",
@@ -260,7 +260,7 @@
             "id": 728,
             "name": "tollBoothHolders",
             "nodeType": "VariableDeclaration",
-            "scope": 839,
+            "scope": 826,
             "src": "153:50:7",
             "stateVariable": true,
             "storageLocation": "default",
@@ -440,182 +440,13 @@
           },
           {
             "body": {
-              "id": 752,
-              "nodeType": "Block",
-              "src": "421:76:7",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "arguments": [
-                      {
-                        "argumentTypes": null,
-                        "commonType": {
-                          "typeIdentifier": "t_address",
-                          "typeString": "address"
-                        },
-                        "id": 747,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "lValueRequested": false,
-                        "leftExpression": {
-                          "argumentTypes": null,
-                          "id": 745,
-                          "name": "_address",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 742,
-                          "src": "439:8:7",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_address",
-                            "typeString": "address"
-                          }
-                        },
-                        "nodeType": "BinaryOperation",
-                        "operator": "!=",
-                        "rightExpression": {
-                          "argumentTypes": null,
-                          "hexValue": "30",
-                          "id": 746,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": true,
-                          "kind": "number",
-                          "lValueRequested": false,
-                          "nodeType": "Literal",
-                          "src": "451:1:7",
-                          "subdenomination": null,
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_rational_0_by_1",
-                            "typeString": "int_const 0"
-                          },
-                          "value": "0"
-                        },
-                        "src": "439:13:7",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "hexValue": "416e20616464726573732063616e6e6f742062652030",
-                        "id": 748,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": true,
-                        "kind": "string",
-                        "lValueRequested": false,
-                        "nodeType": "Literal",
-                        "src": "454:24:7",
-                        "subdenomination": null,
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_stringliteral_a2feb191abe139560f78bd936c754bf1315b465bd6824e7a149a237389b22c9c",
-                          "typeString": "literal_string \"An address cannot be 0\""
-                        },
-                        "value": "An address cannot be 0"
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        },
-                        {
-                          "typeIdentifier": "t_stringliteral_a2feb191abe139560f78bd936c754bf1315b465bd6824e7a149a237389b22c9c",
-                          "typeString": "literal_string \"An address cannot be 0\""
-                        }
-                      ],
-                      "id": 744,
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        2065,
-                        2066
-                      ],
-                      "referencedDeclaration": 2066,
-                      "src": "431:7:7",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
-                        "typeString": "function (bool,string memory) pure"
-                      }
-                    },
-                    "id": 749,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "431:48:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 750,
-                  "nodeType": "ExpressionStatement",
-                  "src": "431:48:7"
-                },
-                {
-                  "id": 751,
-                  "nodeType": "PlaceholderStatement",
-                  "src": "489:1:7"
-                }
-              ]
-            },
-            "documentation": null,
-            "id": 753,
-            "name": "onlyIfNotZeroAddress",
-            "nodeType": "ModifierDefinition",
-            "parameters": {
               "id": 743,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 742,
-                  "name": "_address",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 753,
-                  "src": "403:16:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 741,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "403:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "402:18:7"
-            },
-            "src": "373:124:7",
-            "visibility": "internal"
-          },
-          {
-            "body": {
-              "id": 756,
               "nodeType": "Block",
-              "src": "524:7:7",
+              "src": "394:7:7",
               "statements": []
             },
             "documentation": null,
-            "id": 757,
+            "id": 744,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -623,29 +454,29 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 754,
+              "id": 741,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "514:2:7"
+              "src": "384:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 755,
+              "id": 742,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "524:0:7"
+              "src": "394:0:7"
             },
-            "scope": 839,
-            "src": "503:28:7",
+            "scope": 826,
+            "src": "373:28:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 795,
+              "id": 782,
               "nodeType": "Block",
-              "src": "619:282:7",
+              "src": "489:282:7",
               "statements": [
                 {
                   "expression": {
@@ -657,19 +488,19 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-                        "id": 769,
+                        "id": 756,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 767,
+                          "id": 754,
                           "name": "_tollBooth",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 759,
-                          "src": "637:10:7",
+                          "referencedDeclaration": 746,
+                          "src": "507:10:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -680,14 +511,14 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "307830",
-                          "id": 768,
+                          "id": 755,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "651:3:7",
+                          "src": "521:3:7",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
@@ -695,7 +526,7 @@
                           },
                           "value": "0x0"
                         },
-                        "src": "637:17:7",
+                        "src": "507:17:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -704,14 +535,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "4e657720746f6c6c20626f6f746820616464726573732063616e6e6f742062652030",
-                        "id": 770,
+                        "id": 757,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "656:36:7",
+                        "src": "526:36:7",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_cb5f8c5acc7bcfdfd82d3ec1d6ec920f0e8bb7770af0ef1572cd354545e65ab5",
@@ -731,21 +562,21 @@
                           "typeString": "literal_string \"New toll booth address cannot be 0\""
                         }
                       ],
-                      "id": 766,
+                      "id": 753,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2065,
-                        2066
+                        2051,
+                        2052
                       ],
-                      "referencedDeclaration": 2066,
-                      "src": "629:7:7",
+                      "referencedDeclaration": 2052,
+                      "src": "499:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 771,
+                    "id": 758,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -753,15 +584,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "629:64:7",
+                    "src": "499:64:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 772,
+                  "id": 759,
                   "nodeType": "ExpressionStatement",
-                  "src": "629:64:7"
+                  "src": "499:64:7"
                 },
                 {
                   "expression": {
@@ -769,7 +600,7 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 777,
+                        "id": 764,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -777,18 +608,18 @@
                         "nodeType": "UnaryOperation",
                         "operator": "!",
                         "prefix": true,
-                        "src": "711:24:7",
+                        "src": "581:24:7",
                         "subExpression": {
                           "argumentTypes": null,
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 775,
+                              "id": 762,
                               "name": "_tollBooth",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 759,
-                              "src": "724:10:7",
+                              "referencedDeclaration": 746,
+                              "src": "594:10:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -802,20 +633,20 @@
                                 "typeString": "address"
                               }
                             ],
-                            "id": 774,
+                            "id": 761,
                             "name": "isTollBooth",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              808
+                              795
                             ],
-                            "referencedDeclaration": 808,
-                            "src": "712:11:7",
+                            "referencedDeclaration": 795,
+                            "src": "582:11:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
                               "typeString": "function (address) view returns (bool)"
                             }
                           },
-                          "id": 776,
+                          "id": 763,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -823,7 +654,7 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "712:23:7",
+                          "src": "582:23:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -837,14 +668,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "4164647265737320697320616c7265616479206120746f6c6c20626f6f74682e",
-                        "id": 778,
+                        "id": 765,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "737:34:7",
+                        "src": "607:34:7",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_8757cef7cdc680330168657a8feae3aed7c7208fa9f6221f4567e2de37ce8a03",
@@ -864,21 +695,21 @@
                           "typeString": "literal_string \"Address is already a toll booth.\""
                         }
                       ],
-                      "id": 773,
+                      "id": 760,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2065,
-                        2066
+                        2051,
+                        2052
                       ],
-                      "referencedDeclaration": 2066,
-                      "src": "703:7:7",
+                      "referencedDeclaration": 2052,
+                      "src": "573:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 779,
+                    "id": 766,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -886,20 +717,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "703:69:7",
+                    "src": "573:69:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 780,
+                  "id": 767,
                   "nodeType": "ExpressionStatement",
-                  "src": "703:69:7"
+                  "src": "573:69:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 785,
+                    "id": 772,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -908,26 +739,26 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 781,
+                        "id": 768,
                         "name": "tollBoothHolders",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 728,
-                        "src": "782:16:7",
+                        "src": "652:16:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 783,
+                      "id": 770,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 782,
+                        "id": 769,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 759,
-                        "src": "799:10:7",
+                        "referencedDeclaration": 746,
+                        "src": "669:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -938,7 +769,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "782:28:7",
+                      "src": "652:28:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -949,14 +780,14 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "74727565",
-                      "id": 784,
+                      "id": 771,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "813:4:7",
+                      "src": "683:4:7",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -964,15 +795,15 @@
                       },
                       "value": "true"
                     },
-                    "src": "782:35:7",
+                    "src": "652:35:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 786,
+                  "id": 773,
                   "nodeType": "ExpressionStatement",
-                  "src": "782:35:7"
+                  "src": "652:35:7"
                 },
                 {
                   "eventCall": {
@@ -982,18 +813,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 788,
+                          "id": 775,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2062,
-                          "src": "850:3:7",
+                          "referencedDeclaration": 2048,
+                          "src": "720:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 789,
+                        "id": 776,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1001,7 +832,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "850:10:7",
+                        "src": "720:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1009,12 +840,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 790,
+                        "id": 777,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 759,
-                        "src": "862:10:7",
+                        "referencedDeclaration": 746,
+                        "src": "732:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1032,20 +863,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 787,
+                      "id": 774,
                       "name": "LogTollBoothAdded",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
                         734
                       ],
                       "referencedDeclaration": 734,
-                      "src": "832:17:7",
+                      "src": "702:17:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address)"
                       }
                     },
-                    "id": 791,
+                    "id": 778,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1053,28 +884,28 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "832:41:7",
+                    "src": "702:41:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 792,
+                  "id": 779,
                   "nodeType": "EmitStatement",
-                  "src": "827:46:7"
+                  "src": "697:46:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 793,
+                    "id": 780,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "890:4:7",
+                    "src": "760:4:7",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -1082,52 +913,52 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 765,
-                  "id": 794,
+                  "functionReturnParameters": 752,
+                  "id": 781,
                   "nodeType": "Return",
-                  "src": "883:11:7"
+                  "src": "753:11:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 796,
+            "id": 783,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 762,
+                "id": 749,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 761,
+                  "id": 748,
                   "name": "fromOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
                   "referencedDeclaration": 176,
-                  "src": "586:9:7",
+                  "src": "456:9:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "586:9:7"
+                "src": "456:9:7"
               }
             ],
             "name": "addTollBooth",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 760,
+              "id": 747,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 759,
+                  "id": 746,
                   "name": "_tollBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 796,
-                  "src": "559:18:7",
+                  "scope": 783,
+                  "src": "429:18:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1135,10 +966,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 758,
+                    "id": 745,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "559:7:7",
+                    "src": "429:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1148,20 +979,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "558:20:7"
+              "src": "428:20:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 765,
+              "id": 752,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 764,
+                  "id": 751,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 796,
-                  "src": "605:12:7",
+                  "scope": 783,
+                  "src": "475:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1169,10 +1000,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 763,
+                    "id": 750,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "605:4:7",
+                    "src": "475:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1182,45 +1013,45 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "604:14:7"
+              "src": "474:14:7"
             },
-            "scope": 839,
-            "src": "537:364:7",
+            "scope": 826,
+            "src": "407:364:7",
             "stateMutability": "nonpayable",
-            "superFunction": 1797,
+            "superFunction": 1783,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 807,
+              "id": 794,
               "nodeType": "Block",
-              "src": "981:52:7",
+              "src": "851:52:7",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
-                      "id": 803,
+                      "id": 790,
                       "name": "tollBoothHolders",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 728,
-                      "src": "998:16:7",
+                      "src": "868:16:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 805,
+                    "id": 792,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 804,
+                      "id": 791,
                       "name": "_tollBooth",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 798,
-                      "src": "1015:10:7",
+                      "referencedDeclaration": 785,
+                      "src": "885:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -1231,21 +1062,21 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "998:28:7",
+                    "src": "868:28:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 802,
-                  "id": 806,
+                  "functionReturnParameters": 789,
+                  "id": 793,
                   "nodeType": "Return",
-                  "src": "991:35:7"
+                  "src": "861:35:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 808,
+            "id": 795,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1253,16 +1084,16 @@
             "name": "isTollBooth",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 799,
+              "id": 786,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 798,
+                  "id": 785,
                   "name": "_tollBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 808,
-                  "src": "928:18:7",
+                  "scope": 795,
+                  "src": "798:18:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1270,10 +1101,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 797,
+                    "id": 784,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "928:7:7",
+                    "src": "798:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1283,20 +1114,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "927:20:7"
+              "src": "797:20:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 802,
+              "id": 789,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 801,
+                  "id": 788,
                   "name": "indeed",
                   "nodeType": "VariableDeclaration",
-                  "scope": 808,
-                  "src": "968:11:7",
+                  "scope": 795,
+                  "src": "838:11:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1304,10 +1135,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 800,
+                    "id": 787,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "968:4:7",
+                    "src": "838:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1317,19 +1148,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "967:13:7"
+              "src": "837:13:7"
             },
-            "scope": 839,
-            "src": "907:126:7",
+            "scope": 826,
+            "src": "777:126:7",
             "stateMutability": "view",
-            "superFunction": 1804,
+            "superFunction": 1790,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 837,
+              "id": 824,
               "nodeType": "Block",
-              "src": "1124:222:7",
+              "src": "994:222:7",
               "statements": [
                 {
                   "expression": {
@@ -1340,12 +1171,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 819,
+                            "id": 806,
                             "name": "_tollBooth",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 810,
-                            "src": "1154:10:7",
+                            "referencedDeclaration": 797,
+                            "src": "1024:10:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -1359,20 +1190,20 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 818,
+                          "id": 805,
                           "name": "isTollBooth",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [
-                            808
+                            795
                           ],
-                          "referencedDeclaration": 808,
-                          "src": "1142:11:7",
+                          "referencedDeclaration": 795,
+                          "src": "1012:11:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
                             "typeString": "function (address) view returns (bool)"
                           }
                         },
-                        "id": 820,
+                        "id": 807,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1380,7 +1211,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1142:23:7",
+                        "src": "1012:23:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -1389,14 +1220,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "476976656e2061646472657373206973206e6f74206120746f6c6c20626f6f7468",
-                        "id": 821,
+                        "id": 808,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1167:35:7",
+                        "src": "1037:35:7",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_de144e8063d821d8b2d2d2b53781ff062f1c8c111b61e75f1ee29e00f282ef97",
@@ -1416,21 +1247,21 @@
                           "typeString": "literal_string \"Given address is not a toll booth\""
                         }
                       ],
-                      "id": 817,
+                      "id": 804,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2065,
-                        2066
+                        2051,
+                        2052
                       ],
-                      "referencedDeclaration": 2066,
-                      "src": "1134:7:7",
+                      "referencedDeclaration": 2052,
+                      "src": "1004:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 822,
+                    "id": 809,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1438,20 +1269,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1134:69:7",
+                    "src": "1004:69:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 823,
+                  "id": 810,
                   "nodeType": "ExpressionStatement",
-                  "src": "1134:69:7"
+                  "src": "1004:69:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 827,
+                    "id": 814,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1459,31 +1290,31 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "1225:35:7",
+                    "src": "1095:35:7",
                     "subExpression": {
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 824,
+                        "id": 811,
                         "name": "tollBoothHolders",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 728,
-                        "src": "1232:16:7",
+                        "src": "1102:16:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 826,
+                      "id": 813,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 825,
+                        "id": 812,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 810,
-                        "src": "1249:10:7",
+                        "referencedDeclaration": 797,
+                        "src": "1119:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1494,7 +1325,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1232:28:7",
+                      "src": "1102:28:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -1505,9 +1336,9 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 828,
+                  "id": 815,
                   "nodeType": "ExpressionStatement",
-                  "src": "1225:35:7"
+                  "src": "1095:35:7"
                 },
                 {
                   "eventCall": {
@@ -1517,18 +1348,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 830,
+                          "id": 817,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2062,
-                          "src": "1295:3:7",
+                          "referencedDeclaration": 2048,
+                          "src": "1165:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 831,
+                        "id": 818,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1536,7 +1367,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1295:10:7",
+                        "src": "1165:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1544,12 +1375,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 832,
+                        "id": 819,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 810,
-                        "src": "1307:10:7",
+                        "referencedDeclaration": 797,
+                        "src": "1177:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1567,20 +1398,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 829,
+                      "id": 816,
                       "name": "LogTollBoothRemoved",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
                         740
                       ],
                       "referencedDeclaration": 740,
-                      "src": "1275:19:7",
+                      "src": "1145:19:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address)"
                       }
                     },
-                    "id": 833,
+                    "id": 820,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1588,28 +1419,28 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1275:43:7",
+                    "src": "1145:43:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 834,
+                  "id": 821,
                   "nodeType": "EmitStatement",
-                  "src": "1270:48:7"
+                  "src": "1140:48:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 835,
+                    "id": 822,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1335:4:7",
+                    "src": "1205:4:7",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -1617,52 +1448,52 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 816,
-                  "id": 836,
+                  "functionReturnParameters": 803,
+                  "id": 823,
                   "nodeType": "Return",
-                  "src": "1328:11:7"
+                  "src": "1198:11:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 838,
+            "id": 825,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 813,
+                "id": 800,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 812,
+                  "id": 799,
                   "name": "fromOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
                   "referencedDeclaration": 176,
-                  "src": "1091:9:7",
+                  "src": "961:9:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "1091:9:7"
+                "src": "961:9:7"
               }
             ],
             "name": "removeTollBooth",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 811,
+              "id": 798,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 810,
+                  "id": 797,
                   "name": "_tollBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 838,
-                  "src": "1064:18:7",
+                  "scope": 825,
+                  "src": "934:18:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1670,10 +1501,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 809,
+                    "id": 796,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1064:7:7",
+                    "src": "934:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1683,20 +1514,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1063:20:7"
+              "src": "933:20:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 816,
+              "id": 803,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 815,
+                  "id": 802,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 838,
-                  "src": "1110:12:7",
+                  "scope": 825,
+                  "src": "980:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1704,10 +1535,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 814,
+                    "id": 801,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1110:4:7",
+                    "src": "980:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1717,29 +1548,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1109:14:7"
+              "src": "979:14:7"
             },
-            "scope": 839,
-            "src": "1039:307:7",
+            "scope": 826,
+            "src": "909:307:7",
             "stateMutability": "nonpayable",
-            "superFunction": 1817,
+            "superFunction": 1803,
             "visibility": "public"
           }
         ],
-        "scope": 840,
-        "src": "94:1254:7"
+        "scope": 827,
+        "src": "94:1124:7"
       }
     ],
-    "src": "0:1348:7"
+    "src": "0:1218:7"
   },
   "legacyAST": {
     "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/TollBoothHolder.sol",
     "exportedSymbols": {
       "TollBoothHolder": [
-        839
+        826
       ]
     },
-    "id": 840,
+    "id": 827,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -1758,7 +1589,7 @@
         "file": "./Owned.sol",
         "id": 719,
         "nodeType": "ImportDirective",
-        "scope": 840,
+        "scope": 827,
         "sourceUnit": 238,
         "src": "26:21:7",
         "symbolAliases": [],
@@ -1769,8 +1600,8 @@
         "file": "./interfaces/TollBoothHolderI.sol",
         "id": 720,
         "nodeType": "ImportDirective",
-        "scope": 840,
-        "sourceUnit": 1819,
+        "scope": 827,
+        "sourceUnit": 1805,
         "src": "48:43:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1802,10 +1633,10 @@
               "id": 723,
               "name": "TollBoothHolderI",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1818,
+              "referencedDeclaration": 1804,
               "src": "129:16:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TollBoothHolderI_$1818",
+                "typeIdentifier": "t_contract$_TollBoothHolderI_$1804",
                 "typeString": "contract TollBoothHolderI"
               }
             },
@@ -1816,18 +1647,18 @@
         ],
         "contractDependencies": [
           237,
-          1637,
-          1818
+          1623,
+          1804
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 839,
+        "id": 826,
         "linearizedBaseContracts": [
-          839,
-          1818,
+          826,
+          1804,
           237,
-          1637
+          1623
         ],
         "name": "TollBoothHolder",
         "nodeType": "ContractDefinition",
@@ -1837,7 +1668,7 @@
             "id": 728,
             "name": "tollBoothHolders",
             "nodeType": "VariableDeclaration",
-            "scope": 839,
+            "scope": 826,
             "src": "153:50:7",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2017,182 +1848,13 @@
           },
           {
             "body": {
-              "id": 752,
-              "nodeType": "Block",
-              "src": "421:76:7",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "arguments": [
-                      {
-                        "argumentTypes": null,
-                        "commonType": {
-                          "typeIdentifier": "t_address",
-                          "typeString": "address"
-                        },
-                        "id": 747,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "lValueRequested": false,
-                        "leftExpression": {
-                          "argumentTypes": null,
-                          "id": 745,
-                          "name": "_address",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 742,
-                          "src": "439:8:7",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_address",
-                            "typeString": "address"
-                          }
-                        },
-                        "nodeType": "BinaryOperation",
-                        "operator": "!=",
-                        "rightExpression": {
-                          "argumentTypes": null,
-                          "hexValue": "30",
-                          "id": 746,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": true,
-                          "kind": "number",
-                          "lValueRequested": false,
-                          "nodeType": "Literal",
-                          "src": "451:1:7",
-                          "subdenomination": null,
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_rational_0_by_1",
-                            "typeString": "int_const 0"
-                          },
-                          "value": "0"
-                        },
-                        "src": "439:13:7",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "hexValue": "416e20616464726573732063616e6e6f742062652030",
-                        "id": 748,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": true,
-                        "kind": "string",
-                        "lValueRequested": false,
-                        "nodeType": "Literal",
-                        "src": "454:24:7",
-                        "subdenomination": null,
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_stringliteral_a2feb191abe139560f78bd936c754bf1315b465bd6824e7a149a237389b22c9c",
-                          "typeString": "literal_string \"An address cannot be 0\""
-                        },
-                        "value": "An address cannot be 0"
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        },
-                        {
-                          "typeIdentifier": "t_stringliteral_a2feb191abe139560f78bd936c754bf1315b465bd6824e7a149a237389b22c9c",
-                          "typeString": "literal_string \"An address cannot be 0\""
-                        }
-                      ],
-                      "id": 744,
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        2065,
-                        2066
-                      ],
-                      "referencedDeclaration": 2066,
-                      "src": "431:7:7",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
-                        "typeString": "function (bool,string memory) pure"
-                      }
-                    },
-                    "id": 749,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "431:48:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 750,
-                  "nodeType": "ExpressionStatement",
-                  "src": "431:48:7"
-                },
-                {
-                  "id": 751,
-                  "nodeType": "PlaceholderStatement",
-                  "src": "489:1:7"
-                }
-              ]
-            },
-            "documentation": null,
-            "id": 753,
-            "name": "onlyIfNotZeroAddress",
-            "nodeType": "ModifierDefinition",
-            "parameters": {
               "id": 743,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 742,
-                  "name": "_address",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 753,
-                  "src": "403:16:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 741,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "403:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "402:18:7"
-            },
-            "src": "373:124:7",
-            "visibility": "internal"
-          },
-          {
-            "body": {
-              "id": 756,
               "nodeType": "Block",
-              "src": "524:7:7",
+              "src": "394:7:7",
               "statements": []
             },
             "documentation": null,
-            "id": 757,
+            "id": 744,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -2200,29 +1862,29 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 754,
+              "id": 741,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "514:2:7"
+              "src": "384:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 755,
+              "id": 742,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "524:0:7"
+              "src": "394:0:7"
             },
-            "scope": 839,
-            "src": "503:28:7",
+            "scope": 826,
+            "src": "373:28:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 795,
+              "id": 782,
               "nodeType": "Block",
-              "src": "619:282:7",
+              "src": "489:282:7",
               "statements": [
                 {
                   "expression": {
@@ -2234,19 +1896,19 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-                        "id": 769,
+                        "id": 756,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 767,
+                          "id": 754,
                           "name": "_tollBooth",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 759,
-                          "src": "637:10:7",
+                          "referencedDeclaration": 746,
+                          "src": "507:10:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -2257,14 +1919,14 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "307830",
-                          "id": 768,
+                          "id": 755,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "651:3:7",
+                          "src": "521:3:7",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
@@ -2272,7 +1934,7 @@
                           },
                           "value": "0x0"
                         },
-                        "src": "637:17:7",
+                        "src": "507:17:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2281,14 +1943,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "4e657720746f6c6c20626f6f746820616464726573732063616e6e6f742062652030",
-                        "id": 770,
+                        "id": 757,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "656:36:7",
+                        "src": "526:36:7",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_cb5f8c5acc7bcfdfd82d3ec1d6ec920f0e8bb7770af0ef1572cd354545e65ab5",
@@ -2308,21 +1970,21 @@
                           "typeString": "literal_string \"New toll booth address cannot be 0\""
                         }
                       ],
-                      "id": 766,
+                      "id": 753,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2065,
-                        2066
+                        2051,
+                        2052
                       ],
-                      "referencedDeclaration": 2066,
-                      "src": "629:7:7",
+                      "referencedDeclaration": 2052,
+                      "src": "499:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 771,
+                    "id": 758,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2330,15 +1992,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "629:64:7",
+                    "src": "499:64:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 772,
+                  "id": 759,
                   "nodeType": "ExpressionStatement",
-                  "src": "629:64:7"
+                  "src": "499:64:7"
                 },
                 {
                   "expression": {
@@ -2346,7 +2008,7 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 777,
+                        "id": 764,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2354,18 +2016,18 @@
                         "nodeType": "UnaryOperation",
                         "operator": "!",
                         "prefix": true,
-                        "src": "711:24:7",
+                        "src": "581:24:7",
                         "subExpression": {
                           "argumentTypes": null,
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 775,
+                              "id": 762,
                               "name": "_tollBooth",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 759,
-                              "src": "724:10:7",
+                              "referencedDeclaration": 746,
+                              "src": "594:10:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -2379,20 +2041,20 @@
                                 "typeString": "address"
                               }
                             ],
-                            "id": 774,
+                            "id": 761,
                             "name": "isTollBooth",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              808
+                              795
                             ],
-                            "referencedDeclaration": 808,
-                            "src": "712:11:7",
+                            "referencedDeclaration": 795,
+                            "src": "582:11:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
                               "typeString": "function (address) view returns (bool)"
                             }
                           },
-                          "id": 776,
+                          "id": 763,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2400,7 +2062,7 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "712:23:7",
+                          "src": "582:23:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
@@ -2414,14 +2076,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "4164647265737320697320616c7265616479206120746f6c6c20626f6f74682e",
-                        "id": 778,
+                        "id": 765,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "737:34:7",
+                        "src": "607:34:7",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_8757cef7cdc680330168657a8feae3aed7c7208fa9f6221f4567e2de37ce8a03",
@@ -2441,21 +2103,21 @@
                           "typeString": "literal_string \"Address is already a toll booth.\""
                         }
                       ],
-                      "id": 773,
+                      "id": 760,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2065,
-                        2066
+                        2051,
+                        2052
                       ],
-                      "referencedDeclaration": 2066,
-                      "src": "703:7:7",
+                      "referencedDeclaration": 2052,
+                      "src": "573:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 779,
+                    "id": 766,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2463,20 +2125,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "703:69:7",
+                    "src": "573:69:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 780,
+                  "id": 767,
                   "nodeType": "ExpressionStatement",
-                  "src": "703:69:7"
+                  "src": "573:69:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 785,
+                    "id": 772,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2485,26 +2147,26 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 781,
+                        "id": 768,
                         "name": "tollBoothHolders",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 728,
-                        "src": "782:16:7",
+                        "src": "652:16:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 783,
+                      "id": 770,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 782,
+                        "id": 769,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 759,
-                        "src": "799:10:7",
+                        "referencedDeclaration": 746,
+                        "src": "669:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2515,7 +2177,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "782:28:7",
+                      "src": "652:28:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -2526,14 +2188,14 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "74727565",
-                      "id": 784,
+                      "id": 771,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "813:4:7",
+                      "src": "683:4:7",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -2541,15 +2203,15 @@
                       },
                       "value": "true"
                     },
-                    "src": "782:35:7",
+                    "src": "652:35:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 786,
+                  "id": 773,
                   "nodeType": "ExpressionStatement",
-                  "src": "782:35:7"
+                  "src": "652:35:7"
                 },
                 {
                   "eventCall": {
@@ -2559,18 +2221,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 788,
+                          "id": 775,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2062,
-                          "src": "850:3:7",
+                          "referencedDeclaration": 2048,
+                          "src": "720:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 789,
+                        "id": 776,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2578,7 +2240,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "850:10:7",
+                        "src": "720:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2586,12 +2248,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 790,
+                        "id": 777,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 759,
-                        "src": "862:10:7",
+                        "referencedDeclaration": 746,
+                        "src": "732:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2609,20 +2271,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 787,
+                      "id": 774,
                       "name": "LogTollBoothAdded",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
                         734
                       ],
                       "referencedDeclaration": 734,
-                      "src": "832:17:7",
+                      "src": "702:17:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address)"
                       }
                     },
-                    "id": 791,
+                    "id": 778,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2630,28 +2292,28 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "832:41:7",
+                    "src": "702:41:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 792,
+                  "id": 779,
                   "nodeType": "EmitStatement",
-                  "src": "827:46:7"
+                  "src": "697:46:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 793,
+                    "id": 780,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "890:4:7",
+                    "src": "760:4:7",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2659,52 +2321,52 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 765,
-                  "id": 794,
+                  "functionReturnParameters": 752,
+                  "id": 781,
                   "nodeType": "Return",
-                  "src": "883:11:7"
+                  "src": "753:11:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 796,
+            "id": 783,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 762,
+                "id": 749,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 761,
+                  "id": 748,
                   "name": "fromOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
                   "referencedDeclaration": 176,
-                  "src": "586:9:7",
+                  "src": "456:9:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "586:9:7"
+                "src": "456:9:7"
               }
             ],
             "name": "addTollBooth",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 760,
+              "id": 747,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 759,
+                  "id": 746,
                   "name": "_tollBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 796,
-                  "src": "559:18:7",
+                  "scope": 783,
+                  "src": "429:18:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2712,10 +2374,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 758,
+                    "id": 745,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "559:7:7",
+                    "src": "429:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2725,20 +2387,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "558:20:7"
+              "src": "428:20:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 765,
+              "id": 752,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 764,
+                  "id": 751,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 796,
-                  "src": "605:12:7",
+                  "scope": 783,
+                  "src": "475:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2746,10 +2408,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 763,
+                    "id": 750,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "605:4:7",
+                    "src": "475:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2759,45 +2421,45 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "604:14:7"
+              "src": "474:14:7"
             },
-            "scope": 839,
-            "src": "537:364:7",
+            "scope": 826,
+            "src": "407:364:7",
             "stateMutability": "nonpayable",
-            "superFunction": 1797,
+            "superFunction": 1783,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 807,
+              "id": 794,
               "nodeType": "Block",
-              "src": "981:52:7",
+              "src": "851:52:7",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
-                      "id": 803,
+                      "id": 790,
                       "name": "tollBoothHolders",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 728,
-                      "src": "998:16:7",
+                      "src": "868:16:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 805,
+                    "id": 792,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 804,
+                      "id": 791,
                       "name": "_tollBooth",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 798,
-                      "src": "1015:10:7",
+                      "referencedDeclaration": 785,
+                      "src": "885:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -2808,21 +2470,21 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "998:28:7",
+                    "src": "868:28:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 802,
-                  "id": 806,
+                  "functionReturnParameters": 789,
+                  "id": 793,
                   "nodeType": "Return",
-                  "src": "991:35:7"
+                  "src": "861:35:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 808,
+            "id": 795,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2830,16 +2492,16 @@
             "name": "isTollBooth",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 799,
+              "id": 786,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 798,
+                  "id": 785,
                   "name": "_tollBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 808,
-                  "src": "928:18:7",
+                  "scope": 795,
+                  "src": "798:18:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2847,10 +2509,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 797,
+                    "id": 784,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "928:7:7",
+                    "src": "798:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2860,20 +2522,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "927:20:7"
+              "src": "797:20:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 802,
+              "id": 789,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 801,
+                  "id": 788,
                   "name": "indeed",
                   "nodeType": "VariableDeclaration",
-                  "scope": 808,
-                  "src": "968:11:7",
+                  "scope": 795,
+                  "src": "838:11:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2881,10 +2543,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 800,
+                    "id": 787,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "968:4:7",
+                    "src": "838:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2894,19 +2556,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "967:13:7"
+              "src": "837:13:7"
             },
-            "scope": 839,
-            "src": "907:126:7",
+            "scope": 826,
+            "src": "777:126:7",
             "stateMutability": "view",
-            "superFunction": 1804,
+            "superFunction": 1790,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 837,
+              "id": 824,
               "nodeType": "Block",
-              "src": "1124:222:7",
+              "src": "994:222:7",
               "statements": [
                 {
                   "expression": {
@@ -2917,12 +2579,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 819,
+                            "id": 806,
                             "name": "_tollBooth",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 810,
-                            "src": "1154:10:7",
+                            "referencedDeclaration": 797,
+                            "src": "1024:10:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -2936,20 +2598,20 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 818,
+                          "id": 805,
                           "name": "isTollBooth",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [
-                            808
+                            795
                           ],
-                          "referencedDeclaration": 808,
-                          "src": "1142:11:7",
+                          "referencedDeclaration": 795,
+                          "src": "1012:11:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
                             "typeString": "function (address) view returns (bool)"
                           }
                         },
-                        "id": 820,
+                        "id": 807,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2957,7 +2619,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1142:23:7",
+                        "src": "1012:23:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2966,14 +2628,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "476976656e2061646472657373206973206e6f74206120746f6c6c20626f6f7468",
-                        "id": 821,
+                        "id": 808,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1167:35:7",
+                        "src": "1037:35:7",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_de144e8063d821d8b2d2d2b53781ff062f1c8c111b61e75f1ee29e00f282ef97",
@@ -2993,21 +2655,21 @@
                           "typeString": "literal_string \"Given address is not a toll booth\""
                         }
                       ],
-                      "id": 817,
+                      "id": 804,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2065,
-                        2066
+                        2051,
+                        2052
                       ],
-                      "referencedDeclaration": 2066,
-                      "src": "1134:7:7",
+                      "referencedDeclaration": 2052,
+                      "src": "1004:7:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 822,
+                    "id": 809,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3015,20 +2677,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1134:69:7",
+                    "src": "1004:69:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 823,
+                  "id": 810,
                   "nodeType": "ExpressionStatement",
-                  "src": "1134:69:7"
+                  "src": "1004:69:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 827,
+                    "id": 814,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3036,31 +2698,31 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "1225:35:7",
+                    "src": "1095:35:7",
                     "subExpression": {
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 824,
+                        "id": 811,
                         "name": "tollBoothHolders",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 728,
-                        "src": "1232:16:7",
+                        "src": "1102:16:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 826,
+                      "id": 813,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 825,
+                        "id": 812,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 810,
-                        "src": "1249:10:7",
+                        "referencedDeclaration": 797,
+                        "src": "1119:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -3071,7 +2733,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1232:28:7",
+                      "src": "1102:28:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -3082,9 +2744,9 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 828,
+                  "id": 815,
                   "nodeType": "ExpressionStatement",
-                  "src": "1225:35:7"
+                  "src": "1095:35:7"
                 },
                 {
                   "eventCall": {
@@ -3094,18 +2756,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 830,
+                          "id": 817,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2062,
-                          "src": "1295:3:7",
+                          "referencedDeclaration": 2048,
+                          "src": "1165:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 831,
+                        "id": 818,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3113,7 +2775,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1295:10:7",
+                        "src": "1165:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -3121,12 +2783,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 832,
+                        "id": 819,
                         "name": "_tollBooth",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 810,
-                        "src": "1307:10:7",
+                        "referencedDeclaration": 797,
+                        "src": "1177:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -3144,20 +2806,20 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 829,
+                      "id": 816,
                       "name": "LogTollBoothRemoved",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
                         740
                       ],
                       "referencedDeclaration": 740,
-                      "src": "1275:19:7",
+                      "src": "1145:19:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address)"
                       }
                     },
-                    "id": 833,
+                    "id": 820,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3165,28 +2827,28 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1275:43:7",
+                    "src": "1145:43:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 834,
+                  "id": 821,
                   "nodeType": "EmitStatement",
-                  "src": "1270:48:7"
+                  "src": "1140:48:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 835,
+                    "id": 822,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1335:4:7",
+                    "src": "1205:4:7",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -3194,52 +2856,52 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 816,
-                  "id": 836,
+                  "functionReturnParameters": 803,
+                  "id": 823,
                   "nodeType": "Return",
-                  "src": "1328:11:7"
+                  "src": "1198:11:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 838,
+            "id": 825,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 813,
+                "id": 800,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 812,
+                  "id": 799,
                   "name": "fromOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
                   "referencedDeclaration": 176,
-                  "src": "1091:9:7",
+                  "src": "961:9:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "1091:9:7"
+                "src": "961:9:7"
               }
             ],
             "name": "removeTollBooth",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 811,
+              "id": 798,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 810,
+                  "id": 797,
                   "name": "_tollBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 838,
-                  "src": "1064:18:7",
+                  "scope": 825,
+                  "src": "934:18:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3247,10 +2909,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 809,
+                    "id": 796,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1064:7:7",
+                    "src": "934:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -3260,20 +2922,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1063:20:7"
+              "src": "933:20:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 816,
+              "id": 803,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 815,
+                  "id": 802,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 838,
-                  "src": "1110:12:7",
+                  "scope": 825,
+                  "src": "980:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3281,10 +2943,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 814,
+                    "id": 801,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1110:4:7",
+                    "src": "980:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -3294,20 +2956,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1109:14:7"
+              "src": "979:14:7"
             },
-            "scope": 839,
-            "src": "1039:307:7",
+            "scope": 826,
+            "src": "909:307:7",
             "stateMutability": "nonpayable",
-            "superFunction": 1817,
+            "superFunction": 1803,
             "visibility": "public"
           }
         ],
-        "scope": 840,
-        "src": "94:1254:7"
+        "scope": 827,
+        "src": "94:1124:7"
       }
     ],
-    "src": "0:1348:7"
+    "src": "0:1218:7"
   },
   "compiler": {
     "name": "solc",
@@ -3315,5 +2977,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-18T13:04:59.505Z"
+  "updatedAt": "2018-12-18T21:22:10.425Z"
 }

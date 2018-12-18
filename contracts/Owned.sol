@@ -19,7 +19,7 @@ contract Owned is OwnedI {
     }
 
     function setOwner(address _newOwner) public fromOwner returns(bool) {
-        require(_newOwner != 0, "New owner cannot be 0 address");
+        require(_newOwner != 0x0, "New owner cannot be 0 address");
         require(_newOwner != msg.sender, "New owner must be different than sender");
         owner = _newOwner;
         emit LogOwnerSet(msg.sender, owner);

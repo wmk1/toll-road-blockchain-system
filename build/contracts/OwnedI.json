@@ -62,14 +62,14 @@
     "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/OwnedI.sol",
     "exportedSymbols": {
       "OwnedI": [
-        1637
+        1623
       ]
     },
-    "id": 1638,
+    "id": 1624,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1618,
+        "id": 1604,
         "literals": [
           "solidity",
           "^",
@@ -85,9 +85,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1637,
+        "id": 1623,
         "linearizedBaseContracts": [
-          1637
+          1623
         ],
         "name": "OwnedI",
         "nodeType": "ContractDefinition",
@@ -95,20 +95,20 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new owner has been set.\n@param previousOwner The previous owner, who happened to effect the change.\n@param newOwner The new, and current, owner the contract.",
-            "id": 1624,
+            "id": 1610,
             "name": "LogOwnerSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1623,
+              "id": 1609,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1620,
+                  "id": 1606,
                   "indexed": true,
                   "name": "previousOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1624,
+                  "scope": 1610,
                   "src": "282:29:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -117,7 +117,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1619,
+                    "id": 1605,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "282:7:11",
@@ -131,11 +131,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1622,
+                  "id": 1608,
                   "indexed": true,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1624,
+                  "scope": 1610,
                   "src": "313:24:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -144,7 +144,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1621,
+                    "id": 1607,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "313:7:11",
@@ -164,7 +164,7 @@
           {
             "body": null,
             "documentation": "Sets the new owner for this contract.\n    It should roll back if the caller is not the current owner.\n    It should roll back if the argument is the current owner.\n    It should roll back if the argument is a 0 address.\n@param newOwner The new owner of the contract\n@return Whether the action was successful.\nEmits LogOwnerSet with:\n    The sender of the action.\n    The new owner.",
-            "id": 1631,
+            "id": 1617,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -172,15 +172,15 @@
             "name": "setOwner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1627,
+              "id": 1613,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1626,
+                  "id": 1612,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1631,
+                  "scope": 1617,
                   "src": "824:16:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -189,7 +189,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1625,
+                    "id": 1611,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "824:7:11",
@@ -206,15 +206,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1630,
+              "id": 1616,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1629,
+                  "id": 1615,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1631,
+                  "scope": 1617,
                   "src": "857:12:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -223,7 +223,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1628,
+                    "id": 1614,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "857:4:11",
@@ -238,7 +238,7 @@
               ],
               "src": "856:14:11"
             },
-            "scope": 1637,
+            "scope": 1623,
             "src": "806:65:11",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -247,7 +247,7 @@
           {
             "body": null,
             "documentation": "@return The owner of this contract.",
-            "id": 1636,
+            "id": 1622,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -255,22 +255,22 @@
             "name": "getOwner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1632,
+              "id": 1618,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "953:2:11"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1635,
+              "id": 1621,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1634,
+                  "id": 1620,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1636,
+                  "scope": 1622,
                   "src": "976:13:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -279,7 +279,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1633,
+                    "id": 1619,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "976:7:11",
@@ -294,14 +294,14 @@
               ],
               "src": "975:15:11"
             },
-            "scope": 1637,
+            "scope": 1623,
             "src": "936:55:11",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1638,
+        "scope": 1624,
         "src": "26:1270:11"
       }
     ],
@@ -311,14 +311,14 @@
     "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/OwnedI.sol",
     "exportedSymbols": {
       "OwnedI": [
-        1637
+        1623
       ]
     },
-    "id": 1638,
+    "id": 1624,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1618,
+        "id": 1604,
         "literals": [
           "solidity",
           "^",
@@ -334,9 +334,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1637,
+        "id": 1623,
         "linearizedBaseContracts": [
-          1637
+          1623
         ],
         "name": "OwnedI",
         "nodeType": "ContractDefinition",
@@ -344,20 +344,20 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new owner has been set.\n@param previousOwner The previous owner, who happened to effect the change.\n@param newOwner The new, and current, owner the contract.",
-            "id": 1624,
+            "id": 1610,
             "name": "LogOwnerSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1623,
+              "id": 1609,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1620,
+                  "id": 1606,
                   "indexed": true,
                   "name": "previousOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1624,
+                  "scope": 1610,
                   "src": "282:29:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -366,7 +366,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1619,
+                    "id": 1605,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "282:7:11",
@@ -380,11 +380,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1622,
+                  "id": 1608,
                   "indexed": true,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1624,
+                  "scope": 1610,
                   "src": "313:24:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -393,7 +393,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1621,
+                    "id": 1607,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "313:7:11",
@@ -413,7 +413,7 @@
           {
             "body": null,
             "documentation": "Sets the new owner for this contract.\n    It should roll back if the caller is not the current owner.\n    It should roll back if the argument is the current owner.\n    It should roll back if the argument is a 0 address.\n@param newOwner The new owner of the contract\n@return Whether the action was successful.\nEmits LogOwnerSet with:\n    The sender of the action.\n    The new owner.",
-            "id": 1631,
+            "id": 1617,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -421,15 +421,15 @@
             "name": "setOwner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1627,
+              "id": 1613,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1626,
+                  "id": 1612,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1631,
+                  "scope": 1617,
                   "src": "824:16:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -438,7 +438,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1625,
+                    "id": 1611,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "824:7:11",
@@ -455,15 +455,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1630,
+              "id": 1616,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1629,
+                  "id": 1615,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1631,
+                  "scope": 1617,
                   "src": "857:12:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -472,7 +472,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1628,
+                    "id": 1614,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "857:4:11",
@@ -487,7 +487,7 @@
               ],
               "src": "856:14:11"
             },
-            "scope": 1637,
+            "scope": 1623,
             "src": "806:65:11",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -496,7 +496,7 @@
           {
             "body": null,
             "documentation": "@return The owner of this contract.",
-            "id": 1636,
+            "id": 1622,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -504,22 +504,22 @@
             "name": "getOwner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1632,
+              "id": 1618,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "953:2:11"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1635,
+              "id": 1621,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1634,
+                  "id": 1620,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1636,
+                  "scope": 1622,
                   "src": "976:13:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -528,7 +528,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1633,
+                    "id": 1619,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "976:7:11",
@@ -543,14 +543,14 @@
               ],
               "src": "975:15:11"
             },
-            "scope": 1637,
+            "scope": 1623,
             "src": "936:55:11",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1638,
+        "scope": 1624,
         "src": "26:1270:11"
       }
     ],
@@ -562,5 +562,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-18T13:04:59.507Z"
+  "updatedAt": "2018-12-18T21:22:10.436Z"
 }

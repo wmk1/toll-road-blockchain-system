@@ -10,7 +10,7 @@ contract Regulated is RegulatedI {
     event LogRegulatorSet(address indexed previousRegulator, address indexed newRegulator);
 
     constructor(address _regulator) public {
-        require(_regulator != 0, "New address cannot be 0.");
+        require(_regulator != 0x0, "New address cannot be 0.");
         regulator = _regulator;
     }
     

@@ -52,7 +52,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     }
 
     function () public payable {
-        revert("Reverting all oncoming functions");
+        revert();
     }
 
     function enterRoad(address _entryBooth, bytes32 _exitSecretHashed) public payable whenNotPaused returns (bool success) {
