@@ -52,12 +52,12 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     }
 
     function () public payable {
-        revert();
+        revert("Reverting all oncoming functions");
     }
 
     function enterRoad(address _entryBooth, bytes32 _exitSecretHashed) public payable whenNotPaused returns (bool success) {
         require(isTollBooth(_entryBooth), "Entry booth must be toll booth");
-        require(entries[_exitSecretHashed].vehicle == 0, "Vehicle cannot be 0.");
+        require(entries[_exitSecretHashed].vehicle == 0x0, "Vehicle cannot be 0.");
         Regulator roadRegulator = Regulator(getRegulator());
         uint vehicleMultiplier = multipliers[roadRegulator.vehicles(msg.sender)];
         require(vehicleMultiplier > 0, "Vehicle multiplier must be bigger than 0");
@@ -75,7 +75,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
     function reportExitRoad(bytes32 _exitSecretClear) public whenNotPaused returns(uint status) {
         require(isTollBooth(msg.sender), "Sender has to be toll booth");
         bytes32 exitSecretHashed = hashSecret(_exitSecretClear);
-        require(entries[exitSecretHashed].vehicle != 0 && entries[exitSecretHashed].depositedWeis != 0, "Vehicle type cannot be 0.");
+        require(entries[exitSecretHashed].vehicle != 0x0 && entries[exitSecretHashed].depositedWeis != 0x0, "Vehicle type cannot be 0.");
         Entry storage entry = entries[exitSecretHashed];
         require(Regulator(getRegulator()).vehicles(entry.vehicle) > 0, "Vehicle type cannot be 0.");
         require(entry.entryBooth != msg.sender, "Entry booth cannot be a sender of contract");
@@ -83,7 +83,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         if (price > 0) {
             uint refund;
             uint finalFee;
-            (refund, finalFee) = processPayment(exitSecretHashed, price);
+            (refund, finalFee) = executePayment(exitSecretHashed, price);
             emit LogRoadExited(msg.sender, exitSecretHashed, finalFee, refund);
             return 1;
         } else {
@@ -95,9 +95,11 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
             return 2;
         }
     }
+    
     function getPendingPaymentCount(address entryBooth, address exitBooth) public view returns (uint count) {
         return routesMetadata[keccak256(abi.encodePacked(entryBooth, exitBooth))].pendingPaymentCount;
     }
+
     function clearSomePendingPayments(address _entryBooth, address _exitBooth, uint _count) public whenNotPaused returns (bool success) {
         require(_count > 0, "Count must be bigger than 0!");
         bytes32 _hash = keccak256(abi.encodePacked(_entryBooth, _exitBooth));
@@ -110,7 +112,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
                 bytes32 exitSecretHashed = routeMetadata.pendingPayments[paymentIndex];
                 uint refund;
                 uint finalFee;
-                (refund, finalFee) = processPayment(exitSecretHashed, routePrice);
+                (refund, finalFee) = executePayment(exitSecretHashed, routePrice);
                 routeMetadata.pendingPayments[paymentIndex] = bytes32(0);
                 routeMetadata.pendingPaymentCount--;
                 routeMetadata.clearedPaymentCount++;
@@ -146,7 +148,7 @@ MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
         return keccak256(abi.encodePacked(_secret));
     }
 
-    function processPayment(bytes32 _exitSecretHashed, uint _routePrice) private returns(uint refund, uint finalFee) {
+    function executePayment(bytes32 _exitSecretHashed, uint _routePrice) private returns(uint refund, uint finalFee) {
         Entry storage entry = entries[_exitSecretHashed];
         uint vehiclePrice = _routePrice.mul(entry.multiplier);
         uint depositedWeis = entry.depositedWeis;

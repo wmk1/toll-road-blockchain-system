@@ -5,18 +5,19 @@ import '../styles/app.css'
 import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
 // Import our contract artifacts and turn them into usable abstractions.
-import metacoin_artifacts from '../../build/contracts/MetaCoin.json'
+import multiplierArtifacts from '../../build/contracts/MultiplierHolder.json'
 import regulatorArtifacts from '../../build/contracts/Regulator.json'
 import routePriceHolderArtifacts from '../../build/contracts/RoutePriceHolder.json'
 import tollBoothOperatorArtifacts from '../../build/contracts/TollBoothOperator.json'
 import tollBoothHolderArtifacts from '../../build/contracts/TollBoothHolder.json'
 
 // MetaCoin is our usable abstraction, which we'll use through the code below.
-var MetaCoin = contract(metacoin_artifacts)
+var MultiplierHolder = contract(multiplierArtifacts)
 var Regulator = contract(regulatorArtifacts)
 var RoutePriceHolder = contract(routePriceHolderArtifacts)
 var TollBoothOperator = contract(tollBoothOperatorArtifacts)
 var TollBoothHolder = contract(tollBoothHolderArtifacts)
+
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
@@ -175,19 +176,19 @@ window.App = {
   setMultiplier: () => {
     var self = this
 
-    let amount = parseInt(document.getElementById('amount').value)
-    let recipient = document.getElementById('recipient').value
+    let vehicleType = parseInt(document.getElementById('multiplierVehicleType').value)
+    let multiplier = parseInt(document.getElementById('multiplier').value)
 
-    let regulatorInstance
-    Regulator.deployed().then((instance) => {
-      regulatorInstance = instance
-      return regulatorInstance.setVehicleType(recipient, amount, { from: account })
+    let multiplierInstance
+    MultiplierHolder.deployed().then((instance) => {
+      multiplierInstance = instance
+      return multiplierInstance.setMultiplier(vehicleType, multiplier, { from: account })
     }).then(() => {
-      self.setStatus('Vehicle type set')
+      self.setStatus('Multiplier set')
       self.refreshBalance()
     }).catch((e) => {
       console.log(e)
-      self.setStatus('An error occured while setting vehicle type')
+      self.setStatus('An error occured while setting multiplier type')
     })
   },
 

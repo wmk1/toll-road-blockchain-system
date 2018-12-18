@@ -8,7 +8,7 @@ contract Owned is OwnedI {
     address internal owner;
 
     modifier fromOwner {
-        require(msg.sender == owner, "Sender cannot be the same as owner");
+        require(msg.sender == owner, "Only owner can perform this action");
         _;
     }
 
@@ -18,9 +18,9 @@ contract Owned is OwnedI {
         owner = msg.sender;
     }
 
-    function setOwner(address _newOwner) public fromOwner returns(bool success) {
+    function setOwner(address _newOwner) public fromOwner returns(bool) {
         require(_newOwner != 0, "New owner cannot be 0 address");
-        require(_newOwner != msg.sender, "New owner must be different");
+        require(_newOwner != msg.sender, "New owner must be different than sender");
         owner = _newOwner;
         emit LogOwnerSet(msg.sender, owner);
         return true;

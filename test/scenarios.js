@@ -195,6 +195,6 @@ contract('Scenarios', accounts => {
     await tollBoothOperatorInstance.clearSomePendingPayments(booth1, booth, 1)
     // then
     assert.equal(transactionLogs.length, 2, 'Event count mismatched')
-    assert.equal(transactionLogs[0].args.refundWeis.toNumber(), 3 * multiplier, 'Refund weis mismatched')
+    assert.equal(transactionLogs[1].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis mismatched')
   })
 })

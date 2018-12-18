@@ -24,14 +24,14 @@ contract Pausable is Owned, PausableI {
         paused = newState;
     }
 
-    function setPaused(bool _state) public fromOwner returns(bool success) {
+    function setPaused(bool _state) public fromOwner returns(bool) {
         require(_state != paused, "New state must be different than current one.");
         paused = _state;
         emit LogPausedSet(msg.sender, _state);
         return true;
     }
 
-    function isPaused() public view returns(bool isIndeed) {
+    function isPaused() public view returns(bool) {
         return paused;
     }
 }

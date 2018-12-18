@@ -20,7 +20,7 @@ contract TollBoothHolder is Owned, TollBoothHolderI {
     }
 
     function addTollBooth(address _tollBooth) public fromOwner returns (bool success) {
-        require(_tollBooth > 0, "Toll booth cannot be 0");
+        require(_tollBooth > 0x0, "New toll booth address cannot be 0");
         require(!isTollBooth(_tollBooth), "Address is already a toll booth.");
         tollBoothHolders[_tollBooth] = true;
         emit LogTollBoothAdded(msg.sender, _tollBooth);
@@ -32,7 +32,7 @@ contract TollBoothHolder is Owned, TollBoothHolderI {
     }
 
     function removeTollBooth(address _tollBooth) public fromOwner returns (bool success) {
-        require(isTollBooth(_tollBooth), "This is not a toll booth");            
+        require(isTollBooth(_tollBooth), "Given address is not a toll booth");            
         delete tollBoothHolders[_tollBooth];
         emit LogTollBoothRemoved(msg.sender, _tollBooth);
         return true;
