@@ -14,12 +14,15 @@ ganache-cli -l 150000 --allowUnlimitedContractSize
 
 It makes that in 168 tests 2 are not running: TestOwnedA and TestRoutePriceHolderB. 
 
-If 
+Sometimes, test can get broke after X attempts of testing all contracts. In that case, you have to stop and launch ganache with same params again. 
+
 
 III. GUI
 
 Unfortunately, due to many webpack and package issues I ran out of time with implementing proper GUI and working in way I wished. The reason behind that is the errors that occured during launching project from the scratch, and webpack acted very strange
-with not-so-new modules in package.json 
+with not-so-new modules in package.json. Maybe if I wouldn't waste so much time on fixing some package issues then I would be able to make GUI in the way I wanted to.
 
-I am not sure if my ready implementations would work if I had no problem with webpack and web3, but you will be the judge ;) 
+I am not sure if my ready implementations would work if I had no problem with webpack and web3, but you will be the judge.
+
+There can be some problems or missing elements in HTML, but I think that made main behaviour and way of adding some smart contract functions into HTML beginning from imports to deploying till using these functions. 
 
