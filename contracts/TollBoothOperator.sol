@@ -9,8 +9,7 @@ import "./RoutePriceHolder.sol";
 import "./interfaces/TollBoothOperatorI.sol";
 import "./Regulator.sol";
 import "./TollBoothHolder.sol";
-
-import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "./SafeMath.sol";
 
 contract TollBoothOperator is Owned, Pausable, DepositHolder, TollBoothHolder, 
 MultiplierHolder, RoutePriceHolder, Regulated, TollBoothOperatorI {
