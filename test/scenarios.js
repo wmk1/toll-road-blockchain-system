@@ -2,12 +2,12 @@ const assert = require('assert')
 
 const toBytes32 = require('../utils/toBytes32.js')
 
+// eslint-disable-next-line no-undef
 const Regulator = artifacts.require('./Regulator.sol')
+// eslint-disable-next-line no-undef
 const TollBoothOperator = artifacts.require('./TollBoothOperator.sol')
-
+// eslint-disable-next-line no-undef
 contract('Scenarios', accounts => {
-  let regulator = {}
-  let tollBoothOperator = {}
   let owner = accounts[0]
   let owner1 = accounts[1]
   let vehicle = accounts[2]
@@ -17,7 +17,7 @@ contract('Scenarios', accounts => {
   let deposit = 10
   let vehicleType = 1
   let vehicleType1 = 2
-  let price = 1
+  let routePrice = 10
   let multiplier = 32
   let multiplier1 = 21
   let secret = toBytes32(100)
@@ -25,59 +25,56 @@ contract('Scenarios', accounts => {
 
   let hashed, hashed1
 
-  let regulatorInstance
-  let tollBoothOperatorInstance
+  let regulator
+  let tollBoothOperator
 
+  // eslint-disable-next-line no-undef
   beforeEach('Deploying the necessary contracts before performing tests', async () => {
-    regulator.instance = await Regulator.new({
+    regulator = await Regulator.new({
       from: owner
     })
-    regulatorInstance = regulator.instance
-    await regulatorInstance.setVehicleType(vehicle, vehicleType, {
+    await regulator.setVehicleType(vehicle, vehicleType, {
       from: owner
     })
-    await regulatorInstance.setVehicleType(vehicle1, vehicleType1, {
+    await regulator.setVehicleType(vehicle1, vehicleType1, {
       from: owner
     })
-    let tx = await regulatorInstance.createNewOperator(owner1, deposit, {
+    let tx = await regulator.createNewOperator(owner1, deposit, {
       from: owner
     })
-    tollBoothOperator.instance = await TollBoothOperator.at(tx.logs[1].args.newOperator)
-    tollBoothOperatorInstance = tollBoothOperator.instance
-    await tollBoothOperatorInstance.addTollBooth(booth, {
+    tollBoothOperator = await TollBoothOperator.at(tx.logs[1].args.newOperator)
+    await tollBoothOperator.addTollBooth(booth, {
       from: owner1
     })
-    await tollBoothOperatorInstance.addTollBooth(booth1, {
+    await tollBoothOperator.addTollBooth(booth1, {
       from: owner1
     })
-    await tollBoothOperatorInstance.setMultiplier(vehicleType, multiplier, {
+    await tollBoothOperator.setMultiplier(vehicleType, multiplier, {
       from: owner1
     })
-    await tollBoothOperatorInstance.setMultiplier(vehicleType1, multiplier1, {
+    await tollBoothOperator.setMultiplier(vehicleType1, multiplier1, {
       from: owner1
     })
-    await tollBoothOperatorInstance.setRoutePrice(booth, booth1, price, {
+    await tollBoothOperator.setPaused(false, {
       from: owner1
     })
-    await tollBoothOperatorInstance.setPaused(false, {
-      from: owner1
-    })
-    hashed = await tollBoothOperatorInstance.hashSecret(secret)
-    hashed1 = await tollBoothOperatorInstance.hashSecret(secret1)
+    hashed = await tollBoothOperator.hashSecret(secret)
+    hashed1 = await tollBoothOperator.hashSecret(secret1)
   })
 
+// eslint-disable-next-line no-undef
   it('1 - Given routeprice when is equal to deposit then no refund', async () => {
     //given
-    await tollBoothOperatorInstance.enterRoad(booth, hashed, {
+    await tollBoothOperator.enterRoad(booth, hashed, {
       from: vehicle,
       value: (deposit * multiplier)
     })
-    await tollBoothOperatorInstance.setRoutePrice(booth, booth1, deposit, {
+    await tollBoothOperator.setRoutePrice(booth, booth1, deposit, {
       from: owner1
     })
 
     // when
-    const exitRoadTransaction = await tollBoothOperatorInstance.reportExitRoad(secret, {
+    const exitRoadTransaction = await tollBoothOperator.reportExitRoad(secret, {
       from: booth1
     })
     const transactionLogs = exitRoadTransaction.logs
@@ -89,16 +86,16 @@ contract('Scenarios', accounts => {
 
   it('2 - Given routeprice when is less than deposit then no refund', async () => {
     //given
-    await tollBoothOperatorInstance.enterRoad(booth, hashed, {
+    await tollBoothOperator.enterRoad(booth, hashed, {
       from: vehicle,
       value: (deposit * multiplier)
     })
-    await tollBoothOperatorInstance.setRoutePrice(booth, booth1, deposit * 2, {
+    await tollBoothOperator.setRoutePrice(booth, booth1, deposit * 2, {
       from: owner1
     })
 
     // when
-    const exitRoadTransaction = await tollBoothOperatorInstance.reportExitRoad(secret, {
+    const exitRoadTransaction = await tollBoothOperator.reportExitRoad(secret, {
       from: booth1
     })
     const transactionLogs = exitRoadTransaction.logs
@@ -110,16 +107,15 @@ contract('Scenarios', accounts => {
 
   it('3 - Given routeprice when is bigger than deposit then refund is issued', async () => {
     //given
-    await tollBoothOperatorInstance.enterRoad(booth, hashed, {
+    await tollBoothOperator.enterRoad(booth, hashed, {
       from: vehicle,
       value: (deposit * multiplier)
     })
-    await tollBoothOperatorInstance.setRoutePrice(booth, booth1, deposit - 3, {
+    await tollBoothOperator.setRoutePrice(booth, booth1, deposit - 3, {
       from: owner1
     })
-
     // when
-    const exitRoadTransaction = await tollBoothOperatorInstance.reportExitRoad(secret, {
+    const exitRoadTransaction = await tollBoothOperator.reportExitRoad(secret, {
       from: booth1
     })
     const transactionLogs = exitRoadTransaction.logs
@@ -131,16 +127,16 @@ contract('Scenarios', accounts => {
 
   it('4 - Given amount deposited when is greater than deposit and routeprice is equal to deposit then refund is issued', async () => {
     //given
-    await tollBoothOperatorInstance.enterRoad(booth, hashed, {
+    await tollBoothOperator.enterRoad(booth, hashed, {
       from: vehicle,
       value: (deposit * multiplier + 5 * multiplier)
     })
-    await tollBoothOperatorInstance.setRoutePrice(booth, booth1, deposit, {
+    await tollBoothOperator.setRoutePrice(booth, booth1, deposit, {
       from: owner1
     })
 
     // when
-    const exitRoadTransaction = await tollBoothOperatorInstance.reportExitRoad(secret, {
+    const exitRoadTransaction = await tollBoothOperator.reportExitRoad(secret, {
       from: booth1
     })
     const transactionLogs = exitRoadTransaction.logs
@@ -150,49 +146,49 @@ contract('Scenarios', accounts => {
     assert.equal(transactionLogs[0].args.refundWeis.toNumber(), 5 * multiplier, 'Refund weis not correct')
   })
 
-  it('5 - Given amount deposited when is greater than deposit and routeprice is greater than deposit then refund is issued', async () => {
+  it('5 - Given amount deposited when is greater than deposit and routeprice is unknown than deposit then refund is issued', async () => {
     //given
-    await tollBoothOperatorInstance.enterRoad(booth, hashed, {
+    await tollBoothOperator.enterRoad(booth, hashed, {
       from: vehicle,
       value: (deposit * multiplier + 5 * multiplier)
     })
-    await tollBoothOperatorInstance.setRoutePrice(booth, booth1, deposit + 1, {
-      from: owner1
-    })
-
-    // when
-    const exitRoadTransaction = await tollBoothOperatorInstance.reportExitRoad(secret, {
+    await tollBoothOperator.reportExitRoad(secret, {
       from: booth1
     })
-    const transactionLogs = exitRoadTransaction.logs
+    // when
+    const transaction = await tollBoothOperator.setRoutePrice(booth, booth1, deposit, {
+      from: owner1
+    })
+    const transactionLogs = transaction.logs
+    const logRoadExitedRefundedWeis = transactionLogs.find(l => l.event === 'LogRoadExited').args.refundWeis
     // then
-    assert.equal(transactionLogs.length, 1, 'Wrong number of events')
-    assert.equal(transactionLogs[0].event, 'LogRoadExited', 'Event name mismatched')
-    assert.equal(transactionLogs[0].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis mismatched')
+    assert.equal(transactionLogs.length, 2, 'Wrong number of events')
+    assert.equal(transactionLogs[0].event, 'LogRoutePriceSet', 'Event name mismatched')
+    assert.equal(logRoadExitedRefundedWeis, 160, 'Refund weis mismatched')
   })
 
-  it('Given two vehicles when enter road then first in first out  queue case scenario goes successfully', async () => {
+  it('6 - Given two vehicles when enter road with unknown price then after clear pending payment count proper refund is issued', async () => {
     //given
-    await tollBoothOperatorInstance.enterRoad(booth1, hashed, {
+    await tollBoothOperator.enterRoad(booth1, hashed, {
       from: vehicle,
       value: (deposit * multiplier + 5 * multiplier)
     })
-    await tollBoothOperatorInstance.reportExitRoad(secret, {
+    await tollBoothOperator.reportExitRoad(secret, {
       from: booth
     })
-    await tollBoothOperatorInstance.enterRoad(booth1, hashed1, {
+    await tollBoothOperator.enterRoad(booth1, hashed1, {
       from: vehicle1,
       value: (deposit * multiplier1)
     })
-    await tollBoothOperatorInstance.reportExitRoad(secret1, {
+    await tollBoothOperator.reportExitRoad(secret1, {
       from: booth
     })
     // when
-    const exitRoadTransactionTwo = await tollBoothOperatorInstance.setRoutePrice(booth1, booth, deposit + 1, {
+    const exitRoadTransactionTwo = await tollBoothOperator.setRoutePrice(booth1, booth, deposit + 1, {
       from: owner1
     })
     const transactionLogs = exitRoadTransactionTwo.logs
-    await tollBoothOperatorInstance.clearSomePendingPayments(booth1, booth, 1)
+    await tollBoothOperator.clearSomePendingPayments(booth1, booth, 1)
     // then
     assert.equal(transactionLogs.length, 2, 'Event count mismatched')
     assert.equal(transactionLogs[1].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis mismatched')
