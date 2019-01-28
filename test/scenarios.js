@@ -184,13 +184,13 @@ contract('Scenarios', accounts => {
       from: booth
     })
     // when
-    const exitRoadTransactionTwo = await tollBoothOperator.setRoutePrice(booth1, booth, deposit + 1, {
+    const exitRoadTransaction = await tollBoothOperator.setRoutePrice(booth1, booth, deposit + 1, {
       from: owner1
     })
-    const transactionLogs = exitRoadTransactionTwo.logs
+    const exitRoadLogs = exitRoadTransaction.logs
     await tollBoothOperator.clearSomePendingPayments(booth1, booth, 1)
     // then
-    assert.equal(transactionLogs.length, 2, 'Event count mismatched')
-    assert.equal(transactionLogs[1].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis mismatched')
+    assert.equal(exitRoadLogs.length, 2, 'Event count mismatched')
+    assert.equal(exitRoadLogs[1].args.refundWeis.toNumber(), 4 * multiplier, 'Refund weis mismatched')
   })
 })
