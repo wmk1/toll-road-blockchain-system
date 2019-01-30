@@ -1,4 +1,4 @@
-import Web3 from 'web3'
+import getWeb3 from './getWeb3.js'
 import {
   default as contract
 } from 'truffle-contract'
@@ -20,36 +20,17 @@ const App = {
   meta: null,
 
   start: async function() {
-    const { web3 } = this
-
-      // get contract instance
-      const networkId = await web3.eth.net.getId()
-      web3 = await new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'))
-
+    const web3 = await getWeb3
+    console.log(web3)
   },
 
   setVehicleType: async () => {
     let vehicleType = parseInt(document.getElementById('vehicleType').value)
     let recipient = document.getElementById('address').value
-    let regulatorInstance
+    let regulatorInstance = web3.eth.contract(regulatorArtifacts.abi)
+    console.log(regulatorInstance)
 
-    if (vehicleType > 3 || vehicleType < 0) {
-        console.log('Error')
-        self.setStatus('Vehicle type value must be between 0 and 3')
-        return 0
-      }
-    Regulator.deployed().then((instance) => {
-        regulatorInstance = instance
-        return regulatorInstance.setVehicleType(vehicleType, recipient, {
-          from: account
-        })
-      }).then(() => {
-        self.setStatus('Vehicle type set')
-        self.refreshBalance()
-      }).catch((e) => {
-          console.log(e)
-          self.setStatus('An error occured while setting vehicle type')
-        })
+
   },
 
   sendCoin: async function() {
