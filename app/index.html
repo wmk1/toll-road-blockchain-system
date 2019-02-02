@@ -34,7 +34,7 @@
   <div id="tollBoothOperator" class="tabcontent">
     <h3>Toll booth operator</h3>
     <p>Add toll booth</p>
-    <br><label for="createdTollBooth">Toll booth address: </label><input type="text" id="createdTollBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <br><label for="createdTollBooth">New toll booth address: </label><input type="text" id="createdTollBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
     <br>
     <button class="tablinks" onclick="App.addTollBooth">Add toll booth</button>
     <br>
@@ -50,11 +50,19 @@
   <div id="individualVehicles" class="tabcontent">
     <h3>Individual vehicles</h3>
     <p>Individual vehicles content</p>
+    <p>Address balance: </p>
+    <br>
+    <br><label for="individualVehicleAddress">Individual vehicle address: </label><input type="text" id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <button class="tablinks" onclick=App.checkBalance()>See address balance </button>
+
   </div>
 
   <div id="individualTollBooths" class="tabcontent">
     <h3>Individual toll booth operators</h3>
     <p>Report exit road</p>
+    <br><label for="individualVehicleAddress">Individual vehicle address: </label><input type="text" id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+    <button class="tablinks" onclick=App.reportExitRoad()>Report exit road</button>
+    
   </div>
   <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
 </body>

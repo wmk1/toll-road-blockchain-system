@@ -19,21 +19,23 @@ const App = {
   account: null,
   meta: null,
 
-  start: async function() {
+  start: async () => {
     const web3 = await getWeb3
     console.log(web3)
   },
+
+  checkBalance: async () => {
+    
+  }
 
   setVehicleType: async () => {
     let vehicleType = parseInt(document.getElementById('vehicleType').value)
     let recipient = document.getElementById('address').value
     let regulatorInstance = web3.eth.contract(regulatorArtifacts.abi)
     console.log(regulatorInstance)
-
-
   },
 
-  sendCoin: async function() {
+  sendCoin: async () => {
     const amount = parseInt(document.getElementById("amount").value)
     const receiver = document.getElementById("receiver").value
 
@@ -46,10 +48,22 @@ const App = {
     this.refreshBalance()
   },
 
-  setStatus: function(message) {
+  setRoutePrice: async () => {
+    const entryBooth = document.getElementById("entryBooth").value
+    const exitBooth = document.getElementById("exitBooth").value
+    const amount = parseInt(document.getElementById("routePriceAmount").value)
+  },
+
+  setStatus: (message) => {
     const status = document.getElementById("status")
     status.innerHTML = message
   },
+
+  createNewOperator: async() => {
+    const operatorAddress = document.getElementById('receiver').value
+    const operatorDeposit = parseInt(document.getElementById('operatorDeposit').value)
+
+  }
 }
 
 window.App = App
@@ -63,7 +77,7 @@ window.addEventListener("load", function() {
     console.warn(
       "No web3 detected. Falling back to http://127.0.0.1:8545. You should remove this fallback when you deploy live",
     )
-    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+    // fallbaxck - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
     App.web3 = new Web3(
       new Web3.providers.HttpProvider("http://127.0.0.1:8545"),
     )
