@@ -14,6 +14,9 @@ let Regulator = contract(regulatorArtifacts)
 let RoutePriceHolder = contract(routePriceHolderArtifacts)
 let TollBoothOperator = contract(tollBoothOperatorArtifacts)
 let TollBoothHolder = contract(tollBoothHolderArtifacts)
+
+const regulatorAddress = '0xc9ae4a38cec6999610951f4c7d7765aaa8ac4e29'
+
 const App = {
   web3: null,
   account: null,
@@ -25,14 +28,48 @@ const App = {
   },
 
   checkBalance: async () => {
-    
-  }
+    const recipient = document.getElementById('individualVehicleAddress').value
+  },
 
   setVehicleType: async () => {
     let vehicleType = parseInt(document.getElementById('vehicleType').value)
     let recipient = document.getElementById('address').value
-    let regulatorInstance = web3.eth.contract(regulatorArtifacts.abi)
+    console.log('Regulator artifacts: ')
+    console.log(regulatorArtifacts.abi)
+    let regulator = web3.eth.contract(JSON.stringify(regulatorArtifacts))
+    const regulatorContract = await contract({
+      abi: regulatorArtifacts.abi
+    })
+    regulatorContract.setProvider(web3.currentProvider)
+    console.log(regulatorContract)
+    console.log('Regulator abi: ')
+    console.log(regulator.abi)
+    console.log('Gas estimate: ')
+    console.log(web3.eth.gasEstimate)
+    console.log('Web3')
+    console.log(web3)
+    console.log('Regulator new')
+    console.log(regulatorContract)
+    await regulatorContract.at(regulatorAddress)
+      .then(instance => {
+        instance.setVehicleType(vehicleType, recipient, {
+          from: this.account
+        })
+      }).then(console.log('Success!'))
+   /* let gasEstimate = await this.web3.eth.estimateGasPromise({
+      data: regulatorArtifacts.bytecode
+    })
+    console.log(gasEstimate)
+    const regulatorInstance = await Regulator.new({
+      data: regulatorArtifacts.bytecode,
+      from: this.state.accounts[0],
+      gas: gasEstimate
+    })
+    Promise.promisifyAll(regulatorInstance, { suffix: 'Promise' })
     console.log(regulatorInstance)
+    this.setState({
+      regulatorInstance: regulatorInstance
+    })*/
   },
 
   sendCoin: async () => {
@@ -44,7 +81,7 @@ const App = {
     const { sendCoin } = this.meta.methods
     await sendCoin(receiver, amount).send({ from: this.account })
 
-    this.setStatus("Transaction complete!")
+    this.setStatus('Transaction complete!')
     this.refreshBalance()
   },
 
@@ -62,7 +99,6 @@ const App = {
   createNewOperator: async() => {
     const operatorAddress = document.getElementById('receiver').value
     const operatorDeposit = parseInt(document.getElementById('operatorDeposit').value)
-
   }
 }
 

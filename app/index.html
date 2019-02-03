@@ -17,13 +17,13 @@
 
   <div id="regulator" class="tabcontent">
     <h3>Regulator</h3>
-    <p>Set vehicle type</p>
+    <h4>Set vehicle type</h4>
     <br><label for="vehicleType">Vehicle type: </label><input type="text" id="vehicleType" placeholder="1, 2, 3"></input>
     <br>
     <br><label for="address">To address: </label><input type="text" id="address" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
     <br>
     <button class="tablinks" onclick="App.setVehicleType()">Set vehicle type</button>
-    <p>Create new operator</p>
+    <h4>Create new operator</h4>
     <br><label for="newOperatorAddress">Operator address: </label><input type="text" id="newOperatorAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
     <br><label for="deposit">Deposit: </label><input type="text" id="deposit" placeholder="Default deposited weis"></input>
     <br>
@@ -33,12 +33,12 @@
   
   <div id="tollBoothOperator" class="tabcontent">
     <h3>Toll booth operator</h3>
-    <p>Add toll booth</p>
+    <h4>Add toll booth</h4>
     <br><label for="createdTollBooth">New toll booth address: </label><input type="text" id="createdTollBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
     <br>
     <button class="tablinks" onclick="App.addTollBooth">Add toll booth</button>
     <br>
-    <p>Change route price</p>
+    <h4>Change route price</h4>
     <br>
     <br><label for="entryBooth">Entry booth: </label><input type="text" id="entryBooth" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
     <br>
@@ -49,7 +49,7 @@
   
   <div id="individualVehicles" class="tabcontent">
     <h3>Individual vehicles</h3>
-    <p>Individual vehicles content</p>
+    <h4>Individual vehicles content</h4>
     <p>Address balance: </p>
     <br>
     <br><label for="individualVehicleAddress">Individual vehicle address: </label><input type="text" id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
@@ -62,7 +62,7 @@
     <p>Report exit road</p>
     <br><label for="individualVehicleAddress">Individual vehicle address: </label><input type="text" id="individualVehicleAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
     <button class="tablinks" onclick=App.reportExitRoad()>Report exit road</button>
-    
+
   </div>
   <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
 </body>
