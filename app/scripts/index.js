@@ -1,105 +1,61 @@
-import getWeb3 from './getWeb3.js'
-import {
-  default as contract
-} from 'truffle-contract'
-import multiplierArtifacts from '../../build/contracts/MultiplierHolder.json'
-import regulatorArtifacts from '../../build/contracts/Regulator.json'
-import routePriceHolderArtifacts from '../../build/contracts/RoutePriceHolder.json'
-import tollBoothOperatorArtifacts from '../../build/contracts/TollBoothOperator.json'
-import tollBoothHolderArtifacts from '../../build/contracts/TollBoothHolder.json'
+const Web3 = require("web3")
 
-let MultiplierHolder = contract(multiplierArtifacts)
-let Regulator = contract(regulatorArtifacts)
-let RoutePriceHolder = contract(routePriceHolderArtifacts)
-let TollBoothOperator = contract(tollBoothOperatorArtifacts)
-let TollBoothHolder = contract(tollBoothHolderArtifacts)
-
-const regulatorAddress = '0xc9ae4a38cec6999610951f4c7d7765aaa8ac4e29'
-
-let addressBalance = 0
-
-const Promise = require('bluebird')
-
-let regulatorContract
-let toolBoothOperatorContract
+const regulatorArtifacts = require('../../build/contracts/Regulator.json')
+const tollBoothOperatorArtifacts = require('../../build/contracts/TollBoothOperator.json')
 
 const App = {
   web3: null,
   account: null,
-  meta: null,
+  regulator: null,
+  tollBoothOperator: null,
 
   start: async () => {
-    const web3 = await getWeb3
-    
-    console.log('START: web3')
-    console.log(web3)
-    Promise.promisifyAll(web3.web3.eth, {
-      suffix: 'Promise'
-    })
-    console.log('Regulator artifacts: ')
-    console.log(regulatorArtifacts.abi)
-    console.log('Gas estimate: ')
-    console.log('Web3 eth')
-    console.log(web3.web3.eth)
-    console.log('Regulator new')
-    console.log(regulatorContract)
-    console.log('Coinbase: ')
-    console.log(web3.web3.eth.accounts.length)
-    console.log('Regulator address')
-    console.log(web3.web3.eth.getCoinbase)
+    try {
+      const { web3 } = this
+      console.log(web3)
+      const networkId = await web3.web3.eth.getId()
+      const deployedNetwork = regulatorArtifacts.networks[networkId]
+      this.regulator = new web3.eth.Contract(
+      regulatorArtifacts.abi,
+      deployedNetwork.address
+    )
+      this.tollBoothOperator = new web3.eth.Contract(
+      tollBoothOperatorArtifacts.abi,
+      deployedNetwork.address
+    )
+    console.log('regulator')
+    console.log(regulator)
+    } catch (error) {
+      console.error('Something aint right yo')
+      console.error(error)
+    }
   },
 
   checkBalance: async () => {
     const recipient = document.getElementById('individualVehicleAddress').value
   },
 
-  setVehicleType: async () => {
-    console.log(await web3.eth.getCoinbase)
+  changeVehicleType: async () => {
+    const { setVehicleType } = this.regulator.methods
     let vehicleType = parseInt(document.getElementById('vehicleType').value)
     let recipient = document.getElementById('address').value
-    await regulatorContract.at(regulatorAddress)
-      .then(instance => {
-        instance.setVehicleType(vehicleType, recipient, {
-          from: this.account
-        })
-      }).then(console.log('Success!'))
-   /* let gasEstimate = await this.web3.eth.estimateGasPromise({
-      data: regulatorArtifacts.bytecode
-    })
-    console.log(gasEstimate)
-    const regulatorInstance = await Regulator.new({
-      data: regulatorArtifacts.bytecode,
-      from: this.state.accounts[0],
-      gas: gasEstimate
-    })
-    Promise.promisifyAll(regulatorInstance, { suffix: 'Promise' })
-    console.log(regulatorInstance)
-    this.setState({
-      regulatorInstance: regulatorInstance
-    })*/
+    await setVehicleType(vehicleType, recipient).send({ from: this.account }) 
   },
 
-  sendCoin: async () => {
-    const amount = parseInt(document.getElementById("amount").value)
-    const receiver = document.getElementById("receiver").value
+  updateRoutePrice: async () => {
+    const { setRoutePrice } = this.regulator.methods
 
-    this.setStatus("Initiating transaction... (please wait)")
-
-    const { sendCoin } = this.meta.methods
-    await sendCoin(receiver, amount).send({ from: this.account })
-
-    this.setStatus('Transaction complete!')
-    this.refreshBalance()
-  },
-
-  setRoutePrice: async () => {
     const entryBooth = document.getElementById('entryBooth').value
     const exitBooth = document.getElementById('exitBooth').value
     const amount = parseInt(document.getElementById('routePriceAmount').value)
+
+    await setRoutePrice(entryBooth, exitBooth, amount).send({ from: this.account })
   },
 
-  reportExitRoad: async() => {
+  reportVehicleExit: async() => {
+    const { reportExitRoad } = this.tollBoothOperator.methods
     const individualVehicleAddress = document.getElementById('individualVehicleAddress').value
+    await reportExitRoad(individualVehicleAddress).send({ from: this.account })
   },
 
   setStatus: (message) => {
@@ -116,5 +72,19 @@ const App = {
 window.App = App
 
 window.addEventListener('load', () => {
+  if (window.ethereum) {
+    // use MetaMask's provider
+    App.web3 = new Web3(window.ethereum)
+    window.ethereum.enable() // get permission to access accounts
+  } else {
+    console.warn(
+      'No web3 detected. Falling back to http://127.0.0.1:8545. You should remove this fallback when you deploy live',
+    )
+    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+    App.web3 = new Web3(
+      new Web3.providers.HttpProvider('http://127.0.0.1:8545'),
+    )
+  }
+  console.log(App.web3)
   App.start()
 })
