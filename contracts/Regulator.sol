@@ -10,7 +10,7 @@ contract Regulator is Owned, RegulatorI {
     mapping(address => uint) public vehicles;
     mapping(address => bool) public operators;
 
-    event LogVehicleTypeSet( address indexed sender, address indexed vehicle, uint indexed vehicleType);
+    event LogVehicleTypeSet(address indexed sender, address indexed vehicle, uint indexed vehicleType);
     event LogTollBoothOperatorRemoved(address indexed sender, address indexed operator);
     event LogTollBoothOperatorCreated(address indexed sender, address indexed newOperator, address indexed owner, uint depositWeis);
 

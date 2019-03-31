@@ -176,19 +176,19 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.24;\n\nimport { TollBoothOperatorI } from \"./TollBoothOperatorI.sol\";\n\ncontract RegulatorI {\n\n    /**\n     * uint VehicleType:\n     * 0: not a vehicle, absence of a vehicle\n     * 1 and above: is a vehicle.\n     * For instance:\n     *   1: motorbike\n     *   2: car\n     *   3: lorry\n     */\n\n    /**\n     * Event emitted when a new vehicle has been registered with its type.\n     * @param sender The account that ran the action.\n     * @param vehicle The address of the vehicle that is registered.\n     * @param vehicleType The VehicleType that the vehicle was registered as.\n     */\n    event LogVehicleTypeSet(\n        address indexed sender,\n        address indexed vehicle,\n        uint indexed vehicleType);\n\n    /**\n     * Called by the owner of the regulator to register a new vehicle with its VehicleType.\n     *     It should roll back if the caller is not the owner of the contract.\n     *     It should roll back if the arguments mean no change of state.\n     *     It should roll back if a 0x vehicle address is passed.\n     * @param vehicle The address of the vehicle being registered. This may be an externally\n     *   owned account or a contract. The regulator does not care.\n     * @param vehicleType The VehicleType of the vehicle being registered.\n     *    passing 0 is equivalent to unregistering the vehicle.\n     * @return Whether the action was successful.\n     * Emits LogVehicleTypeSet with:\n     *     The sender of the action.\n     *     The address of the vehicle that was changed.\n     *     The vehicle type that was set.\n     */\n    function setVehicleType(address vehicle, uint vehicleType)\n        public\n        returns(bool success);\n\n    /**\n     * @param vehicle The address of the registered vehicle. It should accept a 0x vehicle address.\n     * @return The VehicleType of the vehicle whose address was passed. 0 means it is not\n     *   a registered vehicle.\n     */\n    function getVehicleType(address vehicle)\n        view\n        public\n        returns(uint vehicleType);\n\n    /**\n     * Event emitted when a new TollBoothOperator has been created and registered.\n     * @param sender The account that ran the action.\n     * @param newOperator The newly created TollBoothOperator contract.\n     * @param owner The rightful owner of the TollBoothOperator.\n     * @param depositWeis The initial deposit amount set in the TollBoothOperator.\n     */\n    event LogTollBoothOperatorCreated(\n        address indexed sender,\n        address indexed newOperator,\n        address indexed owner,\n        uint depositWeis);\n\n    /**\n     * Called by the owner of the regulator to deploy a new TollBoothOperator onto the network.\n     *     It should roll back if the caller is not the owner of the contract.\n     *     It should start the TollBoothOperator in the `true` paused state.\n     *     It should roll back if the rightful owner argument is the current owner of the regulator.\n     * @param owner The rightful owner of the newly deployed TollBoothOperator.\n     * @param deposit The initial value of the TollBoothOperator deposit.\n     * @return The address of the newly deployed TollBoothOperator.\n     * Emits LogTollBoothOperatorCreated with:\n     *     The sender of the action.\n     *     The address of the deployed TollBoothOperator.\n     *     The rightful owner of the TollBoothOperator.\n     *     the initial deposit value.\n     */\n    function createNewOperator(\n            address owner,\n            uint deposit)\n        public\n        returns(TollBoothOperatorI newOperator);\n\n    /**\n     * Event emitted when a TollBoothOperator has been removed from the list of approved operators.\n     * @param sender The account that ran the action.\n     * @param operator The removed TollBoothOperator.\n     */\n    event LogTollBoothOperatorRemoved(\n        address indexed sender,\n        address indexed operator);\n\n    /**\n     * Called by the owner of the regulator to remove a previously deployed TollBoothOperator from\n     * the list of approved operators.\n     *     It should roll back if the caller is not the owner of the contract.\n     *     It should roll back if the operator is unknown.\n     * @param operator The address of the contract to remove.\n     * @return Whether the action was successful.\n     * Emits LogTollBoothOperatorRemoved with:\n     *     The sender of the action.\n     *     The address of the remove TollBoothOperator.\n     */\n    function removeOperator(address operator)\n        public\n        returns(bool success);\n\n    /**\n     * @param operator The address of the TollBoothOperator to test. It should accept a 0 address.\n     * @return Whether the TollBoothOperator is indeed approved.\n     */\n    function isOperator(address operator)\n        view\n        public\n        returns(bool indeed);\n\n    /*\n     * You need to create:\n     *\n     * - a contract named `Regulator` that:\n     *     - is `OwnedI` and `RegulatorI`.\n     *     - has a constructor that takes no parameter.\n     */        \n}",
-  "sourcePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RegulatorI.sol",
+  "sourcePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/RegulatorI.sol",
   "ast": {
-    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RegulatorI.sol",
+    "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/RegulatorI.sol",
     "exportedSymbols": {
       "RegulatorI": [
-        1735
+        1920
       ]
     },
-    "id": 1736,
+    "id": 1921,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1669,
+        "id": 1854,
         "literals": [
           "solidity",
           "^",
@@ -196,19 +196,19 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:14"
+        "src": "0:24:16"
       },
       {
-        "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/TollBoothOperatorI.sol",
+        "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/TollBoothOperatorI.sol",
         "file": "./TollBoothOperatorI.sol",
-        "id": 1671,
+        "id": 1856,
         "nodeType": "ImportDirective",
-        "scope": 1736,
-        "sourceUnit": 1906,
-        "src": "26:62:14",
+        "scope": 1921,
+        "sourceUnit": 2091,
+        "src": "26:62:16",
         "symbolAliases": [
           {
-            "foreign": 1670,
+            "foreign": 1855,
             "local": null
           }
         ],
@@ -220,9 +220,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1735,
+        "id": 1920,
         "linearizedBaseContracts": [
-          1735
+          1920
         ],
         "name": "RegulatorI",
         "nodeType": "ContractDefinition",
@@ -230,21 +230,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new vehicle has been registered with its type.\n@param sender The account that ran the action.\n@param vehicle The address of the vehicle that is registered.\n@param vehicleType The VehicleType that the vehicle was registered as.",
-            "id": 1679,
+            "id": 1864,
             "name": "LogVehicleTypeSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1678,
+              "id": 1863,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1673,
+                  "id": 1858,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1679,
-                  "src": "641:22:14",
+                  "scope": 1864,
+                  "src": "641:22:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -252,10 +252,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1672,
+                    "id": 1857,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "641:7:14",
+                    "src": "641:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -266,12 +266,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1675,
+                  "id": 1860,
                   "indexed": true,
                   "name": "vehicle",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1679,
-                  "src": "673:23:14",
+                  "scope": 1864,
+                  "src": "673:23:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -279,10 +279,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1674,
+                    "id": 1859,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "673:7:14",
+                    "src": "673:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -293,12 +293,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1677,
+                  "id": 1862,
                   "indexed": true,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1679,
-                  "src": "706:24:14",
+                  "scope": 1864,
+                  "src": "706:24:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -306,10 +306,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1676,
+                    "id": 1861,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "706:4:14",
+                    "src": "706:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -319,14 +319,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "631:100:14"
+              "src": "631:100:16"
             },
-            "src": "608:124:14"
+            "src": "608:124:16"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the regulator to register a new vehicle with its VehicleType.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the arguments mean no change of state.\n    It should roll back if a 0x vehicle address is passed.\n@param vehicle The address of the vehicle being registered. This may be an externally\n  owned account or a contract. The regulator does not care.\n@param vehicleType The VehicleType of the vehicle being registered.\n   passing 0 is equivalent to unregistering the vehicle.\n@return Whether the action was successful.\nEmits LogVehicleTypeSet with:\n    The sender of the action.\n    The address of the vehicle that was changed.\n    The vehicle type that was set.",
-            "id": 1688,
+            "id": 1873,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -334,16 +334,16 @@
             "name": "setVehicleType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1684,
+              "id": 1869,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1681,
+                  "id": 1866,
                   "name": "vehicle",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1688,
-                  "src": "1609:15:14",
+                  "scope": 1873,
+                  "src": "1609:15:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -351,10 +351,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1680,
+                    "id": 1865,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1609:7:14",
+                    "src": "1609:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -365,11 +365,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1683,
+                  "id": 1868,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1688,
-                  "src": "1626:16:14",
+                  "scope": 1873,
+                  "src": "1626:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -377,10 +377,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1682,
+                    "id": 1867,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1626:4:14",
+                    "src": "1626:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -390,20 +390,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1608:35:14"
+              "src": "1608:35:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1687,
+              "id": 1872,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1686,
+                  "id": 1871,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1688,
-                  "src": "1675:12:14",
+                  "scope": 1873,
+                  "src": "1675:12:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -411,10 +411,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1685,
+                    "id": 1870,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1675:4:14",
+                    "src": "1675:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -424,10 +424,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1674:14:14"
+              "src": "1674:14:16"
             },
-            "scope": 1735,
-            "src": "1585:104:14",
+            "scope": 1920,
+            "src": "1585:104:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -435,7 +435,7 @@
           {
             "body": null,
             "documentation": "@param vehicle The address of the registered vehicle. It should accept a 0x vehicle address.\n@return The VehicleType of the vehicle whose address was passed. 0 means it is not\n  a registered vehicle.",
-            "id": 1695,
+            "id": 1880,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -443,16 +443,16 @@
             "name": "getVehicleType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1691,
+              "id": 1876,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1690,
+                  "id": 1875,
                   "name": "vehicle",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1695,
-                  "src": "1956:15:14",
+                  "scope": 1880,
+                  "src": "1956:15:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -460,10 +460,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1689,
+                    "id": 1874,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1956:7:14",
+                    "src": "1956:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -473,20 +473,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1955:17:14"
+              "src": "1955:17:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1694,
+              "id": 1879,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1693,
+                  "id": 1878,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1695,
-                  "src": "2017:16:14",
+                  "scope": 1880,
+                  "src": "2017:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -494,10 +494,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1692,
+                    "id": 1877,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2017:4:14",
+                    "src": "2017:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -507,10 +507,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2016:18:14"
+              "src": "2016:18:16"
             },
-            "scope": 1735,
-            "src": "1932:103:14",
+            "scope": 1920,
+            "src": "1932:103:16",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -518,21 +518,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new TollBoothOperator has been created and registered.\n@param sender The account that ran the action.\n@param newOperator The newly created TollBoothOperator contract.\n@param owner The rightful owner of the TollBoothOperator.\n@param depositWeis The initial deposit amount set in the TollBoothOperator.",
-            "id": 1705,
+            "id": 1890,
             "name": "LogTollBoothOperatorCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1704,
+              "id": 1889,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1697,
+                  "id": 1882,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2457:22:14",
+                  "scope": 1890,
+                  "src": "2457:22:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -540,10 +540,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1696,
+                    "id": 1881,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2457:7:14",
+                    "src": "2457:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -554,12 +554,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1699,
+                  "id": 1884,
                   "indexed": true,
                   "name": "newOperator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2489:27:14",
+                  "scope": 1890,
+                  "src": "2489:27:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -567,10 +567,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1698,
+                    "id": 1883,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2489:7:14",
+                    "src": "2489:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -581,12 +581,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1701,
+                  "id": 1886,
                   "indexed": true,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2526:21:14",
+                  "scope": 1890,
+                  "src": "2526:21:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -594,10 +594,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1700,
+                    "id": 1885,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2526:7:14",
+                    "src": "2526:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -608,12 +608,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1703,
+                  "id": 1888,
                   "indexed": false,
                   "name": "depositWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2557:16:14",
+                  "scope": 1890,
+                  "src": "2557:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -621,10 +621,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1702,
+                    "id": 1887,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2557:4:14",
+                    "src": "2557:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -634,14 +634,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2447:127:14"
+              "src": "2447:127:16"
             },
-            "src": "2414:161:14"
+            "src": "2414:161:16"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the regulator to deploy a new TollBoothOperator onto the network.\n    It should roll back if the caller is not the owner of the contract.\n    It should start the TollBoothOperator in the `true` paused state.\n    It should roll back if the rightful owner argument is the current owner of the regulator.\n@param owner The rightful owner of the newly deployed TollBoothOperator.\n@param deposit The initial value of the TollBoothOperator deposit.\n@return The address of the newly deployed TollBoothOperator.\nEmits LogTollBoothOperatorCreated with:\n    The sender of the action.\n    The address of the deployed TollBoothOperator.\n    The rightful owner of the TollBoothOperator.\n    the initial deposit value.",
-            "id": 1714,
+            "id": 1899,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -649,16 +649,16 @@
             "name": "createNewOperator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1710,
+              "id": 1895,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1707,
+                  "id": 1892,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1714,
-                  "src": "3448:13:14",
+                  "scope": 1899,
+                  "src": "3448:13:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -666,10 +666,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1706,
+                    "id": 1891,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3448:7:14",
+                    "src": "3448:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -680,11 +680,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1709,
+                  "id": 1894,
                   "name": "deposit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1714,
-                  "src": "3475:12:14",
+                  "scope": 1899,
+                  "src": "3475:12:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -692,10 +692,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1708,
+                    "id": 1893,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3475:4:14",
+                    "src": "3475:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -705,35 +705,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3434:54:14"
+              "src": "3434:54:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1713,
+              "id": 1898,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1712,
+                  "id": 1897,
                   "name": "newOperator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1714,
-                  "src": "3520:30:14",
+                  "scope": 1899,
+                  "src": "3520:30:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_TollBoothOperatorI_$1905",
+                    "typeIdentifier": "t_contract$_TollBoothOperatorI_$2090",
                     "typeString": "contract TollBoothOperatorI"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1711,
+                    "id": 1896,
                     "name": "TollBoothOperatorI",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1905,
-                    "src": "3520:18:14",
+                    "referencedDeclaration": 2090,
+                    "src": "3520:18:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_TollBoothOperatorI_$1905",
+                      "typeIdentifier": "t_contract$_TollBoothOperatorI_$2090",
                       "typeString": "contract TollBoothOperatorI"
                     }
                   },
@@ -741,10 +741,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3519:32:14"
+              "src": "3519:32:16"
             },
-            "scope": 1735,
-            "src": "3408:144:14",
+            "scope": 1920,
+            "src": "3408:144:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -752,21 +752,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a TollBoothOperator has been removed from the list of approved operators.\n@param sender The account that ran the action.\n@param operator The removed TollBoothOperator.",
-            "id": 1720,
+            "id": 1905,
             "name": "LogTollBoothOperatorRemoved",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1719,
+              "id": 1904,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1716,
+                  "id": 1901,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1720,
-                  "src": "3825:22:14",
+                  "scope": 1905,
+                  "src": "3825:22:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -774,10 +774,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1715,
+                    "id": 1900,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3825:7:14",
+                    "src": "3825:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -788,12 +788,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1718,
+                  "id": 1903,
                   "indexed": true,
                   "name": "operator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1720,
-                  "src": "3857:24:14",
+                  "scope": 1905,
+                  "src": "3857:24:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -801,10 +801,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1717,
+                    "id": 1902,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3857:7:14",
+                    "src": "3857:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -814,14 +814,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3815:67:14"
+              "src": "3815:67:16"
             },
-            "src": "3782:101:14"
+            "src": "3782:101:16"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the regulator to remove a previously deployed TollBoothOperator from\nthe list of approved operators.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the operator is unknown.\n@param operator The address of the contract to remove.\n@return Whether the action was successful.\nEmits LogTollBoothOperatorRemoved with:\n    The sender of the action.\n    The address of the remove TollBoothOperator.",
-            "id": 1727,
+            "id": 1912,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -829,16 +829,16 @@
             "name": "removeOperator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1723,
+              "id": 1908,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1722,
+                  "id": 1907,
                   "name": "operator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1727,
-                  "src": "4457:16:14",
+                  "scope": 1912,
+                  "src": "4457:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -846,10 +846,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1721,
+                    "id": 1906,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4457:7:14",
+                    "src": "4457:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -859,20 +859,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4456:18:14"
+              "src": "4456:18:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1726,
+              "id": 1911,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1725,
+                  "id": 1910,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1727,
-                  "src": "4506:12:14",
+                  "scope": 1912,
+                  "src": "4506:12:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -880,10 +880,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1724,
+                    "id": 1909,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4506:4:14",
+                    "src": "4506:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -893,10 +893,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4505:14:14"
+              "src": "4505:14:16"
             },
-            "scope": 1735,
-            "src": "4433:87:14",
+            "scope": 1920,
+            "src": "4433:87:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -904,7 +904,7 @@
           {
             "body": null,
             "documentation": "@param operator The address of the TollBoothOperator to test. It should accept a 0 address.\n@return Whether the TollBoothOperator is indeed approved.",
-            "id": 1734,
+            "id": 1919,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -912,16 +912,16 @@
             "name": "isOperator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1730,
+              "id": 1915,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1729,
+                  "id": 1914,
                   "name": "operator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1734,
-                  "src": "4726:16:14",
+                  "scope": 1919,
+                  "src": "4726:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -929,10 +929,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1728,
+                    "id": 1913,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4726:7:14",
+                    "src": "4726:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -942,20 +942,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4725:18:14"
+              "src": "4725:18:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1733,
+              "id": 1918,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1732,
+                  "id": 1917,
                   "name": "indeed",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1734,
-                  "src": "4788:11:14",
+                  "scope": 1919,
+                  "src": "4788:11:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -963,10 +963,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1731,
+                    "id": 1916,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4788:4:14",
+                    "src": "4788:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -976,33 +976,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4787:13:14"
+              "src": "4787:13:16"
             },
-            "scope": 1735,
-            "src": "4706:95:14",
+            "scope": 1920,
+            "src": "4706:95:16",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1736,
-        "src": "90:4914:14"
+        "scope": 1921,
+        "src": "90:4914:16"
       }
     ],
-    "src": "0:5004:14"
+    "src": "0:5004:16"
   },
   "legacyAST": {
-    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RegulatorI.sol",
+    "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/RegulatorI.sol",
     "exportedSymbols": {
       "RegulatorI": [
-        1735
+        1920
       ]
     },
-    "id": 1736,
+    "id": 1921,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1669,
+        "id": 1854,
         "literals": [
           "solidity",
           "^",
@@ -1010,19 +1010,19 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:14"
+        "src": "0:24:16"
       },
       {
-        "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/TollBoothOperatorI.sol",
+        "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/TollBoothOperatorI.sol",
         "file": "./TollBoothOperatorI.sol",
-        "id": 1671,
+        "id": 1856,
         "nodeType": "ImportDirective",
-        "scope": 1736,
-        "sourceUnit": 1906,
-        "src": "26:62:14",
+        "scope": 1921,
+        "sourceUnit": 2091,
+        "src": "26:62:16",
         "symbolAliases": [
           {
-            "foreign": 1670,
+            "foreign": 1855,
             "local": null
           }
         ],
@@ -1034,9 +1034,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1735,
+        "id": 1920,
         "linearizedBaseContracts": [
-          1735
+          1920
         ],
         "name": "RegulatorI",
         "nodeType": "ContractDefinition",
@@ -1044,21 +1044,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new vehicle has been registered with its type.\n@param sender The account that ran the action.\n@param vehicle The address of the vehicle that is registered.\n@param vehicleType The VehicleType that the vehicle was registered as.",
-            "id": 1679,
+            "id": 1864,
             "name": "LogVehicleTypeSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1678,
+              "id": 1863,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1673,
+                  "id": 1858,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1679,
-                  "src": "641:22:14",
+                  "scope": 1864,
+                  "src": "641:22:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1066,10 +1066,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1672,
+                    "id": 1857,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "641:7:14",
+                    "src": "641:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1080,12 +1080,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1675,
+                  "id": 1860,
                   "indexed": true,
                   "name": "vehicle",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1679,
-                  "src": "673:23:14",
+                  "scope": 1864,
+                  "src": "673:23:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1093,10 +1093,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1674,
+                    "id": 1859,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "673:7:14",
+                    "src": "673:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1107,12 +1107,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1677,
+                  "id": 1862,
                   "indexed": true,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1679,
-                  "src": "706:24:14",
+                  "scope": 1864,
+                  "src": "706:24:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1120,10 +1120,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1676,
+                    "id": 1861,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "706:4:14",
+                    "src": "706:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1133,14 +1133,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "631:100:14"
+              "src": "631:100:16"
             },
-            "src": "608:124:14"
+            "src": "608:124:16"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the regulator to register a new vehicle with its VehicleType.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the arguments mean no change of state.\n    It should roll back if a 0x vehicle address is passed.\n@param vehicle The address of the vehicle being registered. This may be an externally\n  owned account or a contract. The regulator does not care.\n@param vehicleType The VehicleType of the vehicle being registered.\n   passing 0 is equivalent to unregistering the vehicle.\n@return Whether the action was successful.\nEmits LogVehicleTypeSet with:\n    The sender of the action.\n    The address of the vehicle that was changed.\n    The vehicle type that was set.",
-            "id": 1688,
+            "id": 1873,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1148,16 +1148,16 @@
             "name": "setVehicleType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1684,
+              "id": 1869,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1681,
+                  "id": 1866,
                   "name": "vehicle",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1688,
-                  "src": "1609:15:14",
+                  "scope": 1873,
+                  "src": "1609:15:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1165,10 +1165,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1680,
+                    "id": 1865,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1609:7:14",
+                    "src": "1609:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1179,11 +1179,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1683,
+                  "id": 1868,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1688,
-                  "src": "1626:16:14",
+                  "scope": 1873,
+                  "src": "1626:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1191,10 +1191,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1682,
+                    "id": 1867,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1626:4:14",
+                    "src": "1626:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1204,20 +1204,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1608:35:14"
+              "src": "1608:35:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1687,
+              "id": 1872,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1686,
+                  "id": 1871,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1688,
-                  "src": "1675:12:14",
+                  "scope": 1873,
+                  "src": "1675:12:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1225,10 +1225,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1685,
+                    "id": 1870,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1675:4:14",
+                    "src": "1675:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1238,10 +1238,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1674:14:14"
+              "src": "1674:14:16"
             },
-            "scope": 1735,
-            "src": "1585:104:14",
+            "scope": 1920,
+            "src": "1585:104:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1249,7 +1249,7 @@
           {
             "body": null,
             "documentation": "@param vehicle The address of the registered vehicle. It should accept a 0x vehicle address.\n@return The VehicleType of the vehicle whose address was passed. 0 means it is not\n  a registered vehicle.",
-            "id": 1695,
+            "id": 1880,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1257,16 +1257,16 @@
             "name": "getVehicleType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1691,
+              "id": 1876,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1690,
+                  "id": 1875,
                   "name": "vehicle",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1695,
-                  "src": "1956:15:14",
+                  "scope": 1880,
+                  "src": "1956:15:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1274,10 +1274,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1689,
+                    "id": 1874,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1956:7:14",
+                    "src": "1956:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1287,20 +1287,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1955:17:14"
+              "src": "1955:17:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1694,
+              "id": 1879,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1693,
+                  "id": 1878,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1695,
-                  "src": "2017:16:14",
+                  "scope": 1880,
+                  "src": "2017:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1308,10 +1308,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1692,
+                    "id": 1877,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2017:4:14",
+                    "src": "2017:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1321,10 +1321,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2016:18:14"
+              "src": "2016:18:16"
             },
-            "scope": 1735,
-            "src": "1932:103:14",
+            "scope": 1920,
+            "src": "1932:103:16",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -1332,21 +1332,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new TollBoothOperator has been created and registered.\n@param sender The account that ran the action.\n@param newOperator The newly created TollBoothOperator contract.\n@param owner The rightful owner of the TollBoothOperator.\n@param depositWeis The initial deposit amount set in the TollBoothOperator.",
-            "id": 1705,
+            "id": 1890,
             "name": "LogTollBoothOperatorCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1704,
+              "id": 1889,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1697,
+                  "id": 1882,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2457:22:14",
+                  "scope": 1890,
+                  "src": "2457:22:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1354,10 +1354,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1696,
+                    "id": 1881,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2457:7:14",
+                    "src": "2457:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1368,12 +1368,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1699,
+                  "id": 1884,
                   "indexed": true,
                   "name": "newOperator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2489:27:14",
+                  "scope": 1890,
+                  "src": "2489:27:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1381,10 +1381,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1698,
+                    "id": 1883,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2489:7:14",
+                    "src": "2489:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1395,12 +1395,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1701,
+                  "id": 1886,
                   "indexed": true,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2526:21:14",
+                  "scope": 1890,
+                  "src": "2526:21:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1408,10 +1408,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1700,
+                    "id": 1885,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2526:7:14",
+                    "src": "2526:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1422,12 +1422,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1703,
+                  "id": 1888,
                   "indexed": false,
                   "name": "depositWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1705,
-                  "src": "2557:16:14",
+                  "scope": 1890,
+                  "src": "2557:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1435,10 +1435,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1702,
+                    "id": 1887,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2557:4:14",
+                    "src": "2557:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1448,14 +1448,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2447:127:14"
+              "src": "2447:127:16"
             },
-            "src": "2414:161:14"
+            "src": "2414:161:16"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the regulator to deploy a new TollBoothOperator onto the network.\n    It should roll back if the caller is not the owner of the contract.\n    It should start the TollBoothOperator in the `true` paused state.\n    It should roll back if the rightful owner argument is the current owner of the regulator.\n@param owner The rightful owner of the newly deployed TollBoothOperator.\n@param deposit The initial value of the TollBoothOperator deposit.\n@return The address of the newly deployed TollBoothOperator.\nEmits LogTollBoothOperatorCreated with:\n    The sender of the action.\n    The address of the deployed TollBoothOperator.\n    The rightful owner of the TollBoothOperator.\n    the initial deposit value.",
-            "id": 1714,
+            "id": 1899,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1463,16 +1463,16 @@
             "name": "createNewOperator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1710,
+              "id": 1895,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1707,
+                  "id": 1892,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1714,
-                  "src": "3448:13:14",
+                  "scope": 1899,
+                  "src": "3448:13:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1480,10 +1480,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1706,
+                    "id": 1891,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3448:7:14",
+                    "src": "3448:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1494,11 +1494,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1709,
+                  "id": 1894,
                   "name": "deposit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1714,
-                  "src": "3475:12:14",
+                  "scope": 1899,
+                  "src": "3475:12:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1506,10 +1506,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1708,
+                    "id": 1893,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3475:4:14",
+                    "src": "3475:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1519,35 +1519,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3434:54:14"
+              "src": "3434:54:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1713,
+              "id": 1898,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1712,
+                  "id": 1897,
                   "name": "newOperator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1714,
-                  "src": "3520:30:14",
+                  "scope": 1899,
+                  "src": "3520:30:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_TollBoothOperatorI_$1905",
+                    "typeIdentifier": "t_contract$_TollBoothOperatorI_$2090",
                     "typeString": "contract TollBoothOperatorI"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1711,
+                    "id": 1896,
                     "name": "TollBoothOperatorI",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1905,
-                    "src": "3520:18:14",
+                    "referencedDeclaration": 2090,
+                    "src": "3520:18:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_TollBoothOperatorI_$1905",
+                      "typeIdentifier": "t_contract$_TollBoothOperatorI_$2090",
                       "typeString": "contract TollBoothOperatorI"
                     }
                   },
@@ -1555,10 +1555,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3519:32:14"
+              "src": "3519:32:16"
             },
-            "scope": 1735,
-            "src": "3408:144:14",
+            "scope": 1920,
+            "src": "3408:144:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1566,21 +1566,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a TollBoothOperator has been removed from the list of approved operators.\n@param sender The account that ran the action.\n@param operator The removed TollBoothOperator.",
-            "id": 1720,
+            "id": 1905,
             "name": "LogTollBoothOperatorRemoved",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1719,
+              "id": 1904,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1716,
+                  "id": 1901,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1720,
-                  "src": "3825:22:14",
+                  "scope": 1905,
+                  "src": "3825:22:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1588,10 +1588,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1715,
+                    "id": 1900,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3825:7:14",
+                    "src": "3825:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1602,12 +1602,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1718,
+                  "id": 1903,
                   "indexed": true,
                   "name": "operator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1720,
-                  "src": "3857:24:14",
+                  "scope": 1905,
+                  "src": "3857:24:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1615,10 +1615,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1717,
+                    "id": 1902,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3857:7:14",
+                    "src": "3857:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1628,14 +1628,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3815:67:14"
+              "src": "3815:67:16"
             },
-            "src": "3782:101:14"
+            "src": "3782:101:16"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the regulator to remove a previously deployed TollBoothOperator from\nthe list of approved operators.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the operator is unknown.\n@param operator The address of the contract to remove.\n@return Whether the action was successful.\nEmits LogTollBoothOperatorRemoved with:\n    The sender of the action.\n    The address of the remove TollBoothOperator.",
-            "id": 1727,
+            "id": 1912,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1643,16 +1643,16 @@
             "name": "removeOperator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1723,
+              "id": 1908,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1722,
+                  "id": 1907,
                   "name": "operator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1727,
-                  "src": "4457:16:14",
+                  "scope": 1912,
+                  "src": "4457:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1660,10 +1660,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1721,
+                    "id": 1906,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4457:7:14",
+                    "src": "4457:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1673,20 +1673,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4456:18:14"
+              "src": "4456:18:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1726,
+              "id": 1911,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1725,
+                  "id": 1910,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1727,
-                  "src": "4506:12:14",
+                  "scope": 1912,
+                  "src": "4506:12:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1694,10 +1694,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1724,
+                    "id": 1909,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4506:4:14",
+                    "src": "4506:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1707,10 +1707,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4505:14:14"
+              "src": "4505:14:16"
             },
-            "scope": 1735,
-            "src": "4433:87:14",
+            "scope": 1920,
+            "src": "4433:87:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1718,7 +1718,7 @@
           {
             "body": null,
             "documentation": "@param operator The address of the TollBoothOperator to test. It should accept a 0 address.\n@return Whether the TollBoothOperator is indeed approved.",
-            "id": 1734,
+            "id": 1919,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1726,16 +1726,16 @@
             "name": "isOperator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1730,
+              "id": 1915,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1729,
+                  "id": 1914,
                   "name": "operator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1734,
-                  "src": "4726:16:14",
+                  "scope": 1919,
+                  "src": "4726:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1743,10 +1743,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1728,
+                    "id": 1913,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4726:7:14",
+                    "src": "4726:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1756,20 +1756,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4725:18:14"
+              "src": "4725:18:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1733,
+              "id": 1918,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1732,
+                  "id": 1917,
                   "name": "indeed",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1734,
-                  "src": "4788:11:14",
+                  "scope": 1919,
+                  "src": "4788:11:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1777,10 +1777,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1731,
+                    "id": 1916,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4788:4:14",
+                    "src": "4788:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1790,20 +1790,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4787:13:14"
+              "src": "4787:13:16"
             },
-            "scope": 1735,
-            "src": "4706:95:14",
+            "scope": 1920,
+            "src": "4706:95:16",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1736,
-        "src": "90:4914:14"
+        "scope": 1921,
+        "src": "90:4914:16"
       }
     ],
-    "src": "0:5004:14"
+    "src": "0:5004:16"
   },
   "compiler": {
     "name": "solc",
@@ -1811,5 +1811,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-18T21:22:10.437Z"
+  "updatedAt": "2019-03-31T19:28:14.545Z"
 }

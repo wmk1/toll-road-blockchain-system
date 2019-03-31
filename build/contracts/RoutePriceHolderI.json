@@ -84,19 +84,19 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.24;\n\ncontract RoutePriceHolderI {\n\n    /**\n     * Event emitted when a new price has been set on a route.\n     * @param sender The account that ran the action.\n     * @param entryBooth The address of the entry booth of the route set.\n     * @param exitBooth The address of the exit booth of the route set.\n     * @param priceWeis The price in weis of the new route.\n     */\n    event LogRoutePriceSet(\n        address indexed sender,\n        address indexed entryBooth,\n        address indexed exitBooth,\n        uint priceWeis);\n\n    /**\n     * Called by the owner of the RoutePriceHolder.\n     *     It can be used to update the price of a route, including to zero.\n     *     It should roll back if the caller is not the owner of the contract.\n     *     It should roll back if one of the booths is not a registered booth.\n     *     It should roll back if entry and exit booths are the same.\n     *     It should roll back if either booth is a 0x address.\n     *     It should roll back if there is no change in price.\n     * @param entryBooth The address of the entry booth of the route set.\n     * @param exitBooth The address of the exit booth of the route set.\n     * @param priceWeis The price in weis of the new route.\n     * @return Whether the action was successful.\n     * Emits LogPriceSet with:\n     *     The sender of the action.\n     *     The address of the entry booth.\n     *     The address of the exit booth.\n     *     The new price of the route.\n     */\n    function setRoutePrice(\n            address entryBooth,\n            address exitBooth,\n            uint priceWeis)\n        public\n        returns(bool success);\n\n    /**\n     * @param entryBooth The address of the entry booth of the route. It should accept a 0 address.\n     * @param exitBooth The address of the exit booth of the route. It should accept a 0 address.\n     * @return priceWeis The price in weis of the route.\n     *     If the route is not known or if any address is not a booth it should return 0.\n     *     If the route is invalid, it should return 0.\n     */\n    function getRoutePrice(\n            address entryBooth,\n            address exitBooth)\n        view\n        public\n        returns(uint priceWeis);\n\n    /*\n     * You need to create:\n     *\n     * - a contract named `RoutePriceHolder` that:\n     *     - is `OwnedI`, `TollBoothHolderI`, and `RoutePriceHolderI`.\n     *     - has a constructor that takes no parameter.\n     */\n}",
-  "sourcePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RoutePriceHolderI.sol",
+  "sourcePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/RoutePriceHolderI.sol",
   "ast": {
-    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RoutePriceHolderI.sol",
+    "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/RoutePriceHolderI.sol",
     "exportedSymbols": {
       "RoutePriceHolderI": [
-        1768
+        1953
       ]
     },
-    "id": 1769,
+    "id": 1954,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1737,
+        "id": 1922,
         "literals": [
           "solidity",
           "^",
@@ -104,7 +104,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:15"
+        "src": "0:24:17"
       },
       {
         "baseContracts": [],
@@ -112,9 +112,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1768,
+        "id": 1953,
         "linearizedBaseContracts": [
-          1768
+          1953
         ],
         "name": "RoutePriceHolderI",
         "nodeType": "ContractDefinition",
@@ -122,21 +122,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new price has been set on a route.\n@param sender The account that ran the action.\n@param entryBooth The address of the entry booth of the route set.\n@param exitBooth The address of the exit booth of the route set.\n@param priceWeis The price in weis of the new route.",
-            "id": 1747,
+            "id": 1932,
             "name": "LogRoutePriceSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1746,
+              "id": 1931,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1739,
+                  "id": 1924,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "431:22:15",
+                  "scope": 1932,
+                  "src": "431:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -144,10 +144,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1738,
+                    "id": 1923,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "431:7:15",
+                    "src": "431:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -158,12 +158,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1741,
+                  "id": 1926,
                   "indexed": true,
                   "name": "entryBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "463:26:15",
+                  "scope": 1932,
+                  "src": "463:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -171,10 +171,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1740,
+                    "id": 1925,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "463:7:15",
+                    "src": "463:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -185,12 +185,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1743,
+                  "id": 1928,
                   "indexed": true,
                   "name": "exitBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "499:25:15",
+                  "scope": 1932,
+                  "src": "499:25:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -198,10 +198,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1742,
+                    "id": 1927,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "499:7:15",
+                    "src": "499:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -212,12 +212,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1745,
+                  "id": 1930,
                   "indexed": false,
                   "name": "priceWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "534:14:15",
+                  "scope": 1932,
+                  "src": "534:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -225,10 +225,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1744,
+                    "id": 1929,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "534:4:15",
+                    "src": "534:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -238,14 +238,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "421:128:15"
+              "src": "421:128:17"
             },
-            "src": "399:151:15"
+            "src": "399:151:17"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the RoutePriceHolder.\n    It can be used to update the price of a route, including to zero.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if one of the booths is not a registered booth.\n    It should roll back if entry and exit booths are the same.\n    It should roll back if either booth is a 0x address.\n    It should roll back if there is no change in price.\n@param entryBooth The address of the entry booth of the route set.\n@param exitBooth The address of the exit booth of the route set.\n@param priceWeis The price in weis of the new route.\n@return Whether the action was successful.\nEmits LogPriceSet with:\n    The sender of the action.\n    The address of the entry booth.\n    The address of the exit booth.\n    The new price of the route.",
-            "id": 1758,
+            "id": 1943,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -253,16 +253,16 @@
             "name": "setRoutePrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1754,
+              "id": 1939,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1749,
+                  "id": 1934,
                   "name": "entryBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1540:18:15",
+                  "scope": 1943,
+                  "src": "1540:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -270,10 +270,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1748,
+                    "id": 1933,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1540:7:15",
+                    "src": "1540:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -284,11 +284,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1751,
+                  "id": 1936,
                   "name": "exitBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1572:17:15",
+                  "scope": 1943,
+                  "src": "1572:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -296,10 +296,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1750,
+                    "id": 1935,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1572:7:15",
+                    "src": "1572:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -310,11 +310,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1753,
+                  "id": 1938,
                   "name": "priceWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1603:14:15",
+                  "scope": 1943,
+                  "src": "1603:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -322,10 +322,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1752,
+                    "id": 1937,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1603:4:15",
+                    "src": "1603:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -335,20 +335,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1526:92:15"
+              "src": "1526:92:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1757,
+              "id": 1942,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1756,
+                  "id": 1941,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1650:12:15",
+                  "scope": 1943,
+                  "src": "1650:12:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -356,10 +356,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1755,
+                    "id": 1940,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1650:4:15",
+                    "src": "1650:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -369,10 +369,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1649:14:15"
+              "src": "1649:14:17"
             },
-            "scope": 1768,
-            "src": "1504:160:15",
+            "scope": 1953,
+            "src": "1504:160:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -380,7 +380,7 @@
           {
             "body": null,
             "documentation": "@param entryBooth The address of the entry booth of the route. It should accept a 0 address.\n@param exitBooth The address of the exit booth of the route. It should accept a 0 address.\n@return priceWeis The price in weis of the route.\n    If the route is not known or if any address is not a booth it should return 0.\n    If the route is invalid, it should return 0.",
-            "id": 1767,
+            "id": 1952,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -388,16 +388,16 @@
             "name": "getRoutePrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1763,
+              "id": 1948,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1760,
+                  "id": 1945,
                   "name": "entryBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1767,
-                  "src": "2123:18:15",
+                  "scope": 1952,
+                  "src": "2123:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -405,10 +405,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1759,
+                    "id": 1944,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2123:7:15",
+                    "src": "2123:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -419,11 +419,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1762,
+                  "id": 1947,
                   "name": "exitBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1767,
-                  "src": "2155:17:15",
+                  "scope": 1952,
+                  "src": "2155:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -431,10 +431,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1761,
+                    "id": 1946,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2155:7:15",
+                    "src": "2155:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -444,20 +444,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2109:64:15"
+              "src": "2109:64:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1766,
+              "id": 1951,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1765,
+                  "id": 1950,
                   "name": "priceWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1767,
-                  "src": "2218:14:15",
+                  "scope": 1952,
+                  "src": "2218:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -465,10 +465,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1764,
+                    "id": 1949,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2218:4:15",
+                    "src": "2218:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -478,33 +478,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2217:16:15"
+              "src": "2217:16:17"
             },
-            "scope": 1768,
-            "src": "2087:147:15",
+            "scope": 1953,
+            "src": "2087:147:17",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1769,
-        "src": "26:2438:15"
+        "scope": 1954,
+        "src": "26:2438:17"
       }
     ],
-    "src": "0:2464:15"
+    "src": "0:2464:17"
   },
   "legacyAST": {
-    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/RoutePriceHolderI.sol",
+    "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/RoutePriceHolderI.sol",
     "exportedSymbols": {
       "RoutePriceHolderI": [
-        1768
+        1953
       ]
     },
-    "id": 1769,
+    "id": 1954,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1737,
+        "id": 1922,
         "literals": [
           "solidity",
           "^",
@@ -512,7 +512,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:15"
+        "src": "0:24:17"
       },
       {
         "baseContracts": [],
@@ -520,9 +520,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1768,
+        "id": 1953,
         "linearizedBaseContracts": [
-          1768
+          1953
         ],
         "name": "RoutePriceHolderI",
         "nodeType": "ContractDefinition",
@@ -530,21 +530,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new price has been set on a route.\n@param sender The account that ran the action.\n@param entryBooth The address of the entry booth of the route set.\n@param exitBooth The address of the exit booth of the route set.\n@param priceWeis The price in weis of the new route.",
-            "id": 1747,
+            "id": 1932,
             "name": "LogRoutePriceSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1746,
+              "id": 1931,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1739,
+                  "id": 1924,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "431:22:15",
+                  "scope": 1932,
+                  "src": "431:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -552,10 +552,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1738,
+                    "id": 1923,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "431:7:15",
+                    "src": "431:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -566,12 +566,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1741,
+                  "id": 1926,
                   "indexed": true,
                   "name": "entryBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "463:26:15",
+                  "scope": 1932,
+                  "src": "463:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -579,10 +579,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1740,
+                    "id": 1925,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "463:7:15",
+                    "src": "463:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -593,12 +593,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1743,
+                  "id": 1928,
                   "indexed": true,
                   "name": "exitBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "499:25:15",
+                  "scope": 1932,
+                  "src": "499:25:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -606,10 +606,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1742,
+                    "id": 1927,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "499:7:15",
+                    "src": "499:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -620,12 +620,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1745,
+                  "id": 1930,
                   "indexed": false,
                   "name": "priceWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1747,
-                  "src": "534:14:15",
+                  "scope": 1932,
+                  "src": "534:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -633,10 +633,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1744,
+                    "id": 1929,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "534:4:15",
+                    "src": "534:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -646,14 +646,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "421:128:15"
+              "src": "421:128:17"
             },
-            "src": "399:151:15"
+            "src": "399:151:17"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the RoutePriceHolder.\n    It can be used to update the price of a route, including to zero.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if one of the booths is not a registered booth.\n    It should roll back if entry and exit booths are the same.\n    It should roll back if either booth is a 0x address.\n    It should roll back if there is no change in price.\n@param entryBooth The address of the entry booth of the route set.\n@param exitBooth The address of the exit booth of the route set.\n@param priceWeis The price in weis of the new route.\n@return Whether the action was successful.\nEmits LogPriceSet with:\n    The sender of the action.\n    The address of the entry booth.\n    The address of the exit booth.\n    The new price of the route.",
-            "id": 1758,
+            "id": 1943,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -661,16 +661,16 @@
             "name": "setRoutePrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1754,
+              "id": 1939,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1749,
+                  "id": 1934,
                   "name": "entryBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1540:18:15",
+                  "scope": 1943,
+                  "src": "1540:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -678,10 +678,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1748,
+                    "id": 1933,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1540:7:15",
+                    "src": "1540:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -692,11 +692,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1751,
+                  "id": 1936,
                   "name": "exitBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1572:17:15",
+                  "scope": 1943,
+                  "src": "1572:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -704,10 +704,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1750,
+                    "id": 1935,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1572:7:15",
+                    "src": "1572:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -718,11 +718,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1753,
+                  "id": 1938,
                   "name": "priceWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1603:14:15",
+                  "scope": 1943,
+                  "src": "1603:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -730,10 +730,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1752,
+                    "id": 1937,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1603:4:15",
+                    "src": "1603:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -743,20 +743,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1526:92:15"
+              "src": "1526:92:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1757,
+              "id": 1942,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1756,
+                  "id": 1941,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1650:12:15",
+                  "scope": 1943,
+                  "src": "1650:12:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -764,10 +764,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1755,
+                    "id": 1940,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1650:4:15",
+                    "src": "1650:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -777,10 +777,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1649:14:15"
+              "src": "1649:14:17"
             },
-            "scope": 1768,
-            "src": "1504:160:15",
+            "scope": 1953,
+            "src": "1504:160:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -788,7 +788,7 @@
           {
             "body": null,
             "documentation": "@param entryBooth The address of the entry booth of the route. It should accept a 0 address.\n@param exitBooth The address of the exit booth of the route. It should accept a 0 address.\n@return priceWeis The price in weis of the route.\n    If the route is not known or if any address is not a booth it should return 0.\n    If the route is invalid, it should return 0.",
-            "id": 1767,
+            "id": 1952,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -796,16 +796,16 @@
             "name": "getRoutePrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1763,
+              "id": 1948,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1760,
+                  "id": 1945,
                   "name": "entryBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1767,
-                  "src": "2123:18:15",
+                  "scope": 1952,
+                  "src": "2123:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -813,10 +813,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1759,
+                    "id": 1944,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2123:7:15",
+                    "src": "2123:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -827,11 +827,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1762,
+                  "id": 1947,
                   "name": "exitBooth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1767,
-                  "src": "2155:17:15",
+                  "scope": 1952,
+                  "src": "2155:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -839,10 +839,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1761,
+                    "id": 1946,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2155:7:15",
+                    "src": "2155:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -852,20 +852,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2109:64:15"
+              "src": "2109:64:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1766,
+              "id": 1951,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1765,
+                  "id": 1950,
                   "name": "priceWeis",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1767,
-                  "src": "2218:14:15",
+                  "scope": 1952,
+                  "src": "2218:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -873,10 +873,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1764,
+                    "id": 1949,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2218:4:15",
+                    "src": "2218:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -886,20 +886,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2217:16:15"
+              "src": "2217:16:17"
             },
-            "scope": 1768,
-            "src": "2087:147:15",
+            "scope": 1953,
+            "src": "2087:147:17",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1769,
-        "src": "26:2438:15"
+        "scope": 1954,
+        "src": "26:2438:17"
       }
     ],
-    "src": "0:2464:15"
+    "src": "0:2464:17"
   },
   "compiler": {
     "name": "solc",
@@ -907,5 +907,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-18T21:22:10.437Z"
+  "updatedAt": "2019-03-31T19:28:14.545Z"
 }

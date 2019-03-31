@@ -71,19 +71,19 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.24;\n\ncontract MultiplierHolderI {\n\n    /**\n     * Event emitted when a new multiplier has been set.\n     * @param sender The account that ran the action.\n     * @param vehicleType The type of vehicle for which the multiplier was set.\n     * @param multiplier The actual multiplier set.\n     */\n    event LogMultiplierSet(\n        address indexed sender,\n        uint indexed vehicleType,\n        uint multiplier);\n\n    /**\n     * Called by the owner of the MultiplierHolder.\n     *     Can be used to update a value.\n     *     It should roll back if the caller is not the owner of the contract.\n     *     It should roll back if the vehicle type is 0.\n     *     Setting the multiplier to 0 is equivalent to removing it and is an acceptable action.\n     *     It should roll back if the same multiplier is already set to the vehicle type.\n     * @param vehicleType The type of the vehicle being set.\n     * @param multiplier The multiplier to use.\n     * @return Whether the action was successful.\n     * Emits LogMultiplierSet with:\n     *     The sender of the action.\n     *     The vehicle type that was modified.\n     *     The new multiplier that was set.\n     */\n    function setMultiplier(\n            uint vehicleType,\n            uint multiplier)\n        public\n        returns(bool success);\n\n    /**\n     * @param vehicleType The type of vehicle whose multiplier we want\n     *     It should accept a vehicle type equal to 0.\n     * @return The multiplier for this vehicle type.\n     *     A 0 value indicates a non-existent multiplier.\n     */\n    function getMultiplier(uint vehicleType)\n        view\n        public\n        returns(uint multiplier);\n\n    /*\n     * You need to create:\n     *\n     * - a contract named `MultiplierHolder` that:\n     *     - is `OwnedI` and `MultiplierHolderI`.\n     *     - has a constructor that takes no parameter.\n     */        \n}",
-  "sourcePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/MultiplierHolderI.sol",
+  "sourcePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/MultiplierHolderI.sol",
   "ast": {
-    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/MultiplierHolderI.sol",
+    "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/MultiplierHolderI.sol",
     "exportedSymbols": {
       "MultiplierHolderI": [
-        1602
+        1787
       ]
     },
-    "id": 1603,
+    "id": 1788,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1577,
+        "id": 1762,
         "literals": [
           "solidity",
           "^",
@@ -91,7 +91,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:10"
+        "src": "0:24:12"
       },
       {
         "baseContracts": [],
@@ -99,9 +99,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1602,
+        "id": 1787,
         "linearizedBaseContracts": [
-          1602
+          1787
         ],
         "name": "MultiplierHolderI",
         "nodeType": "ContractDefinition",
@@ -109,21 +109,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new multiplier has been set.\n@param sender The account that ran the action.\n@param vehicleType The type of vehicle for which the multiplier was set.\n@param multiplier The actual multiplier set.",
-            "id": 1585,
+            "id": 1770,
             "name": "LogMultiplierSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1584,
+              "id": 1769,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1579,
+                  "id": 1764,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1585,
-                  "src": "351:22:10",
+                  "scope": 1770,
+                  "src": "351:22:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -131,10 +131,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1578,
+                    "id": 1763,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "351:7:10",
+                    "src": "351:7:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -145,12 +145,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1581,
+                  "id": 1766,
                   "indexed": true,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1585,
-                  "src": "383:24:10",
+                  "scope": 1770,
+                  "src": "383:24:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -158,10 +158,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1580,
+                    "id": 1765,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "383:4:10",
+                    "src": "383:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -172,12 +172,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1583,
+                  "id": 1768,
                   "indexed": false,
                   "name": "multiplier",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1585,
-                  "src": "417:15:10",
+                  "scope": 1770,
+                  "src": "417:15:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -185,10 +185,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1582,
+                    "id": 1767,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "417:4:10",
+                    "src": "417:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -198,14 +198,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "341:92:10"
+              "src": "341:92:12"
             },
-            "src": "319:115:10"
+            "src": "319:115:12"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the MultiplierHolder.\n    Can be used to update a value.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the vehicle type is 0.\n    Setting the multiplier to 0 is equivalent to removing it and is an acceptable action.\n    It should roll back if the same multiplier is already set to the vehicle type.\n@param vehicleType The type of the vehicle being set.\n@param multiplier The multiplier to use.\n@return Whether the action was successful.\nEmits LogMultiplierSet with:\n    The sender of the action.\n    The vehicle type that was modified.\n    The new multiplier that was set.",
-            "id": 1594,
+            "id": 1779,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -213,16 +213,16 @@
             "name": "setMultiplier",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1590,
+              "id": 1775,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1587,
+                  "id": 1772,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1594,
-                  "src": "1232:16:10",
+                  "scope": 1779,
+                  "src": "1232:16:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -230,10 +230,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1586,
+                    "id": 1771,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1232:4:10",
+                    "src": "1232:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -244,11 +244,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1589,
+                  "id": 1774,
                   "name": "multiplier",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1594,
-                  "src": "1262:15:10",
+                  "scope": 1779,
+                  "src": "1262:15:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -256,10 +256,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1588,
+                    "id": 1773,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1262:4:10",
+                    "src": "1262:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -269,20 +269,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1218:60:10"
+              "src": "1218:60:12"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1593,
+              "id": 1778,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1592,
+                  "id": 1777,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1594,
-                  "src": "1310:12:10",
+                  "scope": 1779,
+                  "src": "1310:12:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -290,10 +290,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1591,
+                    "id": 1776,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1310:4:10",
+                    "src": "1310:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -303,10 +303,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1309:14:10"
+              "src": "1309:14:12"
             },
-            "scope": 1602,
-            "src": "1196:128:10",
+            "scope": 1787,
+            "src": "1196:128:12",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -314,7 +314,7 @@
           {
             "body": null,
             "documentation": "@param vehicleType The type of vehicle whose multiplier we want\n    It should accept a vehicle type equal to 0.\n@return The multiplier for this vehicle type.\n    A 0 value indicates a non-existent multiplier.",
-            "id": 1601,
+            "id": 1786,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -322,16 +322,16 @@
             "name": "getMultiplier",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1597,
+              "id": 1782,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1596,
+                  "id": 1781,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1601,
-                  "src": "1606:16:10",
+                  "scope": 1786,
+                  "src": "1606:16:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -339,10 +339,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1595,
+                    "id": 1780,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1606:4:10",
+                    "src": "1606:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -352,20 +352,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1605:18:10"
+              "src": "1605:18:12"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1600,
+              "id": 1785,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1599,
+                  "id": 1784,
                   "name": "multiplier",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1601,
-                  "src": "1668:15:10",
+                  "scope": 1786,
+                  "src": "1668:15:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -373,10 +373,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1598,
+                    "id": 1783,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1668:4:10",
+                    "src": "1668:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -386,33 +386,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1667:17:10"
+              "src": "1667:17:12"
             },
-            "scope": 1602,
-            "src": "1583:102:10",
+            "scope": 1787,
+            "src": "1583:102:12",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1603,
-        "src": "26:1876:10"
+        "scope": 1788,
+        "src": "26:1876:12"
       }
     ],
-    "src": "0:1902:10"
+    "src": "0:1902:12"
   },
   "legacyAST": {
-    "absolutePath": "/Users/wojciechkalinski/workspace-oracle-exam2/exam-step-2/contracts/interfaces/MultiplierHolderI.sol",
+    "absolutePath": "/Users/wojciechkalinski/workspace-xyz/toll-road-blockchain-system/contracts/interfaces/MultiplierHolderI.sol",
     "exportedSymbols": {
       "MultiplierHolderI": [
-        1602
+        1787
       ]
     },
-    "id": 1603,
+    "id": 1788,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1577,
+        "id": 1762,
         "literals": [
           "solidity",
           "^",
@@ -420,7 +420,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:10"
+        "src": "0:24:12"
       },
       {
         "baseContracts": [],
@@ -428,9 +428,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1602,
+        "id": 1787,
         "linearizedBaseContracts": [
-          1602
+          1787
         ],
         "name": "MultiplierHolderI",
         "nodeType": "ContractDefinition",
@@ -438,21 +438,21 @@
           {
             "anonymous": false,
             "documentation": "Event emitted when a new multiplier has been set.\n@param sender The account that ran the action.\n@param vehicleType The type of vehicle for which the multiplier was set.\n@param multiplier The actual multiplier set.",
-            "id": 1585,
+            "id": 1770,
             "name": "LogMultiplierSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1584,
+              "id": 1769,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1579,
+                  "id": 1764,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1585,
-                  "src": "351:22:10",
+                  "scope": 1770,
+                  "src": "351:22:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -460,10 +460,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1578,
+                    "id": 1763,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "351:7:10",
+                    "src": "351:7:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -474,12 +474,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1581,
+                  "id": 1766,
                   "indexed": true,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1585,
-                  "src": "383:24:10",
+                  "scope": 1770,
+                  "src": "383:24:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -487,10 +487,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1580,
+                    "id": 1765,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "383:4:10",
+                    "src": "383:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -501,12 +501,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1583,
+                  "id": 1768,
                   "indexed": false,
                   "name": "multiplier",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1585,
-                  "src": "417:15:10",
+                  "scope": 1770,
+                  "src": "417:15:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -514,10 +514,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1582,
+                    "id": 1767,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "417:4:10",
+                    "src": "417:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -527,14 +527,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "341:92:10"
+              "src": "341:92:12"
             },
-            "src": "319:115:10"
+            "src": "319:115:12"
           },
           {
             "body": null,
             "documentation": "Called by the owner of the MultiplierHolder.\n    Can be used to update a value.\n    It should roll back if the caller is not the owner of the contract.\n    It should roll back if the vehicle type is 0.\n    Setting the multiplier to 0 is equivalent to removing it and is an acceptable action.\n    It should roll back if the same multiplier is already set to the vehicle type.\n@param vehicleType The type of the vehicle being set.\n@param multiplier The multiplier to use.\n@return Whether the action was successful.\nEmits LogMultiplierSet with:\n    The sender of the action.\n    The vehicle type that was modified.\n    The new multiplier that was set.",
-            "id": 1594,
+            "id": 1779,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -542,16 +542,16 @@
             "name": "setMultiplier",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1590,
+              "id": 1775,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1587,
+                  "id": 1772,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1594,
-                  "src": "1232:16:10",
+                  "scope": 1779,
+                  "src": "1232:16:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -559,10 +559,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1586,
+                    "id": 1771,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1232:4:10",
+                    "src": "1232:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -573,11 +573,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1589,
+                  "id": 1774,
                   "name": "multiplier",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1594,
-                  "src": "1262:15:10",
+                  "scope": 1779,
+                  "src": "1262:15:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -585,10 +585,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1588,
+                    "id": 1773,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1262:4:10",
+                    "src": "1262:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -598,20 +598,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1218:60:10"
+              "src": "1218:60:12"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1593,
+              "id": 1778,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1592,
+                  "id": 1777,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1594,
-                  "src": "1310:12:10",
+                  "scope": 1779,
+                  "src": "1310:12:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -619,10 +619,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1591,
+                    "id": 1776,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1310:4:10",
+                    "src": "1310:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -632,10 +632,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1309:14:10"
+              "src": "1309:14:12"
             },
-            "scope": 1602,
-            "src": "1196:128:10",
+            "scope": 1787,
+            "src": "1196:128:12",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -643,7 +643,7 @@
           {
             "body": null,
             "documentation": "@param vehicleType The type of vehicle whose multiplier we want\n    It should accept a vehicle type equal to 0.\n@return The multiplier for this vehicle type.\n    A 0 value indicates a non-existent multiplier.",
-            "id": 1601,
+            "id": 1786,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -651,16 +651,16 @@
             "name": "getMultiplier",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1597,
+              "id": 1782,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1596,
+                  "id": 1781,
                   "name": "vehicleType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1601,
-                  "src": "1606:16:10",
+                  "scope": 1786,
+                  "src": "1606:16:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -668,10 +668,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1595,
+                    "id": 1780,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1606:4:10",
+                    "src": "1606:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -681,20 +681,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1605:18:10"
+              "src": "1605:18:12"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1600,
+              "id": 1785,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1599,
+                  "id": 1784,
                   "name": "multiplier",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1601,
-                  "src": "1668:15:10",
+                  "scope": 1786,
+                  "src": "1668:15:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -702,10 +702,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1598,
+                    "id": 1783,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1668:4:10",
+                    "src": "1668:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -715,20 +715,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1667:17:10"
+              "src": "1667:17:12"
             },
-            "scope": 1602,
-            "src": "1583:102:10",
+            "scope": 1787,
+            "src": "1583:102:12",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1603,
-        "src": "26:1876:10"
+        "scope": 1788,
+        "src": "26:1876:12"
       }
     ],
-    "src": "0:1902:10"
+    "src": "0:1902:12"
   },
   "compiler": {
     "name": "solc",
@@ -736,5 +736,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-18T21:22:10.427Z"
+  "updatedAt": "2019-03-31T19:28:14.544Z"
 }
